@@ -24,3 +24,5 @@
 - house cleaning
 [B]Version 2.2.4[/B]
 - Timeout specified while live streaming
+[B]Version 2.2.5[/B]
+- Now trying to find dailymotion full links

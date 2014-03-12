@@ -334,7 +334,16 @@ def PlayShowLink ( url ):
 		xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(__addonname__,line1, time, __icon__))
 
 		print "PlayLINK"
-		playURL= match =re.findall('<strong>Tune Full<\/strong>\s*.*?src="(.*?(tune\.pk).*?)"', link)
+		playURL= match =re.findall('<strong>.*tune.*.*full.*<\/strong>\s*.*?src="(.*?(tune\.pk).*?)"', link, re.IGNORECASE)
+		if len(playURL)<=0:
+			line1 = "Tune not found, trying Daily motion"
+			xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(__addonname__,line1, time, __icon__))
+			playURL= match =re.findall('<strong>Daily.*.*full.*<\/strong>\s*.*?src="(.*?(daily).*?)"', link,re.IGNORECASE)
+		
+		if len(playURL)<=0:
+			line1 = "Link not found, check the website for Full Tune or Daily motion lists"
+			xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(__addonname__,line1, time, __icon__))
+			return;
 		playURL=match[0][0]# check if not found then try other methods
 		print playURL
 		playlist = xbmc.PlayList(1)
