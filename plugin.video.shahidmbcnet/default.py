@@ -6,6 +6,7 @@ import HTMLParser
 import xbmcaddon
 from operator import itemgetter
 import json
+import traceback
 
 __addon__       = xbmcaddon.Addon()
 __addonname__   = __addon__.getAddonInfo('name')
@@ -183,7 +184,7 @@ def AddSeries(Fromurl,pageNumber=""):
 	
 	return
 
-def AddEnteries(Fromurl):
+def AddEnteries(Fromurl,pageNumber=0):
 #	print Fromurl
 	req = urllib2.Request(Fromurl)
 	req.add_header('User-Agent','Mozilla/5.0(iPad; U; CPU iPhone OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B314 Safari/531.21.10')
@@ -207,19 +208,39 @@ def AddEnteries(Fromurl):
 	#h = HTMLParser.HTMLParser()
 	
 	#print match
+	totalEnteries=len(match)
 	for cname in match:
-		finalName=cname[1]
+		finalName=cname[1];
+		if len(finalName)>0: finalName+=' '
+		finalName+=cname[3].replace('<span>','').replace('</span>','')
+		
 		#print 'a1'
 		
 		#if len(finalName)>0: finalName+=u" ";
 		#print 'a2'
-		
+		if len(finalName)>0: finalName+=' '
 		finalName+=cname[4]
 		#print 'a3'
 		#finalName+=cname[3]
 		#print 'a4'
 		
 		addDir(finalName ,getMainUrl()+cname[0] ,5,cname[2],showContext=True,isItFolder=False)
+		
+		
+	if totalEnteries==24:
+		match =re.findall('<li class="arrowrgt"><a.*?this, \'(.*?(relatedEpisodeListingDynamic).*?)\'', link, re.UNICODE)
+		if len(match)>0 or mode==7  :
+			if not pageNumber=="":
+				pageNumber=str(int(pageNumber)+1);#parseInt(1)+1;
+			else:
+				pageNumber="1";
+			if mode==7:
+				newurl=(Fromurl.split('pageNumber')[0]+'-%s.html')%pageNumber
+			else:
+				newurl=getMainUrl()+match[0][0]+'.sort-number:DESC.pageNumber-%s.html'%pageNumber;
+			addDir('Next Page' ,newurl ,7,'', False, True,pageNumber=pageNumber)		#name,url,mode,icon
+	
+		
 		
 #	<a href="http://www.zemtv.com/page/2/">&gt;</a></li>
 	#match =re.findall('<link rel=\'next\' href=\'(.*?)\' \/>', link, re.IGNORECASE)
@@ -249,8 +270,11 @@ def AddChannels(liveURL):
 
 	#print match
 	#h = HTMLParser.HTMLParser()
+	#print match
 	for cname in match:
-		addDir(cname[0] ,getMainUrl()+cname[1] ,3,cname[2], False, True,isItFolder=True)		#name,url,mode,icon
+		chName=cname[1].split('/')[-1].split('.htm')[0]
+		print chName
+		addDir(chName ,getMainUrl()+cname[1] ,3,cname[2], False, True,isItFolder=True)		#name,url,mode,icon
 
 	return	
 	
@@ -377,9 +401,9 @@ try:
 		print "Ent url is "+url
 		AddSeries(url,pageNumber)
 
-	elif mode==4:
+	elif mode==4 or mode==7:
 		print "Play url is "+url
-		AddEnteries(url)
+		AddEnteries(url,pageNumber)
 
 	elif mode==5:
 		PlayShowLink(url)
@@ -388,6 +412,8 @@ try:
 		ShowSettings(url)
 except:
 	print 'somethingwrong'
+	traceback.print_exc(file=sys.stdout)
+	
 
 if (not mode==None) and mode>1:
 	view_mode_id = get_view_mode_id('thumbnail')

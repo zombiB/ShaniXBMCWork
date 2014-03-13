@@ -6,3 +6,6 @@
 - Settings for CDN and Proxy. Still harded coded proxy i used.
 [B]Version 1.4[/B]
 - Now, no more hard coded proxy.
+
+[B]Version 1.4[/B]
+- Fixed Channels names, Video descriptions and Next buttons
