@@ -7,5 +7,7 @@
 [B]Version 1.4[/B]
 - Now, no more hard coded proxy.
 
-[B]Version 1.4[/B]
+[B]Version 1.5[/B]
 - Fixed Channels names, Video descriptions and Next buttons
+[B]Version 1.5.1[/B]
+- Fixed Favourite bug, now you can add links to favourites and run it

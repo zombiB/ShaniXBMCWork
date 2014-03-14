@@ -273,7 +273,7 @@ def AddChannels(liveURL):
 	#print match
 	for cname in match:
 		chName=cname[1].split('/')[-1].split('.htm')[0]
-		print chName
+		#print chName
 		addDir(chName ,getMainUrl()+cname[1] ,3,cname[2], False, True,isItFolder=True)		#name,url,mode,icon
 
 	return	
@@ -420,6 +420,6 @@ if (not mode==None) and mode>1:
 	if view_mode_id is not None:
 		print 'view_mode_id',view_mode_id
 		xbmc.executebuiltin('Container.SetViewMode(%d)' % view_mode_id)
-
-xbmcplugin.endOfDirectory(int(sys.argv[1]))
+if not ( mode==5):
+	xbmcplugin.endOfDirectory(int(sys.argv[1]))
 

@@ -4,6 +4,7 @@ import urlparse
 import HTMLParser
 import xbmcaddon
 from operator import itemgetter
+import traceback
 
 __addon__       = xbmcaddon.Addon()
 __addonname__   = __addon__.getAddonInfo('name')
@@ -534,7 +535,7 @@ except:
 	pass
 
 
-print 	linkType
+print 	mode,url,linkType
 
 try:
 	if mode==None or url==None or len(url)<1:
@@ -557,4 +558,8 @@ try:
 		ShowSettings(url)
 except:
 	print 'somethingwrong'
-xbmcplugin.endOfDirectory(int(sys.argv[1]))
+	traceback.print_exc(file=sys.stdout)
+	
+
+if not ( mode==3 or mode==4 or mode==9):
+	xbmcplugin.endOfDirectory(int(sys.argv[1]))

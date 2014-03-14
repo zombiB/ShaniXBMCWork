@@ -44,7 +44,7 @@ class parseList(object):
             for param in parameterList:
                 paramString+="&"
                 paramString+=param["name"] + "="+urllib.quote_plus(param["value"]);#="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(rname)
-    	u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)
+    	u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(rname)
         u+=paramString
         ok=True
    

@@ -236,7 +236,7 @@ def AddChannels(liveURL):
 
 	match =re.findall('<div class="videopart">\s*<div class="paneleft">\s*<a.*href="(.*?)".*title="(.*?)".*<img.*src="(.*?)"', link,re.M)
 
-	print match
+	#print match
 	#h = HTMLParser.HTMLParser()
 	for cname in match:
 		addDir(Colored(cname[1],'ZM') ,cname[0] ,7,cname[2], False, True,isItFolder=False)		#name,url,mode,icon
@@ -261,7 +261,7 @@ def AddChannelsFromEbound():
 
 	match =re.findall('<a href=".*stream=(.*?)".*src="(.*?)"', link,re.M)
 
-	print match
+	#print match
 	expressExists=False
 	expressCName='express'
 
@@ -310,7 +310,7 @@ def PlayShowLink ( url ):
 	# if linktype is not provided then use the defaultLinkType
 	linkType="LINK"
 	if linkType=="DM" or (linkType=="" and defaultLinkType=="1"):
-		print "PlayDM"
+		#print "PlayDM"
 		line1 = "Playing DM Link"
 		xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(__addonname__,line1, time, __icon__))
 #		print link
@@ -550,4 +550,6 @@ try:
 		ShowSettings(url)
 except:
 	print 'somethingwrong'
-xbmcplugin.endOfDirectory(int(sys.argv[1]))
+
+if not ( mode==7 or mode==4 or mode==9):
+	xbmcplugin.endOfDirectory(int(sys.argv[1]))

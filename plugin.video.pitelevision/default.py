@@ -106,6 +106,7 @@ def getEnteriesList(Fromurl,PageNumber,mode):
     if mode=='ALLC':
         rmode='PlayLive'
     for cname in match:
+        #print cname[2]
         #addDir(cname[2] ,mainurl+cname[0] ,5,cname[1],isItFolder=False)
         imageurl=cname[1].replace(' ','%20');
         url=cname[0];
@@ -306,7 +307,7 @@ except:
 if PageNumber==None: PageNumber=""
 
 
-print     mode,url
+print     mode,url,name
 
 		
 try:
@@ -340,11 +341,12 @@ except:
 if (not mode==None) and mode>1:
     view_mode_id = get_view_mode_id('thumbnail')
     if view_mode_id is not None:
-        print 'view_mode_id',view_mode_id
+        #print 'view_mode_id',view_mode_id
         xbmcplugin.setContent(int(sys.argv[1]), 'movies')
-        print 'Container.SetViewMode(%d)' % view_mode_id
+        #print 'Container.SetViewMode(%d)' % view_mode_id
         xbmc.executebuiltin('Container.SetViewMode(%d)' % view_mode_id)
-    
-xbmcplugin.endOfDirectory(int(sys.argv[1]))
+   
+if not (mode=='PlayVOD' or  mode=='PlayLive'): 
+    xbmcplugin.endOfDirectory(int(sys.argv[1]))
 
 
