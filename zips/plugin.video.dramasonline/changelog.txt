@@ -28,3 +28,5 @@
 - Now trying to find dailymotion full links
 [B]Version 2.2.6[/B]
 - Fixed Favourite bug, now you can add links to favourites and run it
+[B]Version 2.2.7[/B]
+- Fixed the recent in the streaming site change done by you know who!
