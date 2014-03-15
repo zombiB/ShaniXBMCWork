@@ -11,3 +11,5 @@
 - Fixed Channels names, Video descriptions and Next buttons
 [B]Version 1.5.1[/B]
 - Fixed Favourite bug, now you can add links to favourites and run it
+[B]Version 1.5.2[/B]
+- resolved android issue, dependency problem

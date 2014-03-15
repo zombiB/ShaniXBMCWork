@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import xbmc, xbmcgui, xbmcplugin
-import urllib2,urllib,cgi, re, urlresolver
+import urllib2,urllib,cgi, re
 import urlparse
 import HTMLParser
 import xbmcaddon
