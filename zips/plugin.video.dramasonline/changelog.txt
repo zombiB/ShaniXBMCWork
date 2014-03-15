@@ -30,3 +30,5 @@
 - Fixed Favourite bug, now you can add links to favourites and run it
 [B]Version 2.2.7[/B]
 - Fixed the recent in the streaming site change done by you know who!
+[B]Version 2.2.8[/B]
+- bug in previours release

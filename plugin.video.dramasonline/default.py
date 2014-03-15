@@ -459,10 +459,10 @@ def PlayLiveLink ( url ):
 		print link
 		#match =re.findall("=(.*)", link)
 
-		print url
-		print match
+		#print url
+		#print match
 
-		strval =link; match[0]
+		strval =link;# match[0]
 
 		#listitem = xbmcgui.ListItem(name)
 		#listitem.setInfo('video', {'Title': name, 'Genre': 'Live TV'})
