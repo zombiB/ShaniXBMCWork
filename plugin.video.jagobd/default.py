@@ -65,7 +65,7 @@ def getMainMenu():
     return list;
 
 
-	
+
 def ShowSettings(Fromurl):
     selfAddon.openSettings()
 
@@ -102,7 +102,7 @@ def getLiveUrl(url):
     link=getURL(url).result;
     #print 'link',link
     progress.update( 30, "", "Finding links..", "" )
-
+    h=HTMLParser.HTMLParser()
     match= re.findall('ass="stremb">.*?href="(.*?)"', link)
     if len(match)==0:
         progress.update( 60, "", "Finding links..", "" )
@@ -112,7 +112,8 @@ def getLiveUrl(url):
         #print link,match
         zzUrl="http://www.zzcast.com/embed.php?u=%s&vw=600&vh=400&domain=www.jagobd.com"%(match[0])
     else:
-        zzUrl=match[0]
+        zzUrl=h.unescape(match[0])
+    print zzUrl,'zzURL'
     if len(zzUrl)==0:
         return None
     print zzUrl,'zzURL'
@@ -153,7 +154,7 @@ def PlayLiveLink ( url,name ):
           xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(__addonname__,line1, time, __icon__))
 
     return
-	
+
 VIEW_MODES = {
     'thumbnail': {
         'skin.confluence': 500,
