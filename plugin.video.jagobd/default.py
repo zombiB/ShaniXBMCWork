@@ -103,7 +103,7 @@ def getLiveUrl(url):
     #print 'link',link
     progress.update( 30, "", "Finding links..", "" )
     h=HTMLParser.HTMLParser()
-    match= re.findall('ass="stremb">.*?href="(.*?)"', link)
+    match= re.findall('ass="stremb">.*?href="(http.*?)"', link)
     if len(match)==0:
         progress.update( 60, "", "Finding links..", "" )
 
