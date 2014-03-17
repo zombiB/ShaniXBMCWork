@@ -30,3 +30,5 @@
 - Fixed the recent in the streaming site change done by you know who!
 [B]Version 2.2.7[/B]
 - Small bug in next page
+[B]Version 2.2.9[/B]
+- change on the website reflected in the addon

@@ -234,7 +234,7 @@ def AddChannels(liveURL):
 #	match =re.findall('<div class=\"post-title\"><a href=\"(.*?)\".*<b>(.*)<\/b><\/a>', link, re.IGNORECASE)
 #	match =re.findall('<img src="(.*?)" alt=".*".+<\/a>\n*.+<div class="post-title"><a href="(.*?)".*<b>(.*)<\/b>', link, re.UNICODE)
 
-	match =re.findall('<div class="videopart">\s*<div class="paneleft">\s*<a.*href="(.*?)".*title="(.*?)".*<img.*src="(.*?)"', link,re.M)
+	match =re.findall('<div class="videopart">\s*<div class="paneleft">\s*<a.*?href="(.*?)".*?title="(.*?)".*?<img.*?src="(.*?)"', link,re.M)
 
 	#print match
 	#h = HTMLParser.HTMLParser()
@@ -259,7 +259,7 @@ def AddChannelsFromEbound():
 #	match =re.findall('<div class=\"post-title\"><a href=\"(.*?)\".*<b>(.*)<\/b><\/a>', link, re.IGNORECASE)
 #	match =re.findall('<img src="(.*?)" alt=".*".+<\/a>\n*.+<div class="post-title"><a href="(.*?)".*<b>(.*)<\/b>', link, re.UNICODE)
 
-	match =re.findall('<a href=".*stream=(.*?)".*src="(.*?)"', link,re.M)
+	match =re.findall('<a href=".*?stream=(.*?)".*?src="(.*?)"', link,re.M)
 
 	#print match
 	expressExists=False
