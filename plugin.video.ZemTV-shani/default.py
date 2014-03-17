@@ -294,7 +294,7 @@ def AddShows(Fromurl):
 	match =re.findall('<a href="(.*)">&gt;<\/a><\/li>', link, re.IGNORECASE)
 	
 	if len(match)==1:
-		addDir('Next Page' ,match[0] ,2,'',isItFolder=False)
+		addDir('Next Page' ,match[0] ,2,'',isItFolder=True)
 #       print match
 	
 	return
