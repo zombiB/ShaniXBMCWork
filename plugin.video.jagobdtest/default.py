@@ -76,19 +76,19 @@ def AddChannels(Fromurl,mode):
 def getChannelsEnteries(Fromurl,PageNumber,mode):
     link=getURL(Fromurl).result;
     #print 'getEnteriesList',link
-    match =re.findall('<img src=\"(.*?)\".*?href=\"(.*?)\".*?>(.*?)<', link)
+    match =re.findall('<a target="_top" href=\"(.*?)\".*?title=\"(.*?)\".*?src=\"(.*?)\"', link)
     listToReturn=[]
     rmode='PlayC';
     #if mode=='ALLC':
     #    rmode='PlayLive'
     for cname in match:
-        imageurl=cname[0].replace(' ','%20');
-        url=cname[1];
+        imageurl=cname[2].replace(' ','%20');
+        url=cname[0];
         
         if not imageurl.startswith('http'): imageurl=mainurl+'/'+imageurl
         if not url.startswith('http'): url=mainurl+url
         #print imageurl    
-        listToReturn.append({'name':cname[2],'url':url,'mode':rmode,'iconimage':imageurl,'isFolder':False})
+        listToReturn.append({'name':cname[1],'url':url,'mode':rmode,'iconimage':imageurl,'isFolder':False})
     return listToReturn
 
 
@@ -124,7 +124,8 @@ def getLiveUrl(url):
     progress.update( 70, "", "Finding links..", "" )
     refUrl=url
     print zzUrl,'zzURL','referer',refUrl
-#    link=getURL(zzUrl,referer=refUrl).result;
+    #zzUrl="http://annanfsfjsdfjsdklfjdflkds.com"
+    #link=getURL(zzUrl,referer=refUrl).result;
 
     req = urllib2.Request(zzUrl)
     print 'stage1'
