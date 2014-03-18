@@ -1,5 +1,5 @@
 import xbmc, xbmcgui, xbmcplugin
-import urllib,cgi, re
+import urllib2,urllib,cgi, re
 import urlparse
 import HTMLParser
 import xbmcaddon
@@ -45,7 +45,7 @@ def get_params():
 __addon__       = xbmcaddon.Addon()
 __addonname__   = __addon__.getAddonInfo('name')
 __icon__        = __addon__.getAddonInfo('icon')
-addon_id = 'plugin.video.jagobd'
+addon_id = 'plugin.video.jagobdtest'
 selfAddon = xbmcaddon.Addon(id=addon_id)
   
  
@@ -59,7 +59,7 @@ def Addtypes():
 
 def getMainMenu():
     list=[]
-    list.append({'name':'Banga Channels','url':mainurl+'/list/bangla.php','mode':'BC'})
+    list.append({'name':'Bangla Channels','url':mainurl+'/list/bangla.php','mode':'BC'})
     list.append({'name':'Islamic Channels','url':mainurl+'/list/islamic.php','mode':'IC'})
     list.append({'name':'Settings','url':'Settings','mode':'Settings'})
     return list;
@@ -76,19 +76,19 @@ def AddChannels(Fromurl,mode):
 def getChannelsEnteries(Fromurl,PageNumber,mode):
     link=getURL(Fromurl).result;
     #print 'getEnteriesList',link
-    match =re.findall('<a target=\"_top\" href="(.*?)".*?title="(.*?)">.*?<img src="(.*?)"', link)
+    match =re.findall('<img src=\"(.*?)\".*?href=\"(.*?)\".*?>(.*?)<', link)
     listToReturn=[]
     rmode='PlayC';
     #if mode=='ALLC':
     #    rmode='PlayLive'
     for cname in match:
-        imageurl=cname[2].replace(' ','%20');
-        url=cname[0];
+        imageurl=cname[0].replace(' ','%20');
+        url=cname[1];
         
         if not imageurl.startswith('http'): imageurl=mainurl+'/'+imageurl
         if not url.startswith('http'): url=mainurl+url
         #print imageurl    
-        listToReturn.append({'name':cname[1],'url':url,'mode':rmode,'iconimage':imageurl,'isFolder':False})
+        listToReturn.append({'name':cname[2],'url':url,'mode':rmode,'iconimage':imageurl,'isFolder':False})
     return listToReturn
 
 
@@ -124,7 +124,20 @@ def getLiveUrl(url):
     progress.update( 70, "", "Finding links..", "" )
     refUrl=url
     print zzUrl,'zzURL','referer',refUrl
-    link=getURL(zzUrl,referer=refUrl).result;
+#    link=getURL(zzUrl,referer=refUrl).result;
+
+    req = urllib2.Request(zzUrl)
+    print 'stage1'
+    req.add_header('User-Agent', 'Mozilla/5.0(iPad; U; CPU iPhone OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B314 Safari/531.21.10')
+    print 'stage2'
+    req.add_header('Referer', refUrl)
+    print 'stage3'
+    response = urllib2.urlopen(req)
+    print 'stage4'
+    link=response.read()
+    print 'stage5'
+
+    response.close()
 
 
     progress.update( 90, "", "Finding links..", "" )

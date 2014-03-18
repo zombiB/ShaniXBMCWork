@@ -28,7 +28,7 @@ class getURL():
             request.add_header('Referer', referer)
         if not cookie is None:
             request.add_header('cookie', cookie)
-        print 'in getUrl',request#,'referer',referer
+        print 'in getUrl',url,'referer',referer
         response = urllib2.urlopen(request, timeout=int(timeout))
         #print 'request',request
         if output == 'cookie':
