@@ -142,7 +142,9 @@ def getLiveUrl(url):
 
 
     progress.update( 90, "", "Finding links..", "" )
+    print 'link',link
     match= re.findall('SWFObject\(\'(.*?)\',.*?file\',\'(.*?)\'.*?streamer\',\'(.*?)\'', link, re.DOTALL)
+    print 'match',match
     progress.update( 100, "", "Finding links..", "" )
 
     if len(match)==0:

@@ -11,5 +11,6 @@ B]Version 1.0.4[/B]
 - revised with one bug fixed
 B]Version 1.0.5[/B]
 - more logging
-
+B]Version 1.0.6[/B]
+- Getting there, ,last logging
 
