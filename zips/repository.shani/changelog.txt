@@ -8,3 +8,5 @@
 - https removed
 [B]Version 2.0[/B]
 - new url
+[B]Version 2.2[/B]
+- new url
