@@ -1,8 +1,0 @@
-[B]Version 1.0[/B]
-- First version 1
-[B]Version 1.5[/B]
-- Fixed some bugs about folder names and zip files
-[B]Version 1.5[/B]
-- https links
-[B]Version 2.0[/B]
-- https removed
