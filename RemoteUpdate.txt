@@ -6,7 +6,7 @@ git clone --mirror https://github.com/Shani-08/ShaniXBMCWork.git ShaniBitBucket
 -- after changes
 git fetch origin
 git push --mirror https://shani-08@bitbucket.org/shani-08/shanixbmcwork.git
-
+aaaaaaaaaaaaaaaaaaaaaaaaaaaa
 https://confluence.atlassian.com/display/BITBUCKET/Set+up+SSH+for+Git#SetupSSHforGit-Step4.Createaconfigfile
 http://www.bram.us/2012/05/06/automatic-website-publishing-with-git-github-style/
 
