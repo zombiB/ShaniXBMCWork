@@ -7,6 +7,8 @@ git clone --mirror https://github.com/Shani-08/ShaniXBMCWork.git ShaniBitBucket
 git fetch origin
 git push --mirror https://shani-08@bitbucket.org/shani-08/shanixbmcwork.git
 
+https://confluence.atlassian.com/display/BITBUCKET/Set+up+SSH+for+Git#SetupSSHforGit-Step4.Createaconfigfile
+
 
 post-receive file changed11
 #!/bin/sh
