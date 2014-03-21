@@ -8,7 +8,9 @@ git fetch origin
 git push --mirror https://shani-08@bitbucket.org/shani-08/shanixbmcwork.git
 
 https://confluence.atlassian.com/display/BITBUCKET/Set+up+SSH+for+Git#SetupSSHforGit-Step4.Createaconfigfile
+http://www.bram.us/2012/05/06/automatic-website-publishing-with-git-github-style/
 
+these two ... add key and setup post-receive
 
 post-receive file changed11
 #!/bin/sh
