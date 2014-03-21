@@ -166,10 +166,15 @@ def PlayLiveLink ( url,name ):
         rtmp=urlDic["rtmp"]
         playPath=urlDic["playpath"]
         swf=urlDic["swf"]
-
-        playfile= "%s playpath=%s swfUrl=%s token=%s live=1 timeout=15 swfVfy=1 pageUrl=%s"%(rtmp,playPath,swf,'%bwwpe(nKa@#.',url)
+        token ='%bwwpe(nKa@#.'
+        playfile= '%s playpath=%s swfUrl=%s token=' %(rtmp,playPath,swf)
+        print 'playfile1',playfile
+        playfile+=token;
+        print 'playfile2',playfile
+        playfile+=' live=1 timeout=15 swfVfy=1 pageUrl=%s'%url
+        print 'playfile',playfile
         listitem = xbmcgui.ListItem( label = str(name), iconImage = "DefaultVideo.png", thumbnailImage = xbmc.getInfoImage( "ListItem.Thumb" ) )
-        print "playing stream name: " + str(name) 
+        print "playing stream name: " ,str(name) ,playfile
         xbmc.Player( xbmc.PLAYER_CORE_AUTO ).play( playfile, listitem)
     else:
           line1="Stream not found";

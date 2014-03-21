@@ -13,4 +13,6 @@ B]Version 1.0.5[/B]
 - more logging
 B]Version 1.0.6[/B]
 - Getting there, ,last logging
+B]Version 1.0.7[/B]
+- Getting there,almost
 
