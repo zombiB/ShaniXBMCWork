@@ -21,4 +21,11 @@ git fetch origin
 git push --mirror https://shani-08@bitbucket.org/shani-08/shanixbmcwork.git
 cd ../ShaniXBMCWork/ShaniXBMCWork
 
+#!/bin/sh
+#
+# An example hook script to prepare a packed repository for use over
+# dumb transports.
+#
+# To enable this hook, rename this file to "post-update".
+./updateBitBucker.sh
 
