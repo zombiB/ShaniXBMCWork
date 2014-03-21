@@ -8,7 +8,7 @@ git fetch origin
 git push --mirror https://shani-08@bitbucket.org/shani-08/shanixbmcwork.git
 
 
-post-receive file changed
+post-receive file changed11
 #!/bin/sh
 #
 # An example hook script to prepare a packed repository for use over
@@ -16,9 +16,9 @@ post-receive file changed
 #
 # To enable this hook, rename this file to "post-update".
 
-cd ..\..\ShaniBitBucket
+cd ../../ShaniBitBucket
 git fetch origin
 git push --mirror https://shani-08@bitbucket.org/shani-08/shanixbmcwork.git
-cd ..\ShaniXBMCWork\ShaniXBMCWork
+cd ../ShaniXBMCWork/ShaniXBMCWork
 
 
