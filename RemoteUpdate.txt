@@ -6,3 +6,19 @@ git clone --mirror https://github.com/Shani-08/ShaniXBMCWork.git ShaniBitBucket
 -- after changes
 git fetch origin
 git push --mirror https://shani-08@bitbucket.org/shani-08/shanixbmcwork.git
+
+
+Post update hook
+#!/bin/sh
+#
+# An example hook script to prepare a packed repository for use over
+# dumb transports.
+#
+# To enable this hook, rename this file to "post-update".
+
+cd ..\..\ShaniBitBucket
+git fetch origin
+git push --mirror https://shani-08@bitbucket.org/shani-08/shanixbmcwork.git
+cd ..\ShaniXBMCWork\ShaniXBMCWork
+
+
