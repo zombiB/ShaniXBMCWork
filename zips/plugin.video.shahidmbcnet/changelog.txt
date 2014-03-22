@@ -13,3 +13,5 @@
 - Fixed Favourite bug, now you can add links to favourites and run it
 [B]Version 1.5.2[/B]
 - resolved android issue, dependency problem
+[B]Version 1.6.0[/B]
+- Supports Streams

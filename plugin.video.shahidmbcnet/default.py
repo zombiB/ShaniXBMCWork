@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 import xbmc, xbmcgui, xbmcplugin
 import urllib2,urllib,cgi, re
-import urlparse
 import HTMLParser
 import xbmcaddon
-from operator import itemgetter
 import json
 import traceback
 
@@ -133,7 +131,8 @@ def get_params():
 def Addtypes():
 	#2 is series=3 are links
 	addDir('Channels' ,getMainUrl()+'/ar/channel-browser.html' ,2,'') #links #2 channels,3 series,4 video entry, 5 play
-	addDir('All Series' ,getMainUrl()+'/ar/series-browser.html' ,6,'')
+	addDir('Series' ,getMainUrl()+'/ar/series-browser.html' ,6,'')
+	addDir('Streams' ,getMainUrl()+'/ar/series-browser.html' ,9,'')
 	addDir('Settings' ,'Settings' ,8,'',isItFolder=False) ##
 	return
 
@@ -279,6 +278,35 @@ def AddChannels(liveURL):
 	return	
 	
 
+def AddStreams():
+	match=getStreams();
+
+	for cname in match:
+		chName=cname[0]
+		chUrl = cname[1]
+		imageUrl = 'http://www.hdarabic.com/./images/'+cname[2]+'.jpg'
+		#print imageUrl
+		#print chName
+		addDir(chName ,chUrl ,10,imageUrl, False, False,isItFolder=False)		#name,url,mode,icon
+
+	return
+	
+def PlayStream(url, name):
+	req = urllib2.Request(url)
+	req.add_header('User-Agent','Mozilla/5.0(iPad; U; CPU iPhone OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B314 Safari/531.21.10')
+	response = urllib2.urlopen(req)
+	link=response.read()
+	response.close()
+	match =re.findall('file: "rtmp([^"]*)', link)
+
+	rtmpLink=match[0]
+	liveLink="rtmp%s app=live/ swfUrl=http://www.hdarabic.com/jwplayer.flash.swf pageUrl=http://www.hdarabic.com live=1 timeout=15"%rtmpLink
+	print 'liveLink',liveLink
+
+	listitem = xbmcgui.ListItem( label = str(name), iconImage = "DefaultVideo.png", thumbnailImage = xbmc.getInfoImage( "ListItem.Thumb" ), path=liveLink )
+	xbmc.Player().play( liveLink,listitem)
+
+
 def PlayShowLink ( url ): 
 #	url = tabURL.replace('%s',channelName);
 
@@ -348,7 +376,151 @@ def PlayShowLink ( url ):
 	#print 'ol..'
 	return
 	
-
+def getStreams():
+	return [('SemSem','http://www.hdarabic.com/semsem.php','semsem_tv'),
+	('Al Arabiya','http://www.hdarabic.com/alarabiya.php','alarabiya'),
+	('France 24','http://www.hdarabic.com/f24.php','f24'),
+	('France 24 English','http://www.hdarabic.com/f24.php','f24'),
+	('France 24 France','http://www.hdarabic.com/f24.php','f24'),
+	('Al hiwar','http://www.hdarabic.com/alhiwar.php','alhiwar'),
+	('Skynews','http://www.hdarabic.com/skynews.php','skynews'),
+	('Skynews English','http://www.hdarabic.com/skynews.php','skynews'),
+	('BBC Arabic','http://www.hdarabic.com/bbc.php','bbc'),
+	('Al mayadeen','http://www.hdarabic.com/almayaden.php','almayaden'),
+	('TAHA','http://www.hdarabic.com/taha.php','taha'),
+	('National Wild','http://www.hdarabic.com/national_wild.php','national_wild'),
+	('HODHOD','http://www.hdarabic.com/hod_hod.php','hod_hod'),
+	('Karamesh','http://www.hdarabic.com/karamesh.php','karamesh'),
+	('Qatar','http://www.hdarabic.com/qatar.php','qatar'),
+	('Tunisia 2','http://www.hdarabic.com/tunisia_2.php','tv_tunisia2'),
+	('Sama Dubai','http://www.hdarabic.com/sama_dubai.php','Sama-dubai'),
+	('B4U plus','http://www.hdarabic.com/b4u+.php','b4u+'),
+	('B4U Aflam','http://www.hdarabic.com/b4u_aflam.php','b4u_aflam'),
+	('Saudi Sport','http://www.hdarabic.com/saudi_sport.php','saudi_sport'),
+	('Dubai Sport','http://www.hdarabic.com/dubai_sport.php','dubai-sport'),
+	('Dubai Sport 3','http://www.hdarabic.com/dubai_sport_3.php','dubai-sport'),
+	('Dubai Racing','http://www.hdarabic.com/dubai_racing.php','dubai_racing'),
+	('Oman','http://www.hdarabic.com/oman.php','oman_tv'),
+	('Dubai','http://www.hdarabic.com/dubai.php','dubai'),
+	('Play Hekayat','http://www.hdarabic.com/play_hekayat.php','play_hekayat'),
+	('Watan','http://www.hdarabic.com/watan.php','watan'),
+	('Watan Plus','http://www.hdarabic.com/watan_plus.php','watan_plus'),
+	('Fox Movie','http://www.hdarabic.com/fox_movie.php','fox_movies'),
+	('ART Cinema ','http://www.hdarabic.com/art.php','art'),
+	('ART Hekayat','http://www.hdarabic.com/art_hekayat.php','art_hekayat'),
+	('ART Hekayat 2','http://www.hdarabic.com/art_hekayat_2.php','art_hekayat_2'),
+	('Melody Aflam','http://www.hdarabic.com/melody_aflam.php','melodytv'),
+	('Melody Classic','http://www.hdarabic.com/melody_classic.php','melodytv'),
+	('Melody Hits','http://www.hdarabic.com/melody_hits.php','melodytv'),
+	('Melody Drama','http://www.hdarabic.com/melody_drama.php','melodytv'),
+	('Mehwar','http://www.hdarabic.com/mehwar.php','mehwar'),
+	('Mehwar 2','http://www.hdarabic.com/mehwar2.php','mehwar2'),
+	('Talaki','http://www.hdarabic.com/talaki.php','talaki'),
+	('Syria News','http://www.hdarabic.com/syria_news.php','syria_news'),
+	('Oscar Drama','http://www.hdarabic.com/oscar_drama.php','oscar_drama'),
+	('Cima','http://www.hdarabic.com/cima.php','cima'),
+	('Cairo Cinema','http://www.hdarabic.com/cairo_cinema.php','cairo_cinema'),
+	('Cairo Film','http://www.hdarabic.com/cairo_film.php','cairo_film'),
+	('Cairo Drama','http://www.hdarabic.com/cairo_drama.php','cairo_drama'),
+	('IFilm Arabic','http://www.hdarabic.com/ifilm.php','ifilm'),
+	('IFilm English','http://www.hdarabic.com/ifilm.php','ifilm'),
+	('IFilm Farsi','http://www.hdarabic.com/ifilm.php','ifilm'),
+	('Gladiator','http://www.hdarabic.com/gladiator.php','gladiator'),
+	('ESC1','http://www.hdarabic.com/esc1.php','al_masriya_eg'),
+	('ESC2','http://www.hdarabic.com/esc2.php','masriaesc2'),
+	('Panorama Film','http://www.hdarabic.com/panorama_film.php','panorama_film'),
+	('TF1','http://www.hdarabic.com/tf1.php','tf1'),
+	('M6 Boutique','http://www.hdarabic.com/m6.php','m6'),
+	('TV5','http://www.hdarabic.com/tv5.php','tv5_monde_europe'),
+	('Guilli','http://www.hdarabic.com/guilli.php','guilli'),
+	('Libya','http://www.hdarabic.com/libya.php','libya'),
+	('Assema','http://www.hdarabic.com/assema.php','assema'),
+	('Libya Awalan','http://www.hdarabic.com/libya_awalan.php','libya_awalan'),
+	('RTM Tamazight','http://www.hdarabic.com/tamazight.php','tamazight'),
+	('Al maghribiya','http://www.hdarabic.com/maghribiya.php','maghribiya'),
+	('Sadissa','http://www.hdarabic.com/sadissa.php','sadisa'),
+	('A3','http://www.hdarabic.com/a3.php','a3'),
+	('Algerie 4','http://www.hdarabic.com/algerie_4.php','algerie_4'),
+	('Algerie 5','http://www.hdarabic.com/algerie5.php','algerie5'),
+	('Al Nahar Algerie','http://www.hdarabic.com/nahar_algerie.php','nahar_algerie'),
+	('Chorouk TV','http://www.hdarabic.com/chorouk.php','chorouk'),
+	('El Beit Beitak','http://www.hdarabic.com/beitak.php','beitak'),
+	('Insen','http://www.hdarabic.com/insen.php','insen'),
+	('Nesma','http://www.hdarabic.com/nesma.php','rouge'),
+	('Tounsiya','http://www.hdarabic.com/tounsiya.php','tounsiya'),
+	('Aghanina','http://www.hdarabic.com/aghanina.php','aghanina'),
+	('Nojoom','http://www.hdarabic.com/nojoom.php','nojoom'),
+	('Funoon','http://www.hdarabic.com/funoon.php','funoon'),
+	('Mazazik','http://www.hdarabic.com/mazazik.php','mazazik'),
+	('Mazzika','http://www.hdarabic.com/mazzika.php','logo-mazzika'),
+	('Power Turk','http://www.hdarabic.com/power_turk.php','power_turk'),
+	('Al Haneen','http://www.hdarabic.com/alhaneen.php','alhaneen'),
+	('Heya','http://www.hdarabic.com/heya.php','heya'),
+	('CBC','http://www.hdarabic.com/cbc.php','cbc'),
+	('CBC Extra','http://www.hdarabic.com/cbc_extra.php','cbc_extra'),
+	('CBC Drama','http://www.hdarabic.com/cbc_drama.php','cbc_drama'),
+	('CBC Sofra','http://www.hdarabic.com/cbc_sofra.php','cbc_sofra'),
+	('Al Hayat 2 TV ','http://www.hdarabic.com/hayat_2.php','hayat_2'),
+	('Dream 1','http://www.hdarabic.com/dream1.php','dream1'),
+	('Nile Comedy','http://www.hdarabic.com/nile_comedy.php','nile_comedy'),
+	('Nile News','http://www.hdarabic.com/nile_news.php','nile_news'),
+	('Nile Family','http://www.hdarabic.com/nile_family.php','nile_family'),
+	('Rotana Cinema','http://www.hdarabic.com/rotana_cinema.php','rotana_cinema'),
+	('Rotana Clip','http://www.hdarabic.com/rotana_clip.php','rotana_clip'),
+	('Rotana Classic','http://www.hdarabic.com/rotana_classic.php','rotana_classic'),
+	('ANB','http://www.hdarabic.com/anb.php','anb'),
+	('Arabica ','http://www.hdarabic.com/arabica.php','arabica-tv'),
+	('MTV Arabia','http://www.hdarabic.com/mtv_arabia.php','mtv_arabia'),
+	('MBC','http://www.hdarabic.com/mbc.php','mbc'),
+	('MBC 2','http://www.hdarabic.com/mbc2.php','mbc2'),
+	('MBC 3','http://www.hdarabic.com/mbc3.php','mbc3'),
+	('MBC Action','http://www.hdarabic.com/mbc_action.php','mbc_action'),
+	('MBC Max','http://www.hdarabic.com/mbc_max.php','mbc_max'),
+	('MBC Drama','http://www.hdarabic.com/mbc_drama.php','mbc_drama'),
+	('MBC Masr','http://www.hdarabic.com/mbc_masr.php','mbc_masr'),
+	('MBC Masr Drama','http://www.hdarabic.com/mbc_masr_drama.php','mbc_masr_drama'),
+	('MBC Bollywood','http://www.hdarabic.com/mbc_bollywood.php','mbc_bollywoodl'),
+	('Wanasah','http://www.hdarabic.com/wanasah.php','wanasah'),
+	('Nahar +2','http://www.hdarabic.com/nahar_+2.php','nahar+2'),
+	('Nahar Sport','http://www.hdarabic.com/nahar_sport.php','al_nahar_sport'),
+	('LBC Europe','http://www.hdarabic.com/lbc.php','lbc'),
+	('Tele Liban','http://www.hdarabic.com/teleliban.php','teleliban'),
+	('Syria ','http://www.hdarabic.com/syria.php','syria'),
+	('Sama Syria ','http://www.hdarabic.com/sama_syria.php','sama_syria'),
+	('MBC Maghreb','http://www.hdarabic.com/mbc_maghreb.php','mbc_maghreb'),
+	('Abu Dhabi Sport','http://www.hdarabic.com/abu_dhabi_sport.php','abu_dhabi_sporti'),
+	('Abu Dhabi','http://www.hdarabic.com/abu_dhabi.php','abudhabi'),
+	('LBC','http://www.hdarabic.com/lbc.php','lbc'),
+	('LBC Drama','http://www.hdarabic.com/lbc_drama.php','lbc_drama'),
+	('LDC','http://www.hdarabic.com/ldc.php','ldc'),
+	('AL Sharqia','http://www.hdarabic.com/sharqia.php','sharqia'),
+	('Orient News','http://www.hdarabic.com/orient_news.php','orientnews'),
+	('Al Alam','http://www.hdarabic.com/alalam.php','alalam'),
+	('Nabaa ','http://www.hdarabic.com/nabaa.php','nabaa_tv_sa'),
+	('Baghdadia 2','http://www.hdarabic.com/baghdad2.php','baghdad2'),
+	('Kaifa','http://www.hdarabic.com/kaifa.php','kaifa'),
+	('Suna Nabawiya','http://www.hdarabic.com/sunah.php','sunah'),
+	('Iqrae','http://www.hdarabic.com/iqra.php','iqra'),
+	('Rahma','http://www.hdarabic.com/rahma.php','rahma'),
+	('Al Maaref','http://www.hdarabic.com/almaaref.php','almaaref'),
+	('Sirat','http://www.hdarabic.com/sirat.php','sirat'),
+	('Al Afassi','http://www.hdarabic.com/afasi.php','afasi'),
+	('Ctv Coptic','http://www.hdarabic.com/ctv_coptic.php','ctv_eg'),
+	('Sat7','http://www.hdarabic.com/sat7.php','sat7'),
+	('Sat7 Kids','http://www.hdarabic.com/sat7_kids.php','sat7_kids'),
+	('Aghapy','http://www.hdarabic.com/aghapy.php','aghapy_tv'),
+	('Noursat','http://www.hdarabic.com/nour_sat.php','nour_sat'),
+	('Miracle','http://www.hdarabic.com/miracle.php','miracle'),
+	('Royali Somali','http://www.hdarabic.com/royali_somali.php','royali_somali'),
+	('Somali Channel','http://www.hdarabic.com/somali_channel.php','somali_channel'),
+	('Baraem','http://www.hdarabic.com/baraem.php','baraem_95x64'),
+	('Space Power','http://www.hdarabic.com/space_power.php','space_power'),
+	('Majd Kids','http://www.hdarabic.com/majd_kids.php','majd_kids'),
+	('Majd Kids 2','http://www.hdarabic.com/majd_kids.php','majd_kids'),
+	('Majd Roda','http://www.hdarabic.com/almajd.php','almajd'),
+	('Majd Taghrid','http://www.hdarabic.com/almajd.php','almajd'),
+	('Ajyal','http://www.hdarabic.com/ajyal.php','ajyal'),
+	('ANN','http://www.hdarabic.com/ann.php','ann_95x44')]
 
 
 	
@@ -410,6 +582,12 @@ try:
 	elif mode==8:
 		print "Play url is "+url,mode
 		ShowSettings(url)
+	elif mode==9:
+		print "Play url is "+url,mode
+		AddStreams();
+	elif mode==10:
+		print "Play url is "+url,mode
+		PlayStream(url,name);
 except:
 	print 'somethingwrong'
 	traceback.print_exc(file=sys.stdout)
@@ -420,6 +598,6 @@ if (not mode==None) and mode>1:
 	if view_mode_id is not None:
 		print 'view_mode_id',view_mode_id
 		xbmc.executebuiltin('Container.SetViewMode(%d)' % view_mode_id)
-if not ( mode==5):
+if not ( mode==5 or mode==10):
 	xbmcplugin.endOfDirectory(int(sys.argv[1]))
 
