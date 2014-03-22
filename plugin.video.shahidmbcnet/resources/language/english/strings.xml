@@ -6,5 +6,6 @@
     <string id="32012">Custom Proxy Server Address</string>
     <string id="32013">CDN Server Selection</string>
     <string id="32014">CDN Server to Use</string>
-
+	<string id="32015">Streaming Setup</string>
+	<string id="32016">Site to use?</string>
 </strings>

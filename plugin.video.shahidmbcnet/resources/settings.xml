@@ -8,4 +8,8 @@
         <setting label="32014" type="labelenum" id="DefaultCDN" values="Default|l3|xdn|ak" default="Default"/>
      	 
      </category>
+	 <category label="32015">
+     <setting label="32016" type="labelenum" id="DefaultStream" values="All|hdarabic.com|teledunet.com" default="All"/>
+     
+	   </category>
 </settings>

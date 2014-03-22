@@ -134,7 +134,7 @@ def Addtypes():
 	#2 is series=3 are links
 	addDir('Channels' ,getMainUrl()+'/ar/channel-browser.html' ,2,addonArt+'/channels.png') #links #2 channels,3 series,4 video entry, 5 play
 	addDir('Series' ,getMainUrl()+'/ar/series-browser.html' ,6,addonArt+'/serial.png')
-	addDir('Streams' ,getMainUrl()+'/ar/series-browser.html' ,9,addonArt+'/stream.png')
+	addDir('Streams' ,'streams' ,9,addonArt+'/stream.png')
 	addDir('Settings' ,'Settings' ,8,addonArt+'/setting.png',isItFolder=False) ##
 	return
 
@@ -282,8 +282,9 @@ def AddChannels(liveURL):
 
 def AddStreams():
 	match=getStreams();
-	#sorted(match, key=lambda matcha: match[0])
-	print 'match',match
+	#print 'match',match
+	match=sorted(match,key=lambda x:x[0].lower())
+	#print 'match',match
 	for cname in match:
 		if 'hdarabic' in cname[1]:
 			chName=Colored(cname[0],'one',False);
@@ -296,7 +297,7 @@ def AddStreams():
 			chName=Colored(cname[1],'two',False);
 			chUrl = cname[0]
 			imageUrl = 'http://www.teledunet.com/tv_/icones/%s.jpg'%cname[0]
-			print imageUrl
+			#print imageUrl
 			#print chName
 			addDir(chName ,chUrl ,11,imageUrl, False, False,isItFolder=False)		#name,url,mode,icon
 
@@ -404,6 +405,9 @@ def PlayShowLink ( url ):
 	return
 	
 def getStreams():
+	defaultStream="All"
+	defaultStream=selfAddon.getSetting( "DefaultStream" )
+	if defaultStream=="": defaultStream="All"
 	hdArab= [('SemSem','http://www.hdarabic.com/semsem.php','semsem_tv'),
 	('Al Arabiya','http://www.hdarabic.com/alarabiya.php','alarabiya'),
 	('France 24','http://www.hdarabic.com/f24.php','f24'),
@@ -549,13 +553,15 @@ def getStreams():
 	('Ajyal','http://www.hdarabic.com/ajyal.php','ajyal'),
 	('ANN','http://www.hdarabic.com/ann.php','ann_95x44')]
 	
+	if defaultStream=="hdarabic.com": return hdArab
+	
 	req = urllib2.Request('http://www.teledunet.com/')
 	req.add_header('User-Agent','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36')
 	response = urllib2.urlopen(req)
 	link=response.read()
 	response.close()
-	match =re.findall('set_favoris\(\'(.*?)\',\'(.*?)\'', link)
-	print 'TDmatch',match
+	match =re.findall('set_favoris\(\'(.*?)\',\'(.*?)\'\s?(.)', link)
+	if defaultStream=="teledunet.com": return match
 	
 	return match+hdArab
 	
