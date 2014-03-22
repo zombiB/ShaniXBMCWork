@@ -63,9 +63,9 @@ def addLink(name,url,iconimage):
 	return ok
 
 def Colored(text = '', colorid = '', isBold = False):
-	if colorid == 'ZM':
+	if colorid == 'one':
 		color = 'FF11b500'
-	elif colorid == 'EB':
+	elif colorid == 'two':
 		color = 'FFe37101'
 	elif colorid == 'bold':
 		return '[B]' + text + '[/B]'
@@ -144,7 +144,7 @@ def ShowSettings(Fromurl):
 def AddSeries(Fromurl,pageNumber=""):
 #	print Fromurl
 	req = urllib2.Request(Fromurl)
-	req.add_header('User-Agent','Mozilla/5.0(iPad; U; CPU iPhone OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B314 Safari/531.21.10')
+	req.add_header('User-Agent','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36')
 	response = urllib2.urlopen(req)
 	link=response.read()
 	response.close()
@@ -188,7 +188,7 @@ def AddSeries(Fromurl,pageNumber=""):
 def AddEnteries(Fromurl,pageNumber=0):
 #	print Fromurl
 	req = urllib2.Request(Fromurl)
-	req.add_header('User-Agent','Mozilla/5.0(iPad; U; CPU iPhone OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B314 Safari/531.21.10')
+	req.add_header('User-Agent','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36')
 	response = urllib2.urlopen(req)
 	link=response.read()
 	response.close()
@@ -254,7 +254,7 @@ def AddEnteries(Fromurl,pageNumber=0):
 	
 def AddChannels(liveURL):
 	req = urllib2.Request(liveURL)
-	req.add_header('User-Agent','Mozilla/5.0(iPad; U; CPU iPhone OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B314 Safari/531.21.10')
+	req.add_header('User-Agent','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36')
 	response = urllib2.urlopen(req)
 	link=response.read()
 	response.close()
@@ -282,27 +282,52 @@ def AddChannels(liveURL):
 
 def AddStreams():
 	match=getStreams();
-
+	#sorted(match, key=lambda matcha: match[0])
+	print 'match',match
 	for cname in match:
-		chName=cname[0]
-		chUrl = cname[1]
-		imageUrl = 'http://www.hdarabic.com/./images/'+cname[2]+'.jpg'
-		#print imageUrl
-		#print chName
-		addDir(chName ,chUrl ,10,imageUrl, False, False,isItFolder=False)		#name,url,mode,icon
+		if 'hdarabic' in cname[1]:
+			chName=Colored(cname[0],'one',False);
+			chUrl = cname[1]
+			imageUrl = 'http://www.hdarabic.com/./images/'+cname[2]+'.jpg'
+			#print imageUrl
+			#print chName
+			addDir(chName ,chUrl ,10,imageUrl, False, False,isItFolder=False)		#name,url,mode,icon
+		else:
+			chName=Colored(cname[1],'two',False);
+			chUrl = cname[0]
+			imageUrl = 'http://www.teledunet.com/tv_/icones/%s.jpg'%cname[0]
+			print imageUrl
+			#print chName
+			addDir(chName ,chUrl ,11,imageUrl, False, False,isItFolder=False)		#name,url,mode,icon
+
 
 	return
 	
-def PlayStream(url, name):
-	req = urllib2.Request(url)
-	req.add_header('User-Agent','Mozilla/5.0(iPad; U; CPU iPhone OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B314 Safari/531.21.10')
-	response = urllib2.urlopen(req)
-	link=response.read()
-	response.close()
-	match =re.findall('file: "rtmp([^"]*)', link)
+def PlayStream(url, name, mode):
 
-	rtmpLink=match[0]
-	liveLink="rtmp%s app=live/ swfUrl=http://www.hdarabic.com/jwplayer.flash.swf pageUrl=http://www.hdarabic.com live=1 timeout=15"%rtmpLink
+	if mode==10:
+		req = urllib2.Request(url)
+		req.add_header('User-Agent','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36')
+		response = urllib2.urlopen(req)
+		link=response.read()
+		response.close()
+		match =re.findall('file: "rtmp([^"]*)', link)
+
+		rtmpLink=match[0]
+		liveLink="rtmp%s app=live/ swfUrl=http://www.hdarabic.com/jwplayer.flash.swf pageUrl=http://www.hdarabic.com live=1 timeout=15"%rtmpLink
+	else:
+		newURL='http://www.teledunet.com/tv_/?channel=%s&no_pub'%url
+		req = urllib2.Request(newURL)
+		req.add_header('User-Agent','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36')
+		req.add_header('Referer',newURL)
+
+		response = urllib2.urlopen(req)
+		link=response.read()
+		response.close()
+		match =re.findall('time_player=(.*?);', link)
+
+		liveLink='rtmp://www.teledunet.com:1935/teledunet playpath=%s swfUrl=http://www.teledunet.com/player.swf?id0=%s&skin=bekle/bekle.xml&channel=%s pageUrl=http://www.teledunet.com/tv_/?channel=%s&no_pub live=1'%(url,match[0],url,url)
+		
 	print 'liveLink',liveLink
 
 	listitem = xbmcgui.ListItem( label = str(name), iconImage = "DefaultVideo.png", thumbnailImage = xbmc.getInfoImage( "ListItem.Thumb" ), path=liveLink )
@@ -379,7 +404,7 @@ def PlayShowLink ( url ):
 	return
 	
 def getStreams():
-	return [('SemSem','http://www.hdarabic.com/semsem.php','semsem_tv'),
+	hdArab= [('SemSem','http://www.hdarabic.com/semsem.php','semsem_tv'),
 	('Al Arabiya','http://www.hdarabic.com/alarabiya.php','alarabiya'),
 	('France 24','http://www.hdarabic.com/f24.php','f24'),
 	('France 24 English','http://www.hdarabic.com/f24.php','f24'),
@@ -523,6 +548,18 @@ def getStreams():
 	('Majd Taghrid','http://www.hdarabic.com/almajd.php','almajd'),
 	('Ajyal','http://www.hdarabic.com/ajyal.php','ajyal'),
 	('ANN','http://www.hdarabic.com/ann.php','ann_95x44')]
+	
+	req = urllib2.Request('http://www.teledunet.com/')
+	req.add_header('User-Agent','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36')
+	response = urllib2.urlopen(req)
+	link=response.read()
+	response.close()
+	match =re.findall('set_favoris\(\'(.*?)\',\'(.*?)\'', link)
+	print 'TDmatch',match
+	
+	return match+hdArab
+	
+	
 
 
 	
@@ -587,9 +624,9 @@ try:
 	elif mode==9:
 		print "Play url is "+url,mode
 		AddStreams();
-	elif mode==10:
+	elif mode==10 or mode==11:
 		print "Play url is "+url,mode
-		PlayStream(url,name);
+		PlayStream(url,name,mode);
 except:
 	print 'somethingwrong'
 	traceback.print_exc(file=sys.stdout)
@@ -600,6 +637,6 @@ if (not mode==None) and mode>1:
 	if view_mode_id is not None:
 		print 'view_mode_id',view_mode_id
 		xbmc.executebuiltin('Container.SetViewMode(%d)' % view_mode_id)
-if not ( mode==5 or mode==10):
+if not ( mode==5 or mode==10 or mode==11):
 	xbmcplugin.endOfDirectory(int(sys.argv[1]))
 

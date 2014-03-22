@@ -17,3 +17,5 @@
 - Supports Streams
 [B]Version 1.6.1[/B]
 - icons
+[B]Version 1.6.2[/B]
+- more streams
