@@ -5,13 +5,15 @@ import HTMLParser
 import xbmcaddon
 import json
 import traceback
+import os
 
 __addon__       = xbmcaddon.Addon()
 __addonname__   = __addon__.getAddonInfo('name')
 __icon__        = __addon__.getAddonInfo('icon')
 addon_id = 'plugin.video.shahidmbcnet'
 selfAddon = xbmcaddon.Addon(id=addon_id)
-  
+addonPath = xbmcaddon.Addon().getAddonInfo("path")
+addonArt = os.path.join(addonPath,'resources/images')
  
 mainurl='http://shahid.mbc.net'
 
@@ -130,10 +132,10 @@ def get_params():
 
 def Addtypes():
 	#2 is series=3 are links
-	addDir('Channels' ,getMainUrl()+'/ar/channel-browser.html' ,2,'') #links #2 channels,3 series,4 video entry, 5 play
-	addDir('Series' ,getMainUrl()+'/ar/series-browser.html' ,6,'')
-	addDir('Streams' ,getMainUrl()+'/ar/series-browser.html' ,9,'')
-	addDir('Settings' ,'Settings' ,8,'',isItFolder=False) ##
+	addDir('Channels' ,getMainUrl()+'/ar/channel-browser.html' ,2,addonArt+'/channels.png') #links #2 channels,3 series,4 video entry, 5 play
+	addDir('Series' ,getMainUrl()+'/ar/series-browser.html' ,6,addonArt+'/serial.png')
+	addDir('Streams' ,getMainUrl()+'/ar/series-browser.html' ,9,addonArt+'/stream.png')
+	addDir('Settings' ,'Settings' ,8,addonArt+'/setting.png',isItFolder=False) ##
 	return
 
 def ShowSettings(Fromurl):
