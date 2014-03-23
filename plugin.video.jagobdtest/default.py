@@ -166,9 +166,18 @@ def PlayLiveLink ( url,name ):
         rtmp=urlDic["rtmp"]
         playPath=urlDic["playpath"]
         swf=urlDic["swf"]
-        token =str('%bwwpe(nKa@#.')
+        token ='';#str('%bwwpe(nKa@#.')
         print 'token',token
         playfile= '%s playpath=%s swfUrl=%s token='%(rtmp,playPath,swf)
+        playfile2=playfile;
+        print playfile2
+        playfile2+='%';
+        print playfile2
+        playfile2+='bwwpe(nKa@';
+        print playfile2
+        playfile2+='#.';
+        print playfile2
+
         print 'playfile1',playfile
         playfile = ''.join([playfile,token])
         print 'playfile2',playfile
