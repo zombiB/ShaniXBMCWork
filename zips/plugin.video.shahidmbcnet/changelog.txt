@@ -23,3 +23,5 @@
 - Sorted lis and Settings
 [B]Version 1.7.1[/B]
 - Some missing streams
+[B]Version 1.7.2[/B]
+- Teledunet streams back and one almaghribia

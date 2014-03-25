@@ -289,7 +289,10 @@ def AddStreams():
 		if 'hdarabic' in cname[1]:
 			chName=Colored(cname[0],'one',False);
 			chUrl = cname[1]
-			imageUrl = 'http://www.hdarabic.com/./images/'+cname[2]+'.jpg'
+			if not 'http:' in cname[2]:
+				imageUrl = 'http://www.hdarabic.com/./images/'+cname[2]+'.jpg'
+			else:
+				imageUrl=cname[2]
 			#print imageUrl
 			#print chName
 			addDir(chName ,chUrl ,10,imageUrl, False, False,isItFolder=False)		#name,url,mode,icon
@@ -326,8 +329,9 @@ def PlayStream(url, name, mode):
 		link=response.read()
 		response.close()
 		match =re.findall('time_player=(.*?);', link)
+		match=str(long(float(match[0])))
 
-		liveLink='rtmp://www.teledunet.com:1935/teledunet playpath=%s swfUrl=http://www.teledunet.com/player.swf?id0=%s&skin=bekle/bekle.xml&channel=%s pageUrl=http://www.teledunet.com/tv_/?channel=%s&no_pub live=1'%(url,match[0],url,url)
+		liveLink='rtmp://5.135.134.110:1935/teledunet playpath=%s swfUrl=http://www.teledunet.com/tv_/player.swf?id0=%s&skin=bekle/bekle.xml&channel=%s  pageUrl=http://www.teledunet.com/tv_/?channel=%s&no_pub live=1  timeout=15'%(url,match,url,url)
 		
 	print 'liveLink',liveLink
 
@@ -599,7 +603,8 @@ def getStreams():
 	('Toyor Al Janah 1','http://www.hdarabic.com/toyorjana1.php','toyor'),
 	('Toyor Baby','http://www.hdarabic.com/toyorbaby.php','baby'),
 	('Ajyal','http://www.hdarabic.com/ajyal.php','ajyal'),
-	('ANN','http://www.hdarabic.com/ann.php','ann_95x44')]
+	('ANN','http://www.hdarabic.com/ann.php','ann_95x44'),
+	('Al Magharibiya','http://www.hdarabic.com/magharibia.php','http://tv.webactu-webtv.com/algerie1/magharibia.png')]
 	
 	if defaultStream=="hdarabic.com": return hdArab
 	
