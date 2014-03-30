@@ -1,0 +1,7 @@
+<resources>
+	<file fname="Categories.xml"/>
+	<file fname="Channels.xml"/>
+	<file fname="Sources.xml"/>
+	<file fname="teledunetPlayer.py"/>
+	<file fname="teledunetUrls.xml"/>
+</resources>

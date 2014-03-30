@@ -1,0 +1,20 @@
+<streamingsources>
+<source>
+<id>td</id>
+<sname>Teledunet.com</sname>
+<baseurl>http://www.teledunet.com/</baseurl>
+<enabled>True</enabled>
+<urlfile>teledunetUrls.xml</urlfile>
+<rtmpstring>rtmp://5.135.134.110:1935/teledunet playpath=%s swfUrl=http://www.teledunet.com/tv_/player.swf?id0=%s&amp;skin=bekle/bekle.xml&amp;channel=%s  pageUrl=http://www.teledunet.com/tv_/?channel=%s&amp;no_pub live=1  timeout=15</rtmpstring>
+<imageurl>http://www.teledunet.com/icon.png</imageurl>
+<processor>teledunetPlayer.py</processor>
+</source>
+<source>
+<id>livetv</id>
+<sname>livetv.tn</sname>
+<baseurl>http://www.livetv.tn/</baseurl>
+<enabled>True</enabled>
+<filesname>livetvUrls.xml</filesname>
+
+</source>
+</streamingsources>
