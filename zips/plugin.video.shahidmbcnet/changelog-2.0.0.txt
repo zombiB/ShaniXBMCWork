@@ -1,0 +1,27 @@
+[B]Version 1.0[/B]
+- First version 1
+[B]Version 1.2[/B]
+- Hard coded support for Proxy.
+[B]Version 1.3[/B]
+- Settings for CDN and Proxy. Still harded coded proxy i used.
+[B]Version 1.4[/B]
+- Now, no more hard coded proxy.
+
+[B]Version 1.5[/B]
+- Fixed Channels names, Video descriptions and Next buttons
+[B]Version 1.5.1[/B]
+- Fixed Favourite bug, now you can add links to favourites and run it
+[B]Version 1.5.2[/B]
+- resolved android issue, dependency problem
+[B]Version 1.6.0[/B]
+- Supports Streams
+[B]Version 1.6.1[/B]
+- icons
+[B]Version 1.6.2[/B]
+- more streams
+[B]Version 1.7.0[/B]
+- Sorted lis and Settings
+[B]Version 1.7.1[/B]
+- Some missing streams
+[B]Version 1.7.2[/B]
+- Teledunet streams back and one almaghribia

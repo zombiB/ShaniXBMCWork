@@ -6,6 +6,8 @@ import xbmcaddon
 import json
 import traceback
 import os
+import sys
+from BeautifulSoup import BeautifulStoneSoup, BeautifulSoup, BeautifulSOAP
 
 __addon__       = xbmcaddon.Addon()
 __addonname__   = __addon__.getAddonInfo('name')
@@ -14,6 +16,8 @@ addon_id = 'plugin.video.shahidmbcnet'
 selfAddon = xbmcaddon.Addon(id=addon_id)
 addonPath = xbmcaddon.Addon().getAddonInfo("path")
 addonArt = os.path.join(addonPath,'resources/images')
+communityStreamPath = os.path.join(addonPath,'resources/community')
+
  
 mainurl='http://shahid.mbc.net'
 
@@ -81,8 +85,10 @@ def addDir(name,url,mode,iconimage	,showContext=False, showLiveContext=False,isI
 #	name=name.decode('utf-8','replace')
 	h = HTMLParser.HTMLParser()
 	name= h.unescape(name).decode("utf-8")
-	#print ' printing name'
 	rname=  name.encode("utf-8")
+#	url= url.encode('ascii','ignore')
+
+	
 	#print rname
 	#print iconimage
 	u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(rname)
@@ -134,9 +140,44 @@ def Addtypes():
 	#2 is series=3 are links
 	addDir('Channels' ,getMainUrl()+'/ar/channel-browser.html' ,2,addonArt+'/channels.png') #links #2 channels,3 series,4 video entry, 5 play
 	addDir('Series' ,getMainUrl()+'/ar/series-browser.html' ,6,addonArt+'/serial.png')
-	addDir('Streams' ,'streams' ,9,addonArt+'/stream.png')
+	#addDir('Streams' ,'streams' ,9,addonArt+'/stream.png')
+	addDir('Community Streams' ,'CCats' ,14,addonArt+'/Network-1-icon.png')
+	addDir('Download Community Files' ,'cRefresh' ,17,addonArt+'/download-icon.png',isItFolder=False)
 	addDir('Settings' ,'Settings' ,8,addonArt+'/setting.png',isItFolder=False) ##
 	return
+
+def RefreshResources():
+#	print Fromurl
+	pDialog = xbmcgui.DialogProgress()
+	ret = pDialog.create('XBMC', 'Fetching resources...')
+	baseUrlForDownload='https://raw.githubusercontent.com/Shani-08/ShaniXBMCWork/master/plugin.video.shahidmbcnet/resources/community/'
+	Fromurl=baseUrlForDownload+'Resources.xml'
+	req = urllib2.Request(Fromurl)
+	req.add_header('User-Agent','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36')
+	response = urllib2.urlopen(req)
+	data=response.read()
+	response.close()
+	pDialog.update(20, 'Importing modules...')
+	soup= BeautifulSOAP(data, convertEntities=BeautifulStoneSoup.XML_ENTITIES)
+	resources=soup('file')
+	fileno=1
+	totalFile = len(resources)
+	for rfile in resources:
+		progr = (totalFile/totalFile)*80
+		fname = rfile['fname']
+		print fname
+		fileToDownload = baseUrlForDownload+fname
+		req = urllib2.Request(fileToDownload)
+		req.add_header('User-Agent','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36')
+		response = urllib2.urlopen(req)
+		data=response.read()
+		with open(os.path.join(communityStreamPath, fname), "wb") as filewriter:
+			filewriter.write(data)
+		pDialog.update(20+progr, 'imported ...'+fname)
+	pDialog.close()
+	dialog = xbmcgui.Dialog()
+	ok = dialog.ok('XBMC', 'Download finished. Close close Addon and come back')
+
 
 def ShowSettings(Fromurl):
 	selfAddon.openSettings()
@@ -284,6 +325,8 @@ def AddStreams():
 	match=getStreams();
 	#print 'match',match
 	match=sorted(match,key=lambda x:x[0].lower())
+	cstream='<channels>'
+	infostream='<streamingInfos>'
 	#print 'match',match
 	for cname in match:
 		if 'hdarabic' in cname[1]:
@@ -302,9 +345,13 @@ def AddStreams():
 			imageUrl = 'http://www.teledunet.com/tv_/icones/%s.jpg'%cname[0]
 			#print imageUrl
 			#print chName
-			addDir(chName ,chUrl ,11,imageUrl, False, False,isItFolder=False)		#name,url,mode,icon
-
-
+			addDir(chName ,chUrl ,11,imageUrl, False, False,isItFolder=False)		#name,url,mode,icon#<assignedcategory></assignedcategory>
+			cstream+='<channel><id>%s</id><cname>%s</cname><imageurl>%s</imageurl><enabled>True</enabled></channel>'%(chUrl,cname[1],imageUrl)
+			infostream+='<streaminginfo><id>%s</id><url>%s</url></streaminginfo>'%(chUrl,chUrl)
+	cstream+='</channels>'
+	infostream+='</streamingInfos>'
+	print cstream
+	print infostream
 	return
 	
 def PlayStream(url, name, mode):
@@ -339,6 +386,77 @@ def PlayStream(url, name, mode):
 	xbmc.Player().play( liveLink,listitem)
 
 
+def getSourceAndStreamInfo(channelId):
+	try:
+		ret=[]
+		Ssoup=getSoup('Sources.xml');
+		sources=Ssoup('source')
+		for source in sources:
+			print 'source',source
+			xmlfile = source.urlfile.text
+			isEnabled = source.enabled.text.lower()
+			sid = source.id.text
+			if isEnabled=="true":
+				csoup=getSoup(xmlfile);
+		#print csoup 
+				sInfo=csoup.find('streaminginfo',{'id': channelId})
+				if len(sInfo)>0:
+					ret.append([source,sInfo])
+	except: pass
+	return ret
+
+def selectSource(sources):
+    if len(sources) > 1:
+        dialog = xbmcgui.Dialog()
+        titles = []
+        for source in sources:
+            (s,i) =source
+            titles.append(s.sname.text)
+        index = dialog.select('Choose your stream', titles)
+        if index > -1:
+            return sources[index]
+        else:
+            return False
+
+def PlayCommunityStream(channelId, name, mode):
+	print 'PlayCommunityStream'
+	pDialog = xbmcgui.DialogProgress()
+	ret = pDialog.create('XBMC', 'Finding available resources...')
+	providers=getSourceAndStreamInfo(channelId)
+	if len(providers)==0:
+		pDialog.close()
+		time = 2000  #in miliseconds
+		line1="No sources found"
+		xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(__addonname__,line1, time, __icon__))
+		return
+	pDialog.update(30, 'Found resources..')
+	#source=providers[""]
+	if len (providers)>1:
+		provider=selectSource(providers)
+		if not provider:
+			return
+	else:
+		provider=providers[0]
+	(source,sInfo)=provider #pick first one
+	#print source
+	xmlfile = source.urlfile.text
+	processor = source.processor.text
+	print xmlfile
+
+	print 'streaminginfo',sInfo
+	#processor=os.path.join(communityStreamPath, processor)
+	if communityStreamPath not in sys.path:
+		sys.path.append(communityStreamPath)
+	print processor
+	from importlib import import_module
+	processorObject=import_module(processor.replace('.py',''))
+	pDialog.update(60, 'Trying to play..')
+	processorObject.PlayStream(source,sInfo,name,channelId)
+	print 'donexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+	pDialog.close()
+	return 
+	
+	
 def PlayShowLink ( url ): 
 #	url = tabURL.replace('%s',channelName);
 
@@ -407,6 +525,58 @@ def PlayShowLink ( url ):
 	xbmc.Player().play( url,listitem)
 	#print 'ol..'
 	return
+
+
+def addCommunityCats():
+	soup=getSoup('Categories.xml');
+	cats=soup('category')
+#	print cats 
+	for cat in cats:
+		chName=cat.catname.text
+		chUrl = cat.id.text;
+		imageUrl = cat.imageurl.text;
+		addDir(chName ,chUrl ,15,imageUrl, False, False,isItFolder=True)		#name,url,mode,icon
+	return
+
+def getCommunityChannels(catType):
+	soup=getSoup('Channels.xml');
+	channels=soup('channel')
+	retVal=[]
+		
+	for channel in channels:
+		#print channel
+		if not catType=="all":
+			if not channel.assignedcategory==None:
+				if not channel.assignedcategory.findAll(text=[catType]):
+					continue
+			else:
+				continue
+					
+		chName=channel.cname.text
+		chUrl = channel.id.text
+		imageUrl = channel.imageurl.text
+ 		retVal.append([chUrl,chName,imageUrl])
+	return retVal
+	
+
+def addCommunityChannels(catType):
+	channels=getCommunityChannels(catType)
+	channels=sorted(channels,key=lambda x:x[1].lower())
+	for channel in channels:
+		chName=channel[1]
+		chUrl = channel[0]
+		imageUrl = channel[2]
+ 		addDir(chName ,chUrl ,16,imageUrl, False, False,isItFolder=True)		#name,url,mode,icon
+	return
+
+	
+	
+def getSoup(fileName):
+	data = open(os.path.join(communityStreamPath, fileName), "r").read()
+	return BeautifulSOAP(data, convertEntities=BeautifulStoneSoup.XML_ENTITIES)
+
+
+
 	
 def getStreams():
 	defaultStream="All"
@@ -686,16 +856,30 @@ try:
 	elif mode==10 or mode==11:
 		print "Play url is "+url,mode
 		PlayStream(url,name,mode);
+	elif mode==14: #add communutycats
+		print "Play url is "+url,mode
+		addCommunityCats();
+	elif mode==15: #add communutycats
+		print "Play url is "+url,mode
+		addCommunityChannels(url);
+	elif mode==16: #add communutycats
+		print "PlayCommunityStream Play url is "+url,mode
+		PlayCommunityStream(url,name,mode);	
+	elif mode==17: #add communutycats
+		print "RefreshResources Play url is "+url,mode
+		RefreshResources();	
+		
+		
 except:
 	print 'somethingwrong'
 	traceback.print_exc(file=sys.stdout)
-	
+
 
 if (not mode==None) and mode>1:
 	view_mode_id = get_view_mode_id('thumbnail')
 	if view_mode_id is not None:
 		print 'view_mode_id',view_mode_id
 		xbmc.executebuiltin('Container.SetViewMode(%d)' % view_mode_id)
-if not ( mode==5 or mode==10 or mode==11):
+if not ( mode==5 or mode==10 or mode==11 or mode==16 or mode==17):
 	xbmcplugin.endOfDirectory(int(sys.argv[1]))
 
