@@ -14,9 +14,18 @@
 		<cname>Abu Dhabi Drama</cname>
 		<imageurl>http://www.teledunet.com/tv_/icones/abu_dhabi_drama.jpg</imageurl>
 		<enabled>True</enabled>
-		<assignedcategory>
-			<category>ent</category>
-		</assignedcategory>
+	</channel>
+	<channel>
+		<id>abu_dhabi_sports_1</id>
+		<cname>Abu Dhabi Sports 1</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/abu_dhabi_sports_1.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>abu_dhabi</id>
+		<cname>Abu Dhabi</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/abu_dhabi.jpg</imageurl>
+		<enabled>True</enabled>
 	</channel>
 	<channel>
 		<id>aghanina</id>
@@ -43,21 +52,15 @@
 		<enabled>True</enabled>
 	</channel>
 	<channel>
-		<id>al_hurra_iraq</id>
-		<cname>Al-hurra Iraq</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/al_hurra_iraq.jpg</imageurl>
-		<enabled>True</enabled>
-	</channel>
-	<channel>
-		<id>al_hurria</id>
-		<cname>Al-Hurria</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/al_hurria.jpg</imageurl>
-		<enabled>True</enabled>
-	</channel>
-	<channel>
 		<id>al_janoubiya</id>
 		<cname>Al Janoubiya</cname>
 		<imageurl>http://www.teledunet.com/tv_/icones/al_janoubiya.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>al_karama</id>
+		<cname>Al Karama</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/al_karama.jpg</imageurl>
 		<enabled>True</enabled>
 	</channel>
 	<channel>
@@ -79,9 +82,9 @@
 		<enabled>True</enabled>
 	</channel>
 	<channel>
-		<id>al_mayaden</id>
-		<cname>Al mayaden</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/al_mayaden.jpg</imageurl>
+		<id>al_masriyah</id>
+		<cname>Al Masriyah</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/al_masriyah.jpg</imageurl>
 		<enabled>True</enabled>
 	</channel>
 	<channel>
@@ -91,15 +94,15 @@
 		<enabled>True</enabled>
 	</channel>
 	<channel>
-		<id>al_nahar_drama</id>
-		<cname>Al-Nahar Drama</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/al_nahar_drama.jpg</imageurl>
+		<id>al_mutawasit</id>
+		<cname>Al Mutawasit</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/al_mutawasit.jpg</imageurl>
 		<enabled>True</enabled>
 	</channel>
 	<channel>
-		<id>al_resalah</id>
-		<cname>Al-Resalah</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/al_resalah.jpg</imageurl>
+		<id>al_rafidain</id>
+		<cname>Al Rafidain</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/al_rafidain.jpg</imageurl>
 		<enabled>True</enabled>
 	</channel>
 	<channel>
@@ -127,9 +130,33 @@
 		<enabled>True</enabled>
 	</channel>
 	<channel>
-		<id>alan</id>
-		<cname>Alan</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/alan.jpg</imageurl>
+		<id>al_mayaden</id>
+		<cname>Al mayaden</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/al_mayaden.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>al_hurria</id>
+		<cname>Al-Hurria</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/al_hurria.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>al_nahar_drama</id>
+		<cname>Al-Nahar Drama</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/al_nahar_drama.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>al_resalah</id>
+		<cname>Al-Resalah</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/al_resalah.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>al_hurra_iraq</id>
+		<cname>Al-hurra Iraq</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/al_hurra_iraq.jpg</imageurl>
 		<enabled>True</enabled>
 	</channel>
 	<channel>
@@ -139,15 +166,69 @@
 		<enabled>True</enabled>
 	</channel>
 	<channel>
+		<id>alan</id>
+		<cname>Alan</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/alan.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>alarabiya</id>
+		<cname>Alarabiya</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/alarabiya.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
 		<id>algeria_3</id>
 		<cname>Algeria 3</cname>
 		<imageurl>http://www.teledunet.com/tv_/icones/algeria_3.jpg</imageurl>
 		<enabled>True</enabled>
 	</channel>
 	<channel>
+		<id>alhayat_1</id>
+		<cname>Alhayat 1</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/alhayat_1.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>alhayat_cinema</id>
+		<cname>Alhayat Cinema</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/alhayat_cinema.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>alhayat_series</id>
+		<cname>Alhayat-Series</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/alhayat_series.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
 		<id>aliraqiya</id>
 		<cname>Aliraqiya</cname>
 		<imageurl>http://www.teledunet.com/tv_/icones/aliraqiya.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>aljadeed</id>
+		<cname>Aljadeed</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/aljadeed.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>aljazeera_children</id>
+		<cname>Aljazeera Children</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/aljazeera_children.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>aljazeera_doc</id>
+		<cname>Aljazeera Doc</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/aljazeera_doc.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>aljazeera</id>
+		<cname>Aljazeera</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/aljazeera.jpg</imageurl>
 		<enabled>True</enabled>
 	</channel>
 	<channel>
@@ -181,9 +262,27 @@
 		<enabled>True</enabled>
 	</channel>
 	<channel>
+		<id>art_aflam_1</id>
+		<cname>Art Aflam 1</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/art_aflam_1.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>art_aflam_2</id>
+		<cname>Art Aflam 2</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/art_aflam_2.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
 		<id>assadissa</id>
 		<cname>Assadissa</cname>
 		<imageurl>http://www.teledunet.com/tv_/icones/assadissa.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>bbc_arabic</id>
+		<cname>BBC Arabic</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/bbc_arabic.jpg</imageurl>
 		<enabled>True</enabled>
 	</channel>
 	<channel>
@@ -205,9 +304,105 @@
 		<enabled>True</enabled>
 	</channel>
 	<channel>
-		<id>bbc_arabic</id>
-		<cname>BBC Arabic</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/bbc_arabic.jpg</imageurl>
+		<id>bein_sport_1</id>
+		<cname>Bein Sport 1</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/bein_sport_1.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>bein_sport_10</id>
+		<cname>Bein Sport 10</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/bein_sport_10.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>bein_sport_2</id>
+		<cname>Bein Sport 2</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/bein_sport_2.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>bein_sport_3</id>
+		<cname>Bein Sport 3</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/bein_sport_3.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>bein_sport_4</id>
+		<cname>Bein Sport 4</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/bein_sport_4.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>bein_sport_5</id>
+		<cname>Bein Sport 5</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/bein_sport_5.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>bein_sport_6</id>
+		<cname>Bein Sport 6</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/bein_sport_6.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>bein_sport_7</id>
+		<cname>Bein Sport 7</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/bein_sport_7.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>bein_sport_8</id>
+		<cname>Bein Sport 8</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/bein_sport_8.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>bein_sport_9</id>
+		<cname>Bein Sport 9</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/bein_sport_9.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>cbc_2</id>
+		<cname>CBC 2</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/cbc_2.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>cbc_drama</id>
+		<cname>CBC Drama</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/cbc_drama.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>cbc_extra</id>
+		<cname>CBC Extra</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/cbc_extra.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>cbc_sofra</id>
+		<cname>CBC Sofra</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/cbc_sofra.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>cbc_tv</id>
+		<cname>CBC Tv</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/cbc_tv.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>cbc</id>
+		<cname>CBC</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/cbc.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>cctv_arabic</id>
+		<cname>CCTV Arabic</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/cctv_arabic.jpg</imageurl>
 		<enabled>True</enabled>
 	</channel>
 	<channel>
@@ -223,21 +418,15 @@
 		<enabled>True</enabled>
 	</channel>
 	<channel>
-		<id>cbc_drama</id>
-		<cname>CBC Drama</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/cbc_drama.jpg</imageurl>
+		<id>canal_plus</id>
+		<cname>Canal plus</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/canal_plus.jpg</imageurl>
 		<enabled>True</enabled>
 	</channel>
 	<channel>
-		<id>cbc_tv</id>
-		<cname>CBC Tv</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/cbc_tv.jpg</imageurl>
-		<enabled>True</enabled>
-	</channel>
-	<channel>
-		<id>cctv_arabic</id>
-		<cname>CCTV Arabic</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/cctv_arabic.jpg</imageurl>
+		<id>cartoon_network</id>
+		<cname>Cartoon Network</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/cartoon_network.jpg</imageurl>
 		<enabled>True</enabled>
 	</channel>
 	<channel>
@@ -259,12 +448,6 @@
 		<enabled>True</enabled>
 	</channel>
 	<channel>
-		<id>dubai</id>
-		<cname>Dubai</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/dubai.jpg</imageurl>
-		<enabled>True</enabled>
-	</channel>
-	<channel>
 		<id>dubai_one</id>
 		<cname>Dubai One</cname>
 		<imageurl>http://www.teledunet.com/tv_/icones/dubai_one.jpg</imageurl>
@@ -280,6 +463,12 @@
 		<id>dubai_sport_2</id>
 		<cname>Dubai Sport 2</cname>
 		<imageurl>http://www.teledunet.com/tv_/icones/dubai_sport_2.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>dubai</id>
+		<cname>Dubai</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/dubai.jpg</imageurl>
 		<enabled>True</enabled>
 	</channel>
 	<channel>
@@ -301,15 +490,15 @@
 		<enabled>True</enabled>
 	</channel>
 	<channel>
-		<id>fox</id>
-		<cname>Fox</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/fox.jpg</imageurl>
-		<enabled>True</enabled>
-	</channel>
-	<channel>
 		<id>fox_movies</id>
 		<cname>Fox Movies</cname>
 		<imageurl>http://www.teledunet.com/tv_/icones/fox_movies.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>fox</id>
+		<cname>Fox</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/fox.jpg</imageurl>
 		<enabled>True</enabled>
 	</channel>
 	<channel>
@@ -343,6 +532,12 @@
 		<enabled>True</enabled>
 	</channel>
 	<channel>
+		<id>iqra</id>
+		<cname>Iqra</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/iqra.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
 		<id>jordan</id>
 		<cname>Jordan</cname>
 		<imageurl>http://www.teledunet.com/tv_/icones/jordan.jpg</imageurl>
@@ -355,9 +550,27 @@
 		<enabled>True</enabled>
 	</channel>
 	<channel>
+		<id>kalsan_tv</id>
+		<cname>Kalsan Tv</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/kalsan_tv.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
 		<id>kuwait</id>
 		<cname>Kuwait</cname>
 		<imageurl>http://www.teledunet.com/tv_/icones/kuwait.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>lbc</id>
+		<cname>LBC</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/lbc.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>llbn</id>
+		<cname>LLBN</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/llbn.jpg</imageurl>
 		<enabled>True</enabled>
 	</channel>
 	<channel>
@@ -373,9 +586,75 @@
 		<enabled>True</enabled>
 	</channel>
 	<channel>
-		<id>llbn</id>
-		<cname>LLBN</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/llbn.jpg</imageurl>
+		<id>m6</id>
+		<cname>M6</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/m6.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>mbc_1</id>
+		<cname>MBC 1</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/mbc_1.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>mbc_2</id>
+		<cname>MBC 2</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/mbc_2.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>mbc_3</id>
+		<cname>MBC 3</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/mbc_3.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>mbc_4</id>
+		<cname>MBC 4</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/mbc_4.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>mbc_action</id>
+		<cname>MBC Action</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/mbc_action.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>mbc_bollywood</id>
+		<cname>MBC Bollywood</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/mbc_bollywood.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>mbc_drama</id>
+		<cname>MBC Drama</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/mbc_drama.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>mbc_masr</id>
+		<cname>MBC Masr</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/mbc_masr.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>mbc_max</id>
+		<cname>MBC Max</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/mbc_max.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>mbc_persia</id>
+		<cname>MBC Persia</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/mbc_persia.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>mtv</id>
+		<cname>MTV</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/mtv.jpg</imageurl>
 		<enabled>True</enabled>
 	</channel>
 	<channel>
@@ -409,42 +688,6 @@
 		<enabled>True</enabled>
 	</channel>
 	<channel>
-		<id>mbc_2</id>
-		<cname>MBC 2</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/mbc_2.jpg</imageurl>
-		<enabled>True</enabled>
-	</channel>
-	<channel>
-		<id>mbc_4</id>
-		<cname>MBC 4</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/mbc_4.jpg</imageurl>
-		<enabled>True</enabled>
-	</channel>
-	<channel>
-		<id>mbc_action</id>
-		<cname>MBC Action</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/mbc_action.jpg</imageurl>
-		<enabled>True</enabled>
-	</channel>
-	<channel>
-		<id>mbc_bollywood</id>
-		<cname>MBC Bollywood</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/mbc_bollywood.jpg</imageurl>
-		<enabled>True</enabled>
-	</channel>
-	<channel>
-		<id>mbc_max</id>
-		<cname>MBC Max</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/mbc_max.jpg</imageurl>
-		<enabled>True</enabled>
-	</channel>
-	<channel>
-		<id>mbc_persia</id>
-		<cname>MBC Persia</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/mbc_persia.jpg</imageurl>
-		<enabled>True</enabled>
-	</channel>
-	<channel>
 		<id>medi_1_sat</id>
 		<cname>Medi 1 Sat</cname>
 		<imageurl>http://www.teledunet.com/tv_/icones/medi_1_sat.jpg</imageurl>
@@ -457,9 +700,21 @@
 		<enabled>True</enabled>
 	</channel>
 	<channel>
+		<id>melody</id>
+		<cname>Melody</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/melody.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
 		<id>moga_comedy</id>
 		<cname>Moga Comedy</cname>
 		<imageurl>http://www.teledunet.com/tv_/icones/moga_comedy.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>nbn</id>
+		<cname>NBN</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/nbn.jpg</imageurl>
 		<enabled>True</enabled>
 	</channel>
 	<channel>
@@ -487,9 +742,27 @@
 		<enabled>True</enabled>
 	</channel>
 	<channel>
+		<id>nile_drama_2</id>
+		<cname>Nile Drama 2</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/nile_drama_2.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>nile_drama</id>
+		<cname>Nile Drama</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/nile_drama.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
 		<id>nile_family</id>
 		<cname>Nile Family</cname>
 		<imageurl>http://www.teledunet.com/tv_/icones/nile_family.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>nile_life</id>
+		<cname>Nile Life</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/nile_life.jpg</imageurl>
 		<enabled>True</enabled>
 	</channel>
 	<channel>
@@ -505,15 +778,45 @@
 		<enabled>True</enabled>
 	</channel>
 	<channel>
+		<id>nile_tv</id>
+		<cname>Nile Tv</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/nile_tv.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
 		<id>noor_dubai</id>
 		<cname>Noor Dubai</cname>
 		<imageurl>http://www.teledunet.com/tv_/icones/noor_dubai.jpg</imageurl>
 		<enabled>True</enabled>
 	</channel>
 	<channel>
+		<id>noursat</id>
+		<cname>Noursat</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/noursat.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>otv_lebanon</id>
+		<cname>OTV Lebanon</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/otv_lebanon.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>on_tv</id>
+		<cname>On TV</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/on_tv.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
 		<id>rotana_aflam</id>
 		<cname>Rotana Aflam</cname>
 		<imageurl>http://www.teledunet.com/tv_/icones/rotana_aflam.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>rotana_classic</id>
+		<cname>Rotana Classic</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/rotana_classic.jpg</imageurl>
 		<enabled>True</enabled>
 	</channel>
 	<channel>
@@ -538,6 +841,18 @@
 		<id>rotana_music</id>
 		<cname>Rotana Music</cname>
 		<imageurl>http://www.teledunet.com/tv_/icones/rotana_music.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>rotana_cinema</id>
+		<cname>Rotana cinema</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/rotana_cinema.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>roya</id>
+		<cname>Roya</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/roya.jpg</imageurl>
 		<enabled>True</enabled>
 	</channel>
 	<channel>
@@ -601,21 +916,69 @@
 		<enabled>True</enabled>
 	</channel>
 	<channel>
-		<id>syria</id>
-		<cname>Syria</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/syria.jpg</imageurl>
-		<enabled>True</enabled>
-	</channel>
-	<channel>
 		<id>syria_drama</id>
 		<cname>Syria Drama</cname>
 		<imageurl>http://www.teledunet.com/tv_/icones/syria_drama.jpg</imageurl>
 		<enabled>True</enabled>
 	</channel>
 	<channel>
+		<id>syria</id>
+		<cname>Syria</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/syria.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>tf1</id>
+		<cname>TF1</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/tf1.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>tnn</id>
+		<cname>TNN</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/tnn.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>tvp_1_hd</id>
+		<cname>TVP 1 HD</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/tvp_1_hd.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>tvp_2_hd</id>
+		<cname>TVP 2 HD</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/tvp_2_hd.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>tvs</id>
+		<cname>TVS</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/tvs.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
 		<id>tamazigh_algeria</id>
 		<cname>Tamazigh Algeria</cname>
 		<imageurl>http://www.teledunet.com/tv_/icones/tamazigh_algeria.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>tchad</id>
+		<cname>Tchad</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/tchad.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>tele_liban</id>
+		<cname>Tele Liban</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/tele_liban.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>tele_sports</id>
+		<cname>Tele Sports</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/tele_sports.jpg</imageurl>
 		<enabled>True</enabled>
 	</channel>
 	<channel>
@@ -661,6 +1024,18 @@
 		<enabled>True</enabled>
 	</channel>
 	<channel>
+		<id>tv_polonia</id>
+		<cname>Tv Polonia</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/tv_polonia.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<id>wanasah</id>
+		<cname>Wanasah</cname>
+		<imageurl>http://www.teledunet.com/tv_/icones/wanasah.jpg</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
 		<id>yemen</id>
 		<cname>Yemen</cname>
 		<imageurl>http://www.teledunet.com/tv_/icones/yemen.jpg</imageurl>
@@ -691,3 +1066,4 @@
 		<enabled>True</enabled>
 	</channel>
 </channels>
+

@@ -8,6 +8,14 @@
 		<url>abu_dhabi_drama</url>
 	</streaminginfo>
 	<streaminginfo>
+		<id>abu_dhabi_sports_1</id>
+		<url>abu_dhabi_sports_1</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>abu_dhabi</id>
+		<url>abu_dhabi</url>
+	</streaminginfo>
+	<streaminginfo>
 		<id>aghanina</id>
 		<url>aghanina</url>
 	</streaminginfo>
@@ -24,16 +32,12 @@
 		<url>al_haneen_music</url>
 	</streaminginfo>
 	<streaminginfo>
-		<id>al_hurra_iraq</id>
-		<url>al_hurra_iraq</url>
-	</streaminginfo>
-	<streaminginfo>
-		<id>al_hurria</id>
-		<url>al_hurria</url>
-	</streaminginfo>
-	<streaminginfo>
 		<id>al_janoubiya</id>
 		<url>al_janoubiya</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>al_karama</id>
+		<url>al_karama</url>
 	</streaminginfo>
 	<streaminginfo>
 		<id>al_maghribia</id>
@@ -48,20 +52,20 @@
 		<url>al_manar</url>
 	</streaminginfo>
 	<streaminginfo>
-		<id>al_mayaden</id>
-		<url>al_mayaden</url>
+		<id>al_masriyah</id>
+		<url>al_masriyah</url>
 	</streaminginfo>
 	<streaminginfo>
 		<id>al_moustakilla</id>
 		<url>al_moustakilla</url>
 	</streaminginfo>
 	<streaminginfo>
-		<id>al_nahar_drama</id>
-		<url>al_nahar_drama</url>
+		<id>al_mutawasit</id>
+		<url>al_mutawasit</url>
 	</streaminginfo>
 	<streaminginfo>
-		<id>al_resalah</id>
-		<url>al_resalah</url>
+		<id>al_rafidain</id>
+		<url>al_rafidain</url>
 	</streaminginfo>
 	<streaminginfo>
 		<id>al_sharqiya</id>
@@ -80,20 +84,72 @@
 		<url>al_tunisia</url>
 	</streaminginfo>
 	<streaminginfo>
-		<id>alan</id>
-		<url>alan</url>
+		<id>al_mayaden</id>
+		<url>al_mayaden</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>al_hurria</id>
+		<url>al_hurria</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>al_nahar_drama</id>
+		<url>al_nahar_drama</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>al_resalah</id>
+		<url>al_resalah</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>al_hurra_iraq</id>
+		<url>al_hurra_iraq</url>
 	</streaminginfo>
 	<streaminginfo>
 		<id>algeria</id>
 		<url>algeria</url>
 	</streaminginfo>
 	<streaminginfo>
+		<id>alan</id>
+		<url>alan</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>alarabiya</id>
+		<url>alarabiya</url>
+	</streaminginfo>
+	<streaminginfo>
 		<id>algeria_3</id>
 		<url>algeria_3</url>
 	</streaminginfo>
 	<streaminginfo>
+		<id>alhayat_1</id>
+		<url>alhayat_1</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>alhayat_cinema</id>
+		<url>alhayat_cinema</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>alhayat_series</id>
+		<url>alhayat_series</url>
+	</streaminginfo>
+	<streaminginfo>
 		<id>aliraqiya</id>
 		<url>aliraqiya</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>aljadeed</id>
+		<url>aljadeed</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>aljazeera_children</id>
+		<url>aljazeera_children</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>aljazeera_doc</id>
+		<url>aljazeera_doc</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>aljazeera</id>
+		<url>aljazeera</url>
 	</streaminginfo>
 	<streaminginfo>
 		<id>alqudis</id>
@@ -116,8 +172,20 @@
 		<url>arrabia</url>
 	</streaminginfo>
 	<streaminginfo>
+		<id>art_aflam_1</id>
+		<url>art_aflam_1</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>art_aflam_2</id>
+		<url>art_aflam_2</url>
+	</streaminginfo>
+	<streaminginfo>
 		<id>assadissa</id>
 		<url>assadissa</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>bbc_arabic</id>
+		<url>bbc_arabic</url>
 	</streaminginfo>
 	<streaminginfo>
 		<id>baghdadia</id>
@@ -132,8 +200,72 @@
 		<url>baraem</url>
 	</streaminginfo>
 	<streaminginfo>
-		<id>bbc_arabic</id>
-		<url>bbc_arabic</url>
+		<id>bein_sport_1</id>
+		<url>bein_sport_1</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>bein_sport_10</id>
+		<url>bein_sport_10</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>bein_sport_2</id>
+		<url>bein_sport_2</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>bein_sport_3</id>
+		<url>bein_sport_3</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>bein_sport_4</id>
+		<url>bein_sport_4</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>bein_sport_5</id>
+		<url>bein_sport_5</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>bein_sport_6</id>
+		<url>bein_sport_6</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>bein_sport_7</id>
+		<url>bein_sport_7</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>bein_sport_8</id>
+		<url>bein_sport_8</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>bein_sport_9</id>
+		<url>bein_sport_9</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>cbc_2</id>
+		<url>cbc_2</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>cbc_drama</id>
+		<url>cbc_drama</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>cbc_extra</id>
+		<url>cbc_extra</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>cbc_sofra</id>
+		<url>cbc_sofra</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>cbc_tv</id>
+		<url>cbc_tv</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>cbc</id>
+		<url>cbc</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>cctv_arabic</id>
+		<url>cctv_arabic</url>
 	</streaminginfo>
 	<streaminginfo>
 		<id>cairo_cinema</id>
@@ -144,16 +276,12 @@
 		<url>cairo_drama</url>
 	</streaminginfo>
 	<streaminginfo>
-		<id>cbc_drama</id>
-		<url>cbc_drama</url>
+		<id>canal_plus</id>
+		<url>canal_plus</url>
 	</streaminginfo>
 	<streaminginfo>
-		<id>cbc_tv</id>
-		<url>cbc_tv</url>
-	</streaminginfo>
-	<streaminginfo>
-		<id>cctv_arabic</id>
-		<url>cctv_arabic</url>
+		<id>cartoon_network</id>
+		<url>cartoon_network</url>
 	</streaminginfo>
 	<streaminginfo>
 		<id>cima</id>
@@ -168,10 +296,6 @@
 		<url>dream_1</url>
 	</streaminginfo>
 	<streaminginfo>
-		<id>dubai</id>
-		<url>dubai</url>
-	</streaminginfo>
-	<streaminginfo>
 		<id>dubai_one</id>
 		<url>dubai_one</url>
 	</streaminginfo>
@@ -182,6 +306,10 @@
 	<streaminginfo>
 		<id>dubai_sport_2</id>
 		<url>dubai_sport_2</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>dubai</id>
+		<url>dubai</url>
 	</streaminginfo>
 	<streaminginfo>
 		<id>dzair_24</id>
@@ -196,12 +324,12 @@
 		<url>fatafeat</url>
 	</streaminginfo>
 	<streaminginfo>
-		<id>fox</id>
-		<url>fox</url>
-	</streaminginfo>
-	<streaminginfo>
 		<id>fox_movies</id>
 		<url>fox_movies</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>fox</id>
+		<url>fox</url>
 	</streaminginfo>
 	<streaminginfo>
 		<id>france24_arabic</id>
@@ -224,6 +352,10 @@
 		<url>hanibal</url>
 	</streaminginfo>
 	<streaminginfo>
+		<id>iqra</id>
+		<url>iqra</url>
+	</streaminginfo>
+	<streaminginfo>
 		<id>jordan</id>
 		<url>jordan</url>
 	</streaminginfo>
@@ -232,8 +364,20 @@
 		<url>ksa_1</url>
 	</streaminginfo>
 	<streaminginfo>
+		<id>kalsan_tv</id>
+		<url>kalsan_tv</url>
+	</streaminginfo>
+	<streaminginfo>
 		<id>kuwait</id>
 		<url>kuwait</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>lbc</id>
+		<url>lbc</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>llbn</id>
+		<url>llbn</url>
 	</streaminginfo>
 	<streaminginfo>
 		<id>lbc_europe</id>
@@ -244,8 +388,52 @@
 		<url>libya</url>
 	</streaminginfo>
 	<streaminginfo>
-		<id>llbn</id>
-		<url>llbn</url>
+		<id>m6</id>
+		<url>m6</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>mbc_1</id>
+		<url>mbc_1</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>mbc_2</id>
+		<url>mbc_2</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>mbc_3</id>
+		<url>mbc_3</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>mbc_4</id>
+		<url>mbc_4</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>mbc_action</id>
+		<url>mbc_action</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>mbc_bollywood</id>
+		<url>mbc_bollywood</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>mbc_drama</id>
+		<url>mbc_drama</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>mbc_masr</id>
+		<url>mbc_masr</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>mbc_max</id>
+		<url>mbc_max</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>mbc_persia</id>
+		<url>mbc_persia</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>mtv</id>
+		<url>mtv</url>
 	</streaminginfo>
 	<streaminginfo>
 		<id>maghreb_1</id>
@@ -268,30 +456,6 @@
 		<url>mazzika</url>
 	</streaminginfo>
 	<streaminginfo>
-		<id>mbc_2</id>
-		<url>mbc_2</url>
-	</streaminginfo>
-	<streaminginfo>
-		<id>mbc_4</id>
-		<url>mbc_4</url>
-	</streaminginfo>
-	<streaminginfo>
-		<id>mbc_action</id>
-		<url>mbc_action</url>
-	</streaminginfo>
-	<streaminginfo>
-		<id>mbc_bollywood</id>
-		<url>mbc_bollywood</url>
-	</streaminginfo>
-	<streaminginfo>
-		<id>mbc_max</id>
-		<url>mbc_max</url>
-	</streaminginfo>
-	<streaminginfo>
-		<id>mbc_persia</id>
-		<url>mbc_persia</url>
-	</streaminginfo>
-	<streaminginfo>
 		<id>medi_1_sat</id>
 		<url>medi_1_sat</url>
 	</streaminginfo>
@@ -300,8 +464,16 @@
 		<url>mehwar</url>
 	</streaminginfo>
 	<streaminginfo>
+		<id>melody</id>
+		<url>melody</url>
+	</streaminginfo>
+	<streaminginfo>
 		<id>moga_comedy</id>
 		<url>moga_comedy</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>nbn</id>
+		<url>nbn</url>
 	</streaminginfo>
 	<streaminginfo>
 		<id>national_geo_ad</id>
@@ -320,8 +492,20 @@
 		<url>nile_comedy</url>
 	</streaminginfo>
 	<streaminginfo>
+		<id>nile_drama_2</id>
+		<url>nile_drama_2</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>nile_drama</id>
+		<url>nile_drama</url>
+	</streaminginfo>
+	<streaminginfo>
 		<id>nile_family</id>
 		<url>nile_family</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>nile_life</id>
+		<url>nile_life</url>
 	</streaminginfo>
 	<streaminginfo>
 		<id>nile_news</id>
@@ -332,12 +516,32 @@
 		<url>nile_sport</url>
 	</streaminginfo>
 	<streaminginfo>
+		<id>nile_tv</id>
+		<url>nile_tv</url>
+	</streaminginfo>
+	<streaminginfo>
 		<id>noor_dubai</id>
 		<url>noor_dubai</url>
 	</streaminginfo>
 	<streaminginfo>
+		<id>noursat</id>
+		<url>noursat</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>otv_lebanon</id>
+		<url>otv_lebanon</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>on_tv</id>
+		<url>on_tv</url>
+	</streaminginfo>
+	<streaminginfo>
 		<id>rotana_aflam</id>
 		<url>rotana_aflam</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>rotana_classic</id>
+		<url>rotana_classic</url>
 	</streaminginfo>
 	<streaminginfo>
 		<id>rotana_clip</id>
@@ -354,6 +558,14 @@
 	<streaminginfo>
 		<id>rotana_music</id>
 		<url>rotana_music</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>rotana_cinema</id>
+		<url>rotana_cinema</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>roya</id>
+		<url>roya</url>
 	</streaminginfo>
 	<streaminginfo>
 		<id>royali_somali</id>
@@ -396,16 +608,48 @@
 		<url>sudan_tv</url>
 	</streaminginfo>
 	<streaminginfo>
-		<id>syria</id>
-		<url>syria</url>
-	</streaminginfo>
-	<streaminginfo>
 		<id>syria_drama</id>
 		<url>syria_drama</url>
 	</streaminginfo>
 	<streaminginfo>
+		<id>syria</id>
+		<url>syria</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>tf1</id>
+		<url>tf1</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>tnn</id>
+		<url>tnn</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>tvp_1_hd</id>
+		<url>tvp_1_hd</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>tvp_2_hd</id>
+		<url>tvp_2_hd</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>tvs</id>
+		<url>tvs</url>
+	</streaminginfo>
+	<streaminginfo>
 		<id>tamazigh_algeria</id>
 		<url>tamazigh_algeria</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>tchad</id>
+		<url>tchad</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>tele_liban</id>
+		<url>tele_liban</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>tele_sports</id>
+		<url>tele_sports</url>
 	</streaminginfo>
 	<streaminginfo>
 		<id>time_comedy</id>
@@ -434,6 +678,14 @@
 	<streaminginfo>
 		<id>tunisia_national_2</id>
 		<url>tunisia_national_2</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>tv_polonia</id>
+		<url>tv_polonia</url>
+	</streaminginfo>
+	<streaminginfo>
+		<id>wanasah</id>
+		<url>wanasah</url>
 	</streaminginfo>
 	<streaminginfo>
 		<id>yemen</id>
