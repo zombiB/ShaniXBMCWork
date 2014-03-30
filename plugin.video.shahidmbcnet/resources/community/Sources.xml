@@ -14,7 +14,9 @@
 <sname>livetv.tn</sname>
 <baseurl>http://www.livetv.tn/</baseurl>
 <enabled>True</enabled>
-<filesname>livetvUrls.xml</filesname>
-
+<urlfile>livetvUrls.xml</urlfile>
+<imageurl>http://www.livetv.tn/images/logoc.png</imageurl>
+<processor>livetvPlayer.py</processor>
+<rtmpstring>rtmp://tdsiptv.ddns.me/live playpath=%s swfUrl=http://www.livetv.tn/flowplayer-3.2.7.swf pageUrl=%s live=1  timeout=15</rtmpstring>
 </source>
 </streamingsources>
