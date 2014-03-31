@@ -25,3 +25,5 @@
 - Some missing streams
 [B]Version 1.7.2[/B]
 - Teledunet streams back and one almaghribia
+[B]Version 2.0.1/B]
+- Categories and sources support

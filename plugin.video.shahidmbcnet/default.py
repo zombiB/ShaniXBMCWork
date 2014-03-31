@@ -365,6 +365,7 @@ def PlayStream(url, name, mode):
 		match =re.findall('file: "rtmp([^"]*)', link)
 
 		rtmpLink=match[0]
+		#rtmpLink='://192.95.32.7:1935/live/dubai_sport?user=MjA5N2Q3YjA2M2Q2ZjhiNWNjODAzYWJmM2RmNzU4YWE=&pass=fc9226bd032346a2deab1f903652229b'
 		liveLink="rtmp%s app=live/ swfUrl=http://www.hdarabic.com/jwplayer.flash.swf pageUrl=http://www.hdarabic.com live=1 timeout=15"%rtmpLink
 	else:
 		newURL='http://www.teledunet.com/tv_/?channel=%s&no_pub'%url
@@ -399,7 +400,7 @@ def getSourceAndStreamInfo(channelId):
 			if isEnabled=="true":
 				csoup=getSoup(xmlfile);
 		#print csoup 
-				sInfo=csoup.find('streaminginfo',{'id': channelId})
+				sInfo=csoup.find('streaminginfo',{'cname': channelId})
 				if len(sInfo)>0:
 					ret.append([source,sInfo])
 	except: pass
@@ -553,9 +554,9 @@ def getCommunityChannels(catType):
 				continue
 					
 		chName=channel.cname.text
-		chUrl = channel.id.text
+		#chUrl = channel.id.text
 		imageUrl = channel.imageurl.text
- 		retVal.append([chUrl,chName,imageUrl])
+ 		retVal.append([chName,chName,imageUrl])
 	return retVal
 	
 
@@ -592,7 +593,7 @@ def getStreams():
 	('Al Iraqia','http://www.hdarabic.com/aliraqiya.php','iraqiay'),
 	('SemSem','http://www.hdarabic.com/semsem.php','semsem_tv'),
 	('Al Arabiya','http://www.hdarabic.com/alarabiya.php','alarabiya'),
-	('France 24','http://www.hdarabic.com/f24.php','f24'),
+	('France 24','http://www.hdarabic.com/f24.php','f24'), 
 	('France 24 English','http://www.hdarabic.com/f24.php','f24'),
 	('France 24 France','http://www.hdarabic.com/f24.php','f24'),
 	('Al hiwar','http://www.hdarabic.com/alhiwar.php','alhiwar'),
