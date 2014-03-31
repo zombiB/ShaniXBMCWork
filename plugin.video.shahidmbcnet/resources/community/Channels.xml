@@ -1471,4 +1471,425 @@
 			<category>egypt</category>
 		</assignedcategory>
 	</channel>
+	<channel>
+		<cname>Tunisie NAT 1</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Tunisie NAT 2</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Ettounisia</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Hannibal TV</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Al Janoubia TV</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Tunisna TV</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Zaitouna TV</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Telvza TV</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Al Moutawaset TV</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>BeIn 1</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>BeIn 2</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>BeIn 3</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>BeIn 4</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>BeIn 5</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>BeIn 6</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>BeIn 7</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>BeIn 8</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Alriayadia Sport</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Bein 1 FR</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Bein 2 FR</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Hayat Series</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Dubai TV</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>ART Aflem 1</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>ART Aflem 2</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Rotana Masria</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Rotana Aflem</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>JSC Children</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>JSC Documentaire</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Al Arabia News</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Al Oula Maroc</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Al Maghrebia</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Al Majd Coran</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Al Nahar Drama</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Bahrain TV</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Cartoon Network AR</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Yemen TV</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Tamazigh Maroc</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Touyour Al Jannah</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Abu Dhabi Sport</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Haneen Music</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Al Masria</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Al Mustaquilla</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Al Shar9ia</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Al Thania</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Al Mayadeen</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Al Hurria</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Al Resalah</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Iraq Al Hurra</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Alan TV</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>AlHayat</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Al Hayat Cinema</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Al 3ira9iya</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Aljadeed Sat</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Touyour Baby</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>TNN Tunisia</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Libya TV</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>France 24 Arabic</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Coran TV</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Baghdadiya</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Algerie 24</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Echourouk TV</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Founoun</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Masrawi Aflem</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Mazika Zoom</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Melody Aflem</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>NBN TV</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Mehwer</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Iqra TV</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Jordan TV</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>LLBN Lebanon</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Wanasa</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Mcm France</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>SomSat</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Tchad TV</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Somal TV</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Nat Geo AD</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Canal Cinema</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>SadacAlBalad Drama</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Al Nahar Drama</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Al Nahar Sport</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>ONT</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>OTV Lebano</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Cine Majesti</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+	<channel>
+		<cname>Bein 2 FR</cname>
+		<imageurl>ImageRequired</imageurl>
+		<enabled>True</enabled>
+	</channel>
+
 </channels>

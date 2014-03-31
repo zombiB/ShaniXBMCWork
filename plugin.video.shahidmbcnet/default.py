@@ -181,6 +181,26 @@ def RefreshResources():
 
 def ShowSettings(Fromurl):
 	selfAddon.openSettings()
+	return
+	ret=[]
+	Ssoup=getSoup('livetvUrls.xml');
+	csoup=getSoup('Channels.xml');
+	sources=Ssoup('streaminginfo')
+	#print csoup
+	
+	for source in sources:
+		#print 'source',source
+		cname = source.cname.text
+		print cname
+		sInfo=csoup.find('channel',{'cname':re.compile("^"+cname+"$", re.I) })
+		if sInfo==None  or  len(sInfo)==0: #add
+			print 'not exists',cname
+			ret.append(cname)
+	cstream=''
+	if len(ret)>0:
+		for name in ret:
+			cstream+='<channel><cname>%s</cname><imageurl>%s</imageurl><enabled>True</enabled></channel>'%(name,'newchannel')
+	print cstream
 
 def AddSeries(Fromurl,pageNumber=""):
 #	print Fromurl
@@ -392,18 +412,23 @@ def getSourceAndStreamInfo(channelId):
 		ret=[]
 		Ssoup=getSoup('Sources.xml');
 		sources=Ssoup('source')
+		print 'sources',sources
 		for source in sources:
 			print 'source',source
 			xmlfile = source.urlfile.text
 			isEnabled = source.enabled.text.lower()
 			sid = source.id.text
 			if isEnabled=="true":
+				print 'source is enabled',sid
 				csoup=getSoup(xmlfile);
 		#print csoup 
-				sInfo=csoup.find('streaminginfo',{'cname': channelId})
-				if len(sInfo)>0:
+				sInfo=csoup.find('streaminginfo',{'cname':re.compile("^"+channelId+"$", re.I)})
+				      
+				if not sInfo==None and len(sInfo)>0:
 					ret.append([source,sInfo])
-	except: pass
+	except:
+		traceback.print_exc(file=sys.stdout)
+		pass
 	return ret
 
 def selectSource(sources):
@@ -423,6 +448,7 @@ def PlayCommunityStream(channelId, name, mode):
 	print 'PlayCommunityStream'
 	pDialog = xbmcgui.DialogProgress()
 	ret = pDialog.create('XBMC', 'Finding available resources...')
+	print 'channelId',channelId
 	providers=getSourceAndStreamInfo(channelId)
 	if len(providers)==0:
 		pDialog.close()

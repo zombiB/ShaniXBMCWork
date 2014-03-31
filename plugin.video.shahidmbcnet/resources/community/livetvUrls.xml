@@ -312,7 +312,7 @@
 		<chnumber>ch75</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>2M Maroc</cname>
+		<cname>2M</cname>
 		<chnumber>ch76</chnumber>
 	</streaminginfo>
 	<streaminginfo>
@@ -683,5 +683,8 @@
 		<cname>Cine Majesti</cname>
 		<chnumber>ch29</chnumber>
 	</streaminginfo>
-	<streaminginfo><cname>Bein 2 FR</cname><chnumber>ch279</chnumber></streaminginfo> 
+	<streaminginfo>
+		<cname>Bein 2 FR</cname>
+		<chnumber>ch279</chnumber>
+	</streaminginfo> 
 </streaminginfos>
