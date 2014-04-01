@@ -1,34 +1,34 @@
 <streaminginfos>
 	<streaminginfo>
-		<cname>Tunisie NAT 1</cname>
+		<cname>Tunisia national 1</cname>
 		<chnumber>ch1</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Tunisie NAT 2</cname>
+		<cname>Tunisia national 2</cname>
 		<chnumber>ch2</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Ettounisia</cname>
+		<cname>Al Tunisia</cname>
 		<chnumber>ch3</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>nessma</cname>
+		<cname>Nessma</cname>
 		<chnumber>ch5</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Hannibal TV</cname>
+		<cname>Hanibal</cname>
 		<chnumber>ch6</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Al Janoubia TV</cname>
+		<cname>Al Janoubiya</cname>
 		<chnumber>ch7</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Tunisna TV</cname>
+		<cname>tounesna</cname>
 		<chnumber>ch8</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Zaitouna TV</cname>
+		<cname>Zaitouna</cname>
 		<chnumber>ch9</chnumber>
 	</streaminginfo>
 	<streaminginfo>
@@ -40,35 +40,35 @@
 		<chnumber>ch11</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>BeIn 1</cname>
+		<cname>BeIn Sport 1</cname>
 		<chnumber>ch12</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>BeIn 2</cname>
+		<cname>BeIn Sport 2</cname>
 		<chnumber>ch13</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>BeIn 3</cname>
+		<cname>BeIn Sport 3</cname>
 		<chnumber>ch14</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>BeIn 4</cname>
+		<cname>BeIn Sport 4</cname>
 		<chnumber>ch15</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>BeIn 5</cname>
+		<cname>BeIn Sport 5</cname>
 		<chnumber>ch16</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>BeIn 6</cname>
+		<cname>BeIn Sport 6</cname>
 		<chnumber>ch17</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>BeIn 7</cname>
+		<cname>BeIn Sport 7</cname>
 		<chnumber>ch201</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>BeIn 8</cname>
+		<cname>BeIn Sport 8</cname>
 		<chnumber>ch18</chnumber>
 	</streaminginfo>
 	<streaminginfo>
@@ -80,7 +80,7 @@
 		<chnumber>ch275</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Alriayadia Sport</cname>
+		<cname>Alriadia Sport</cname>
 		<chnumber>ch276</chnumber>
 	</streaminginfo>
 	<streaminginfo>
@@ -92,7 +92,7 @@
 		<chnumber>ch278</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Hayat Series</cname>
+		<cname>Alhayat-Series</cname>
 		<chnumber>ch21</chnumber>
 	</streaminginfo>
 	<streaminginfo>
@@ -168,15 +168,15 @@
 		<chnumber>ch39</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>ART Aflem 1</cname>
+		<cname>ART Aflam 1</cname>
 		<chnumber>ch40</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>ART Aflem 2</cname>
+		<cname>ART Aflam 2</cname>
 		<chnumber>ch41</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Rotana Masria</cname>
+		<cname>Rotana Masriya</cname>
 		<chnumber>ch42</chnumber>
 	</streaminginfo>
 	<streaminginfo>
@@ -192,7 +192,7 @@
 		<chnumber>ch45</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Rotana Aflem</cname>
+		<cname>Rotana Aflam</cname>
 		<chnumber>ch46</chnumber>
 	</streaminginfo>
 	<streaminginfo>
@@ -212,15 +212,15 @@
 		<chnumber>ch50</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>JSC Children</cname>
+		<cname>Aljazeera Children</cname>
 		<chnumber>ch51</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>JSC Documentaire</cname>
+		<cname>Aljazeera Doc</cname>
 		<chnumber>ch52</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Al Arabia News</cname>
+		<cname>Alarabiya</cname>
 		<chnumber>ch53</chnumber>
 	</streaminginfo>
 	<streaminginfo>
@@ -232,11 +232,11 @@
 		<chnumber>ch55</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Al Maghrebia</cname>
+		<cname>Al Maghribia</cname>
 		<chnumber>ch56</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Al Majd Coran</cname>
+		<cname>Al Majd</cname>
 		<chnumber>ch57</chnumber>
 	</streaminginfo>
 	<streaminginfo>
@@ -256,7 +256,7 @@
 		<chnumber>ch61</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Bahrain TV</cname>
+		<cname>Bahrain</cname>
 		<chnumber>ch62</chnumber>
 	</streaminginfo>
 	<streaminginfo>
@@ -268,11 +268,11 @@
 		<chnumber>ch64</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Cartoon Network AR</cname>
+		<cname>Cartoon Network</cname>
 		<chnumber>ch65</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Yemen TV</cname>
+		<cname>Yemen</cname>
 		<chnumber>ch66</chnumber>
 	</streaminginfo>
 	<streaminginfo>
@@ -300,7 +300,7 @@
 		<chnumber>ch72</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Touyour Al Jannah</cname>
+		<cname>Toyor Al Janah</cname>
 		<chnumber>ch73</chnumber>
 	</streaminginfo>
 	<streaminginfo>
@@ -316,7 +316,7 @@
 		<chnumber>ch76</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Abu Dhabi Sport</cname>
+		<cname>Abu Dhabi Sports 1</cname>
 		<chnumber>ch79</chnumber>
 	</streaminginfo>
 	<streaminginfo>
@@ -332,19 +332,19 @@
 		<chnumber>ch82</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Haneen Music</cname>
+		<cname>Al Haneen Music</cname>
 		<chnumber>ch83</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Al Masria</cname>
+		<cname>Al Masriyah</cname>
 		<chnumber>ch84</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Al Mustaquilla</cname>
+		<cname>Al Moustakilla</cname>
 		<chnumber>ch85</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Al Shar9ia</cname>
+		<cname>Al Sharqiya</cname>
 		<chnumber>ch87</chnumber>
 	</streaminginfo>
 	<streaminginfo>
@@ -352,27 +352,27 @@
 		<chnumber>ch88</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Al Thania</cname>
+		<cname>Al Thaniya</cname>
 		<chnumber>ch89</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Al Mayadeen</cname>
+		<cname>Al Mayaden</cname>
 		<chnumber>ch90</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Al Hurria</cname>
+		<cname>Al-Hurria</cname>
 		<chnumber>ch91</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Al Resalah</cname>
+		<cname>Al-Resalah</cname>
 		<chnumber>ch92</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Iraq Al Hurra</cname>
+		<cname>Al-hurra Iraq</cname>
 		<chnumber>ch93</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Alan TV</cname>
+		<cname>Alan</cname>
 		<chnumber>ch94</chnumber>
 	</streaminginfo>
 	<streaminginfo>
@@ -380,23 +380,23 @@
 		<chnumber>ch95</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>AlHayat</cname>
+		<cname>Alhayat 1</cname>
 		<chnumber>ch96</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Al Hayat Cinema</cname>
+		<cname>Alhayat Cinema</cname>
 		<chnumber>ch97</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Al 3ira9iya</cname>
+		<cname>Alarabiya</cname>
 		<chnumber>ch98</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Aljadeed Sat</cname>
+		<cname>Aljadeed</cname>
 		<chnumber>ch99</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Touyour Baby</cname>
+		<cname>Toyor baby</cname>
 		<chnumber>ch101</chnumber>
 	</streaminginfo>
 	<streaminginfo>
@@ -404,7 +404,7 @@
 		<chnumber>ch102</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>TNN Tunisia</cname>
+		<cname>TNN</cname>
 		<chnumber>ch103</chnumber>
 	</streaminginfo>
 	<streaminginfo>
@@ -412,11 +412,11 @@
 		<chnumber>ch104</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Libya TV</cname>
+		<cname>Libya</cname>
 		<chnumber>ch105</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>France 24 Arabic</cname>
+		<cname>France24 Arabic</cname>
 		<chnumber>ch106</chnumber>
 	</streaminginfo>
 	<streaminginfo>
@@ -424,7 +424,7 @@
 		<chnumber>ch107</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Coran TV</cname>
+		<cname>Coran</cname>
 		<chnumber>ch108</chnumber>
 	</streaminginfo>
 	<streaminginfo>
@@ -436,7 +436,7 @@
 		<chnumber>ch111</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Baghdadiya</cname>
+		<cname>Baghdadia</cname>
 		<chnumber>ch112</chnumber>
 	</streaminginfo>
 	<streaminginfo>
@@ -448,11 +448,11 @@
 		<chnumber>ch116</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Echourouk TV</cname>
+		<cname>Echorouk Tv</cname>
 		<chnumber>ch118</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Founoun</cname>
+		<cname>Funoon</cname>
 		<chnumber>ch119</chnumber>
 	</streaminginfo>
 	<streaminginfo>
@@ -476,11 +476,11 @@
 		<chnumber>ch126</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Masrawi Aflem</cname>
+		<cname>Masrawi Aflam</cname>
 		<chnumber>ch127</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Mazika Zoom</cname>
+		<cname>Mazeka zoom</cname>
 		<chnumber>ch129</chnumber>
 	</streaminginfo>
 	<streaminginfo>
@@ -540,7 +540,7 @@
 		<chnumber>ch145</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>NBN TV</cname>
+		<cname>NBN</cname>
 		<chnumber>ch146</chnumber>
 	</streaminginfo>
 	<streaminginfo>
@@ -548,7 +548,7 @@
 		<chnumber>ch147</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Mehwer</cname>
+		<cname>Mehwar</cname>
 		<chnumber>ch148</chnumber>
 	</streaminginfo>
 	<streaminginfo>
@@ -556,11 +556,11 @@
 		<chnumber>ch149</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Iqra TV</cname>
+		<cname>Iqra</cname>
 		<chnumber>ch154</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Jordan TV</cname>
+		<cname>Jordan</cname>
 		<chnumber>ch155</chnumber>
 	</streaminginfo>
 	<streaminginfo>
@@ -568,7 +568,7 @@
 		<chnumber>ch156</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>LLBN Lebanon</cname>
+		<cname>LLBN</cname>
 		<chnumber>ch157</chnumber>
 	</streaminginfo>
 	<streaminginfo>
@@ -596,7 +596,7 @@
 		<chnumber>ch256</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Wanasa</cname>
+		<cname>Wanasah</cname>
 		<chnumber>ch257</chnumber>
 	</streaminginfo>
 	<streaminginfo>
@@ -612,11 +612,11 @@
 		<chnumber>ch260</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>SomSat</cname>
+		<cname>Somsat Tv</cname>
 		<chnumber>ch261</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Tchad TV</cname>
+		<cname>Tchad</cname>
 		<chnumber>ch265</chnumber>
 	</streaminginfo>
 	<streaminginfo>
@@ -624,7 +624,7 @@
 		<chnumber>ch266</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Somal TV</cname>
+		<cname>Somali Channel</cname>
 		<chnumber>ch268</chnumber>
 	</streaminginfo>
 	<streaminginfo>
@@ -632,7 +632,7 @@
 		<chnumber>ch270</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Nat Geo AD</cname>
+		<cname>National Geo Ad</cname>
 		<chnumber>ch271</chnumber>
 	</streaminginfo>
 	<streaminginfo>
@@ -660,7 +660,7 @@
 		<chnumber>ch283</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>Al Nahar Drama</cname>
+		<cname>Al-Nahar Drama</cname>
 		<chnumber>ch284</chnumber>
 	</streaminginfo>
 	<streaminginfo>
@@ -676,7 +676,7 @@
 		<chnumber>ch293</chnumber>
 	</streaminginfo>
 	<streaminginfo>
-		<cname>OTV Lebano</cname>
+		<cname>OTV Lebanon</cname>
 		<chnumber>ch292</chnumber>
 	</streaminginfo>
 	<streaminginfo>
