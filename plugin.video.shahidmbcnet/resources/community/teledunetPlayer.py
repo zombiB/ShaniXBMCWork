@@ -25,6 +25,7 @@ def PlayStream(sourceSoup, urlSoup, name, url):
 
 	print 'rtmpstring',liveLink
 	liveLink=liveLink%(channelId,match,channelId,channelId)
+	name+='-Teledunet'
 	print 'liveLink',liveLink
 	listitem = xbmcgui.ListItem( label = str(name), iconImage = "DefaultVideo.png", thumbnailImage = xbmc.getInfoImage( "ListItem.Thumb" ), path=liveLink )
 	xbmc.Player().play( liveLink,listitem)
