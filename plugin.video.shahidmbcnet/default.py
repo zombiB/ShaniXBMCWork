@@ -475,7 +475,7 @@ def PlayCommunityStream(channelId, name, mode):
 	if communityStreamPath not in sys.path:
 		sys.path.append(communityStreamPath)
 	print processor
-	from importlib import import_module
+	#from importlib import import_module
 	processorObject=import_module(processor.replace('.py',''))
 	pDialog.update(60, 'Trying to play..')
 	processorObject.PlayStream(source,sInfo,name,channelId)
@@ -483,6 +483,25 @@ def PlayCommunityStream(channelId, name, mode):
 	pDialog.close()
 	return 
 	
+def import_module(name, package=None):
+    """Import a module.
+
+    The 'package' argument is required when performing a relative import. It
+    specifies the package to use as the anchor point from which to resolve the
+    relative import to an absolute import.
+
+    """
+    if name.startswith('.'):
+        if not package:
+            raise TypeError("relative imports require the 'package' argument")
+        level = 0
+        for character in name:
+            if character != '.':
+                break
+            level += 1
+        name = _resolve_name(name[level:], package, level)
+    __import__(name)
+    return sys.modules[name]
 	
 def PlayShowLink ( url ): 
 #	url = tabURL.replace('%s',channelName);

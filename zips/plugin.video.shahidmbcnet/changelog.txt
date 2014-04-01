@@ -29,3 +29,5 @@
 - Categories and sources support
 [B]Version 2.1.0/B]
 - Categories and sources support- Released
+[B]Version 2.1.1/B]
+- Andriod issue
