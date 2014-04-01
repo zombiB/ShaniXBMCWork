@@ -1475,81 +1475,134 @@
 		<cname>Telvza TV</cname>
 		<imageurl>http://www.livetv.tn/images/icons/10.gif</imageurl>
 		<enabled>True</enabled>
+		<assignedcategory>
+			<category>africa</category>
+		</assignedcategory>
 	</channel>
 	<channel>
 		<cname>Al Moutawaset TV</cname>
 		<imageurl>http://www.livetv.tn/images/icons/11.gif</imageurl>
 		<enabled>True</enabled>
+		<assignedcategory>
+			<category>africa</category>
+		</assignedcategory>
 	</channel>
 		<channel>
 		<cname>Bein 1 FR</cname>
 		<imageurl>http://www.livetv.tn/images/icons/77.gif</imageurl>
 		<enabled>True</enabled>
+		<assignedcategory>
+			<category>sports</category>
+		</assignedcategory>
 	</channel>
 	<channel>
 		<cname>Bein 2 FR</cname>
 		<imageurl>http://www.livetv.tn/images/icons/78.gif</imageurl>
 		<enabled>True</enabled>
+		<assignedcategory>
+			<category>sports</category>
+			<category>french</category>
+		</assignedcategory>
 	</channel>
 	<channel>
 		<cname>Dubai TV</cname>
 		<imageurl>http://www.livetv.tn/images/icons/21.gif</imageurl>
 		<enabled>True</enabled>
+		<assignedcategory>
+			<category>gulf</category>
+		</assignedcategory>
 	</channel>
 	<channel>
 		<cname>Al Oula Maroc</cname>
 		<imageurl>http://www.livetv.tn/images/icons/55.gif</imageurl>
 		<enabled>True</enabled>
+		<assignedcategory>
+			<category>africa</category>
+		</assignedcategory>
 	</channel>
 	<channel>
 		<cname>Al-Nahar Drama</cname>
 		<imageurl>http://www.livetv.tn/images/icons/58.gif</imageurl>
 		<enabled>True</enabled>
+		<assignedcategory>
+			<category>egypt</category>
+		</assignedcategory>
 	</channel>
 	<channel>
 		<cname>Tamazigh Maroc</cname>
 		<imageurl>http://www.livetv.tn/images/icons/72.gif</imageurl>
 		<enabled>True</enabled>
+		<assignedcategory>
+			<category>africa</category>
+		</assignedcategory>
 	</channel>
 	<channel>
 		<cname>Algerie 24</cname>
 		<imageurl>http://www.livetv.tn/images/icons/116.gif</imageurl>
 		<enabled>True</enabled>
+		<assignedcategory>
+			<category>africa</category>
+		</assignedcategory>
 	</channel>
 	<channel>
 		<cname>Melody Aflem</cname>
 		<imageurl>http://www.livetv.tn/images/icons/130.gif</imageurl>
 		<enabled>True</enabled>
+		<assignedcategory>
+			<category>egypt</category>
+			<category>drama</category>
+		</assignedcategory>
 	</channel>
 	<channel>
 		<cname>Mcm France</cname>
 		<imageurl>http://www.livetv.tn/images/icons/258.gif</imageurl>
 		<enabled>True</enabled>
+		<assignedcategory>
+			<category>french</category>
+		</assignedcategory>
 	</channel>
 	<channel>
 		<cname>Canal Cinema</cname>
 		<imageurl>http://www.livetv.tn/images/icons/280.gif</imageurl>
 		<enabled>True</enabled>
+		<assignedcategory>
+			<category>french</category>
+		</assignedcategory>
 	</channel>
 	<channel>
 		<cname>SadacAlBalad Drama</cname>
 		<imageurl>http://www.livetv.tn/images/icons/282.gif</imageurl>
 		<enabled>True</enabled>
+		<assignedcategory>
+			<category>ent</category>
+		</assignedcategory>
 	</channel>
 	<channel>
 		<cname>ONT</cname>
 		<imageurl>http://www.livetv.tn/images/icons/293.gif</imageurl>
 		<enabled>True</enabled>
+		<assignedcategory>
+			<category>egypt</category>
+			<category>ent</category>
+		</assignedcategory>
 	</channel>
 	<channel>
 		<cname>Cine Majesti</cname>
 		<imageurl>http://www.livetv.tn/images/icons/29.gif</imageurl>
 		<enabled>True</enabled>
+		<assignedcategory>
+			<category>drama</category>
+			<category>gulf</category>
+		</assignedcategory>
 	</channel>
 	<channel>
 		<cname>Bein 2 FR</cname>
 		<imageurl>http://www.livetv.tn/images/icons/279.gif</imageurl>
 		<enabled>True</enabled>
+		<assignedcategory>
+			<category>sports</category>
+			<category>french</category>
+		</assignedcategory>
 	</channel>
 
 </channels>
