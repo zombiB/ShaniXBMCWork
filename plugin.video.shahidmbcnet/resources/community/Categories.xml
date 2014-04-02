@@ -45,6 +45,11 @@
 		<imageurl>http://icons.iconarchive.com/icons/lajonard/movie-folder/256/Documentary-icon.png</imageurl>
 	</category>
 	<category>
+		<id>Iraq</id>
+		<catname>Iraq</catname>
+		<imageurl>http://icons.iconarchive.com/icons/custom-icon-design/all-country-flag/128/Iraq-Flag-icon.png</imageurl>
+	</category>
+	<category>
 		<id>french</id>
 		<catname>French</catname>
 		<imageurl>http://icons.iconarchive.com/icons/hopstarter/flag/256/France-icon.png</imageurl>
