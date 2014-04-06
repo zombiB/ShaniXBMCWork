@@ -17,6 +17,26 @@
 <urlfile>livetvUrls.xml</urlfile>
 <imageurl>http://www.livetv.tn/images/logoc.png</imageurl>
 <processor>livetvPlayer.py</processor>
-<rtmpstring>rtmp://tdsiptv.ddns.me/live playpath=%s?code=%s swfUrl=http://www.livetv.tn/flowplayer-3.2.7.swf pageUrl=http://www.livetv.tn flashVer=WIN12.0.0.77 timeout=15 swfVfy=1 live=true  </rtmpstring>
+<rtmpstring>rtmp://tdsiptv.ddns.me/live playpath=%s?code=%s swfUrl=http://www.livetv.tn/flowplayer-3.2.7.swf pageUrl=http://www.livetv.tn flashVer=WIN12.0.0.77 timeout=10 swfVfy=1 live=true</rtmpstring>
+</source>
+<source>
+<id>generic</id>
+<sname>Shani</sname>
+<baseurl>http://website.com</baseurl>
+<enabled>True</enabled>
+<urlfile>genericUrls.xml</urlfile>
+<imageurl>http://mylogo.com</imageurl>
+<processor>genericPlayer.py</processor>
+</source>
+<source>
+<id>generic</id>
+<sname>PC</sname>
+<baseurl>http://website.com</baseurl>
+<enabled>True</enabled>
+<urlfile>palestinecoolUrls.xml</urlfile>
+<imageurl>http://mylogo.com</imageurl>
+<processor>genericPlayer.py</processor>
 </source>
 </streamingsources>
+
+

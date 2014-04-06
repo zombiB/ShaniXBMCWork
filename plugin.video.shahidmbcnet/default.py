@@ -157,23 +157,35 @@ def RefreshResources():
 	response = urllib2.urlopen(req)
 	data=response.read()
 	response.close()
+	#data='<resources><file fname="Categories.xml"/><file fname="palestinecoolUrls.xml" url="http://goo.gl/yNlwCM"/></resources>'
 	pDialog.update(20, 'Importing modules...')
 	soup= BeautifulSOAP(data, convertEntities=BeautifulStoneSoup.XML_ENTITIES)
 	resources=soup('file')
 	fileno=1
 	totalFile = len(resources)
+	
 	for rfile in resources:
 		progr = (totalFile/totalFile)*80
 		fname = rfile['fname']
-		print fname
-		fileToDownload = baseUrlForDownload+fname
+		remoteUrl=None
+		try:
+			remoteUrl = rfile['url']
+		except: pass
+		if remoteUrl:
+			fileToDownload = remoteUrl
+		else:
+			fileToDownload = baseUrlForDownload+fname
+		print fileToDownload
 		req = urllib2.Request(fileToDownload)
 		req.add_header('User-Agent','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36')
 		response = urllib2.urlopen(req)
 		data=response.read()
-		with open(os.path.join(communityStreamPath, fname), "wb") as filewriter:
-			filewriter.write(data)
-		pDialog.update(20+progr, 'imported ...'+fname)
+		if len(data)>0:
+			with open(os.path.join(communityStreamPath, fname), "wb") as filewriter:
+				filewriter.write(data)
+			pDialog.update(20+progr, 'imported ...'+fname)
+		else:
+			pDialog.update(20+progr, 'Failed..zero byte.'+fname)
 	pDialog.close()
 	dialog = xbmcgui.Dialog()
 	ok = dialog.ok('XBMC', 'Download finished. Close close Addon and come back')
@@ -412,32 +424,49 @@ def getSourceAndStreamInfo(channelId):
 		ret=[]
 		Ssoup=getSoup('Sources.xml');
 		sources=Ssoup('source')
-		print 'sources',sources
+		#print 'sources',sources
 		for source in sources:
-			print 'source',source
-			xmlfile = source.urlfile.text
-			isEnabled = source.enabled.text.lower()
-			sid = source.id.text
-			if isEnabled=="true":
-				print 'source is enabled',sid
-				csoup=getSoup(xmlfile);
-		#print csoup 
-				sInfo=csoup.find('streaminginfo',{'cname':re.compile("^"+channelId+"$", re.I)})
-				      
-				if not sInfo==None and len(sInfo)>0:
-					ret.append([source,sInfo])
+			try:
+				print 'source....................',source
+				xmlfile = source.urlfile.text
+				isEnabled = source.enabled.text.lower()
+				sid = source.id.text
+				print 'sid',sid,xmlfile
+				if isEnabled=="true":
+					#print 'source is enabled',sid
+					csoup=getSoup(xmlfile);
+					#ccsoup = csoup("streaminginfo")
+					#print 'csoup',csoup,channelId
+			#print csoup 
+					sInfo=csoup.findAll('streaminginfo',{'cname':re.compile("^"+channelId+"$", re.I)})
+					if not sInfo==None:
+						#print 'sInfo...................',len(sInfo)
+						for single in sInfo:
+							ret.append([source,single])
+			except:
+				traceback.print_exc(file=sys.stdout)
+				pass
 	except:
 		traceback.print_exc(file=sys.stdout)
 		pass
+	print ret
 	return ret
 
 def selectSource(sources):
     if len(sources) > 1:
+        print 'total sources',len(sources)
         dialog = xbmcgui.Dialog()
         titles = []
         for source in sources:
             (s,i) =source
-            titles.append(s.sname.text)
+            #print 'i',i.id,i
+            if s.id.text=="generic":
+                try:
+                    titles.append(s.sname.text+': '+i.title.text)
+                except:
+                    titles.append(s.sname.text)
+            else:
+                titles.append(s.sname.text)
         index = dialog.select('Choose your stream', titles)
         if index > -1:
             return sources[index]
@@ -475,8 +504,12 @@ def PlayCommunityStream(channelId, name, mode):
 	if communityStreamPath not in sys.path:
 		sys.path.append(communityStreamPath)
 	print processor
+	
+	
 	#from importlib import import_module
 	processorObject=import_module(processor.replace('.py',''))
+	
+	
 	pDialog.update(60, 'Trying to play..')
 	processorObject.PlayStream(source,sInfo,name,channelId)
 	print 'donexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
@@ -920,12 +953,13 @@ except:
 	print 'somethingwrong'
 	traceback.print_exc(file=sys.stdout)
 
-
-if (not mode==None) and mode>1:
-	view_mode_id = get_view_mode_id('thumbnail')
-	if view_mode_id is not None:
-		print 'view_mode_id',view_mode_id
-		xbmc.executebuiltin('Container.SetViewMode(%d)' % view_mode_id)
-if not ( mode==5 or mode==10 or mode==11 or mode==16 or mode==17):
+try:
+	if (not mode==None) and mode>1:
+		view_mode_id = get_view_mode_id('thumbnail')
+		if view_mode_id is not None:
+			print 'view_mode_id',view_mode_id
+			xbmc.executebuiltin('Container.SetViewMode(%d)' % view_mode_id)
+except: pass
+if not ( mode==5 or mode==10 or mode==8 or mode==11 or mode==16 or mode==17):
 	xbmcplugin.endOfDirectory(int(sys.argv[1]))
 
