@@ -1,4 +1,12 @@
 <channels>
+<channel>
+<cname>Aghani</cname>
+<imageurl>http://www.lyngsat-logo.com/hires/aa/aghani_aghani_tv_lb.png</imageurl>
+<enabled>True</enabled>
+<assignedcategory>
+<category>music</category>
+</assignedcategory>
+</channel>
 	<channel>
 		<cname>2M</cname>
 		<imageurl>http://www.teledunet.com/tv_/icones/2m.jpg</imageurl>
