@@ -1,8 +1,5 @@
 <streamingInfos>
 
-
-
-
 	<streaminginfo>
 		<cname>Bein Sport News</cname>
 		<item>
@@ -175,7 +172,7 @@
 		<cname>Tunisia national 1</cname>
 		<item>
 			<title>Tunisia national 1</title>
-			<link>rtmp://94.32.97.12/satchannel1 playpath=tvtunisi.stream swfUrl=http://video.tiscali.it/inc/TiscaliVideo.swf?v=hghpl]&vURL=http://video.tiscali.it/asx/73878.asx&autoplay=1& live=1 pageUrl=http://tnmedias.perso.sfr.fr/tv7.html</link>
+			<link>rtmp://94.32.97.12/satchannel1 playpath=tvtunisi.stream swfUrl=http://video.tiscali.it/inc/TiscaliVideo.swf?v=hghpl]&amp;vURL=http://video.tiscali.it/asx/73878.asx&amp;autoplay=1&amp; live=1 pageUrl=http://tnmedias.perso.sfr.fr/tv7.html</link>
 		</item>
 	</streaminginfo>
 	<streaminginfo>
@@ -189,7 +186,7 @@
 		<cname>nbn lebanon</cname>
 		<item>
 			<title>nbn lebanon</title>
-			<link>rtmp://lived.nbn.com.lb/nbn?hghpl]=keylive72-229-239-1302013-08-25-05-32-36/ playpath=mpegts.stream swfUrl=http://www.elahmad.com/tv/swf/player.swf?file=nbnlb&autostart=true&%2F%5B0%5D%5BDYNAMIC%5D%5B0%5D pageUrl=http://www.elahmad.com/tv/nbn-lebanon.php swfVfy=true live=true timeout=15</link>
+			<link>rtmp://lived.nbn.com.lb/nbn?hghpl]=keylive72-229-239-1302013-08-25-05-32-36/ playpath=mpegts.stream swfUrl=http://www.elahmad.com/tv/swf/player.swf?file=nbnlb&amp;autostart=true&amp;%2F%5B0%5D%5BDYNAMIC%5D%5B0%5D pageUrl=http://www.elahmad.com/tv/nbn-lebanon.php swfVfy=true live=true timeout=15</link>
 		</item>
 	</streaminginfo>
 	<streaminginfo>
@@ -329,7 +326,7 @@
 		<cname>M3Ali Tv</cname>
 		<item>
 			<title>M3Ali Tv</title>
-			<link>rtmp://free.flashwebtown.com:1935/bashaclick playpath=myStream.sdp swfUrl=http://www.elahmad.com/tv/swf/player.swf?file=m3alitv&autostart=true pageUrl=http://www.elahmad.com/tv/m3alitv.php</link>
+			<link>rtmp://free.flashwebtown.com:1935/bashaclick playpath=myStream.sdp swfUrl=http://www.elahmad.com/tv/swf/player.swf?file=m3alitv&amp;autostart=true pageUrl=http://www.elahmad.com/tv/m3alitv.php</link>
 		</item>
 	</streaminginfo>
 	<streaminginfo>
@@ -420,7 +417,7 @@
 		<cname>DISCOVERY CHANNEL</cname>
 		<item>
 			<title>DISCOVERY CHANNEL</title>
-			<link>http://m24.megafun.vn/live.vs?c=vstv044&q=high</link>
+			<link>http://m24.megafun.vn/live.vs?c=vstv044&amp;q=high</link>
 		</item>
 	</streaminginfo>
 	<streaminginfo>

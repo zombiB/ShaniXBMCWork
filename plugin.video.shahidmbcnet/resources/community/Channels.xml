@@ -238,7 +238,7 @@
 		<imageurl>https://static.elcinema.com/images/channels/160px/1118.png</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
-                        <category>egypt</category>
+			<category>egypt</category>
 		</assignedcategory>
 	</channel>
 	<channel>
@@ -978,7 +978,7 @@
 		<assignedcategory>
 			<category>gulf</category>
 		</assignedcategory>
-	</channel
+	</channel>
 	<channel>
 		<cname>Kalsan Tv</cname>
 		<imageurl>http://www.teledunet.com/tv_/icones/kalsan_tv.jpg</imageurl>
@@ -1403,7 +1403,7 @@
 			<category>music</category>
 		</assignedcategory>
 	</channel>
-        <channel>
+	<channel>
 		<cname>Rotana cinema</cname>
 		<imageurl>https://static.elcinema.com/images/channels/160px/1148.png</imageurl>
 		<enabled>True</enabled>
@@ -1690,7 +1690,7 @@
 		<imageurl>http://www.teledunet.com/tv_/icones/zaitouna.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
-		        <category>magreb</category>
+			<category>magreb</category>
 		</assignedcategory>
 	</channel>
 	<channel>
@@ -1847,8 +1847,8 @@
 	</channel>
 	<channel>
 		<cname>SadacAlBalad Drama</cname>
-                <imageurl>https://static.elcinema.com/images/channels/160px/1227.png</imageurl>
-                <enabled>True</enabled>
+		<imageurl>https://static.elcinema.com/images/channels/160px/1227.png</imageurl>
+		<enabled>True</enabled>
 		<assignedcategory>
 			<category>ent</category>
 		</assignedcategory>
@@ -1888,7 +1888,7 @@
 			<category>french</category>
 		</assignedcategory>
 	</channel>
-    <channel>
+	<channel>
 		<cname>BFMTV</cname>
 		<imageurl>http://logos.kijkdirect.nl/116.jpg</imageurl>
 		<enabled>True</enabled>
@@ -1962,7 +1962,7 @@
 			<category>french</category>
 		</assignedcategory>
 	</channel>
-	<channel>
+
 	<channel>
 		<cname>D17</cname>
 		<imageurl>http://logos.kijkdirect.nl/2034.jpg</imageurl>
@@ -2003,7 +2003,7 @@
 			<category>doc</category>
 		</assignedcategory>
 	</channel>
-	<channel>
+
 	<channel>
 		<cname>Nile Culture</cname>
 		<imageurl>https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRe-pcSsPTTjtZ5AhVBd9aKahe4ZSiXwrQlKPvy8SWDVEkzr6jxYg</imageurl>
@@ -2012,7 +2012,7 @@
 			<category>doc</category>
 		</assignedcategory>
 	</channel>
-	<channel>
+
 	<channel>
 		<cname>ALMAJD NATURE</cname>
 		<imageurl>https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn1/t1.0-1/c14.21.172.172/297622_125611950872282_2086713406_n.jpg</imageurl>
@@ -2021,7 +2021,7 @@
 			<category>doc</category>
 		</assignedcategory>
 	</channel>
-	<channel>
+
 	<channel>
 		<cname>ALMAJD DOC</cname>
 		<imageurl>https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn1/t1.0-1/c14.21.172.172/297622_125611950872282_2086713406_n.jpg</imageurl>
@@ -2030,7 +2030,7 @@
 			<category>doc</category>
 		</assignedcategory>
 	</channel>
-	<channel>
+
 	<channel>
 		<cname>DISCOVERY CHANNEL</cname>
 		<imageurl>http://www.livetv.tn/images/icons/279.gif</imageurl>
@@ -2039,7 +2039,7 @@
 			<category>doc</category>
 		</assignedcategory>
 	</channel>
-	<channel>
+
 	<channel>
 		<cname>ALMAJD RODA</cname>
 		<imageurl>https://scontent-b-ams.xx.fbcdn.net/hphotos-ash3/t1.0-9/558929_434247603333610_665024253_n.png</imageurl>
@@ -2048,7 +2048,7 @@
 			<category>kids</category>
 		</assignedcategory>
 	</channel>
-	<channel>
+
 	<channel>
 		<cname>ALMAJD TAGHARID </cname>
 		<imageurl>https://scontent-b-ams.xx.fbcdn.net/hphotos-ash3/t1.0-9/558929_434247603333610_665024253_n.png</imageurl>
@@ -2057,7 +2057,7 @@
 			<category>kids</category>
 		</assignedcategory>
 	</channel>
-	<channel>
+
 	<channel>
 		<cname>ALMAJD KIDS 2</cname>
 		<imageurl>https://scontent-b-ams.xx.fbcdn.net/hphotos-ash3/t1.0-9/558929_434247603333610_665024253_n.png</imageurl>
@@ -2066,7 +2066,7 @@
 			<category>kids</category>
 		</assignedcategory>
 	</channel>
-	<channel>
+
 	<channel>
 		<cname>ALMAJD KIDS</cname>
 		<imageurl>https://scontent-b-ams.xx.fbcdn.net/hphotos-ash3/t1.0-9/558929_434247603333610_665024253_n.png</imageurl>
