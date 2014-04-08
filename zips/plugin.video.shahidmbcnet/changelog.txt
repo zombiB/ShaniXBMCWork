@@ -36,3 +36,5 @@
 
 [B]Version 2.5.0/B]
 - Now support login for livetv
+[B]Version 2.5.1/B]
+- PlayFirstChannels support

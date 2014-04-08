@@ -487,7 +487,11 @@ def PlayCommunityStream(channelId, name, mode):
 		return
 	pDialog.update(30, 'Found resources..')
 	#source=providers[""]
-	if len (providers)>1:
+	playFirst=selfAddon.getSetting( "playFirstChannel" )
+	if playFirst==None or playFirst=="":
+		playFirst="false"
+	print 'playFirst',playFirst
+	if len (providers)>1 and not playFirst=="true":
 		provider=selectSource(providers)
 		if not provider:
 			return
