@@ -128,7 +128,7 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
 			reg = re.compile(k.expres.text).search(link)
 			
 			url = url.replace("$doregex[" + rege + "]", reg.group(1).strip())
-	if recursiveCall: return url
+			if recursiveCall: return url
 	print 'final url',url
 	return url
 

@@ -33,3 +33,6 @@
 - Andriod issue
 [B]Version 2.4.0/B]
 - GenericXML implementation, now users could publish their urls
+
+[B]Version 2.5.0/B]
+- Now support login for livetv
