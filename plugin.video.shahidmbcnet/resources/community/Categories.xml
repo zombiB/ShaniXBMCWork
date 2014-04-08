@@ -50,16 +50,6 @@
 		<imageurl>http://icons.iconarchive.com/icons/custom-icon-design/all-country-flag/128/Iraq-Flag-icon.png</imageurl>
 	</category>
 	<category>
-		<id>french</id>
-		<catname>French</catname>
-		<imageurl>http://icons.iconarchive.com/icons/hopstarter/flag/256/France-icon.png</imageurl>
-	</category>
-	<category>
-		<id>africa</id>
-		<catname>NorthAfrica</catname>
-		<imageurl>http://icons.iconarchive.com/icons/hopstarter/flag/256/Tunisia-icon.png</imageurl>
-	</category>
-	<category>
 		<id>gulf</id>
 		<catname>Gulf</catname>
 		<imageurl>http://icons.iconarchive.com/icons/hopstarter/flag/256/Saudi-Arabia-icon.png</imageurl>
@@ -69,14 +59,34 @@
 		<catname>AlSham</catname>
 		<imageurl>http://icons.iconarchive.com/icons/hopstarter/flag/256/Lebanon-icon.png</imageurl>
 	</category>
+		<category>
+		<id>egypt</id>
+		<catname>Egypt</catname>
+		<imageurl>http://icons.iconarchive.com/icons/hopstarter/flag/256/Egypt-icon.png</imageurl>
+	</category>
+	<category>
+		<id>magreb</id>
+		<catname>Maghreb</catname>
+		<imageurl>http://icons.iconarchive.com/icons/hopstarter/flag/256/Tunisia-icon.png</imageurl>
+	</category>
 	<category>
 		<id>drama</id>
 		<catname>Drama</catname>
 		<imageurl>http://icons.iconarchive.com/icons/arkangl300/zero-folders/256/videos-icon.png</imageurl>
 	</category>
+		<category>
+		<id>french</id>
+		<catname>French</catname>
+		<imageurl>http://icons.iconarchive.com/icons/hopstarter/flag/256/France-icon.png</imageurl>
+	</category>
 	<category>
-		<id>egypt</id>
-		<catname>Egypt</catname>
-		<imageurl>http://icons.iconarchive.com/icons/hopstarter/flag/256/Egypt-icon.png</imageurl>
+		<id>africa</id>
+		<catname>NorthAfrica</catname>
+		<imageurl>http://thumb9.shutterstock.com/photos/thumb_large/1112252/135847202.jpg</imageurl>
+	</category>
+	<category>
+		<id>oth</id>
+		<catname>Others</catname>
+		<imageurl>http://icons.iconarchive.com/icons/dakirby309/windows-8-metro/256/Other-Origins-Metro-icon.png</imageurl>
 	</category>
 </categories>
