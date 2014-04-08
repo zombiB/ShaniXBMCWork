@@ -25,16 +25,18 @@
 - Some missing streams
 [B]Version 1.7.2[/B]
 - Teledunet streams back and one almaghribia
-[B]Version 2.0.1/B]
+[B]Version 2.0.1[/B]
 - Categories and sources support
-[B]Version 2.1.0/B]
+[B]Version 2.1.0[/B]
 - Categories and sources support- Released
-[B]Version 2.1.1/B]
+[B]Version 2.1.1[/B]
 - Andriod issue
-[B]Version 2.4.0/B]
+[B]Version 2.4.0[/B]
 - GenericXML implementation, now users could publish their urls
 
 [B]Version 2.5.0/B]
 - Now support login for livetv
-[B]Version 2.5.1/B]
+[B]Version 2.5.1[/B]
 - PlayFirstChannels support
+[B]Version 2.5.2[/B]
+- Name display when playing generic

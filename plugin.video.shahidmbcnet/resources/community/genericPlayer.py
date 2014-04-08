@@ -16,9 +16,12 @@ def PlayStream(sourceSoup, urlSoup, name, url):
 	#url = urlSoup.url.text
 	title=''
 	link=''
+	sc=''
 	try:
 		title=urlSoup.item.title.text
+		
 		link=urlSoup.item.link.text
+		sc=sourceSoup.sname.text
 	except: pass
 	if link=='':
 		time = 2000  #in miliseconds
@@ -40,7 +43,7 @@ def PlayStream(sourceSoup, urlSoup, name, url):
 	line1="Resource found,playing now."
 	xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(__addonname__,line1, time, __icon__))
 
-	name+='-'+title
+	name+='-'+sc+':'+title
 	print 'liveLink',liveLink
 	listitem = xbmcgui.ListItem( label = str(name), iconImage = "DefaultVideo.png", thumbnailImage = xbmc.getInfoImage( "ListItem.Thumb" ), path=liveLink )
 	xbmc.Player().play( liveLink,listitem)
