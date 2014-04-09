@@ -10,3 +10,5 @@
 - Fixed Favourite bug, now you can add links to favourites and run it
 [B]Version 1.1.4[/B]
 - Gotham dependencies
+[B]Version 1.2.0[/B]
+- First implementation of f4m version 2 format

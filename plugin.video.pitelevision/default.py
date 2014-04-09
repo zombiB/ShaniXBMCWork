@@ -5,12 +5,18 @@ import HTMLParser
 import xbmcaddon
 from dirCreator import parseList;
 from TurlLib import getURL;
-
+import thread
+import time
+from f4mDownloader import F4MDownloader
 from operator import itemgetter
 import traceback
-
+import os
+import sys
+import traceback
+import threading
 
 REMOTE_DBG=False;
+stopPlaying=threading.Event()
 if REMOTE_DBG:
     # Make pydev debugger works for auto reload.
     # Note pydevd module need to be copied in XBMC\system\python\Lib\pysrc
@@ -42,12 +48,12 @@ def get_params():
                 
     return param
 
-
-__addon__       = xbmcaddon.Addon()
-__addonname__   = __addon__.getAddonInfo('name')
-__icon__        = __addon__.getAddonInfo('icon')
-addon_id = 'plugin.video.dramasonline'
+addon_id = 'plugin.video.pitelevision'
 selfAddon = xbmcaddon.Addon(id=addon_id)
+__addonname__   = selfAddon.getAddonInfo('name')
+__icon__        = selfAddon.getAddonInfo('icon')
+DIR_USERDATA   = xbmc.translatePath(selfAddon.getAddonInfo('profile'))#selfAddon["profile"])
+
   
  
 mainurl='http://www.pitelevision.com'
@@ -139,8 +145,8 @@ def PlayShowLink ( url, name ):
         urlToPlay=list["url"]
         if 'youtube' not in urlToPlay:
             line1 = "Playing Video"
-            time=2000
-            xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(__addonname__,line1, time, __icon__))
+            timeWait=2000
+            xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(__addonname__,line1, timeWait, __icon__))
     
             playlist = xbmc.PlayList(1)
             playlist.clear()
@@ -152,8 +158,8 @@ def PlayShowLink ( url, name ):
             xbmcPlayer.play(playlist)
         else:
             line1 = "Playing Youtube Video"
-            time=2000
-            xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(__addonname__,line1, time, __icon__))
+            timeWait=2000
+            xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(__addonname__,line1, timeWait, __icon__))
             youtubecode= match =re.findall('watch\?v=(.*)', urlToPlay)
             #print 'youtubecode',youtubecode
             youtubecode=youtubecode[0]
@@ -163,14 +169,14 @@ def PlayShowLink ( url, name ):
             xbmc.executebuiltin("xbmc.PlayMedia("+uurl+")")
     else:
         line1='Unable to find url'
-        time=2000
-        xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(__addonname__,line1, time, __icon__))
+        timeWait=2000
+        xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(__addonname__,line1, timeWait, __icon__))
     return
     
 def getShowUrl(url):
     line1="Fetching URL";
-    time=2000
-    xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(__addonname__,line1, time, __icon__))
+    timeWait=2000
+    xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(__addonname__,line1, timeWait, __icon__))
 
     link=getURL(url).result;
     match= re.findall('<param name="flashvars" .*?vid=(.*?)&amp*.?pid=(.*?)"', link)
@@ -207,16 +213,18 @@ def getShowUrl(url):
 
 def getLiveUrl(url):
     line1="Fetching Live URL";
-    time=2000
-    xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(__addonname__,line1, time, __icon__))
+    timeWait=2000
+    xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(__addonname__,line1, timeWait, __icon__))
 
     #print 'fetching url',url
     link=getURL(url).result;
-    match= re.findall('flashvars="src=(.*?)\.f', link)
+    match= re.findall('flashvars="src=(.*?)&', link)
     #print 'match',match
     url=""
     if len(match)>0:
-        url=match[0]+'.m3u8'
+
+         url=match[0]#+'.f4m'#url=match[0]+'.m3u8'
+         #url='rtsp://202.125.131.170:554/pitelevision/starsports41'
     #print 'url',url
     return {'url':url}
     
@@ -227,27 +235,82 @@ def getLiveUrl(url):
 
 def PlayLiveLink ( url,name ): 
     urlDic=getLiveUrl(url)
-  
+    #urlDic='rtsp://202.125.131.170:554/pitelevision/starsports41'	
     if not urlDic==None:
         line1="Url found, Preparing to play";
-        time=2000
-        xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(__addonname__,line1, time, __icon__))
+        timeWait=2000
+        xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(__addonname__,line1, timeWait, __icon__))
 
         playfile=urlDic["url"]
         #progress.update( 100, "", "Almost done..", "" )
         #print 'playfile',playfile
-        listitem = xbmcgui.ListItem( label = str(name), iconImage = "DefaultVideo.png", thumbnailImage = xbmc.getInfoImage( "ListItem.Thumb" ) )
-        print "playing stream name: " + str(name) 
-        xbmc.Player( xbmc.PLAYER_CORE_AUTO ).play( playfile, listitem)
+        #listitem = xbmcgui.ListItem( label = str(name), iconImage = "DefaultVideo.png", thumbnailImage = xbmc.getInfoImage( "ListItem.Thumb" ) )
+        #print "playing stream name: " + str(name) 
+        #xbmc.Player( xbmc.PLAYER_CORE_AUTO ).play( playfile, listitem)
+        print 'playfile',playfile
+        playF4mLink(playfile,name)
     else:
           line1="Url not found";
-          time=2000
-          xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(__addonname__,line1, time, __icon__))
+          timeWait=2000
+          xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(__addonname__,line1, timeWait, __icon__))
 
     return
-
-
+def playF4mLink(url,name):
+	print "URL: " + url
 	
+	listitem = xbmcgui.ListItem("myfile")
+	downloader=F4MDownloader()
+	runningthread=thread.start_new_thread(downloader.download,('myfile.flv',url,stopPlaying,))
+	progress = xbmcgui.DialogProgress()
+	progress.create('Starting Stream')
+	stream_delay = 10
+
+	xbmc.sleep(stream_delay*1000)
+	mplayer = MyPlayer()
+
+	filename =downloader.outputfile;#DIR_USERDATA + "/myfile.flv"
+	progress.close()
+	mplayer.play(filename,listitem)
+	while True:
+		xbmc.log('Sleeping...')
+		xbmc.sleep(1000)
+		if stopPlaying.isSet():
+			break;
+		#if  not mplayer.isPlaying():
+		#	break
+        
+	#runningthread.event.set()
+	print 'Job done'
+	#xbmc.sleep(3)
+	#while xbmc.Player().isPlaying():
+	#	print "Playing"
+	#	xbmc.sleep(100)
+	try:    
+		os.remove(filename)
+	except: pass
+	return
+
+    
+
+class MyPlayer (xbmc.Player):
+    def __init__ (self):
+        xbmc.Player.__init__(self)
+
+    def play(self, url, listitem):
+        print 'Now im playing... %s' % url
+        stopPlaying.clear()
+        xbmc.Player(xbmc.PLAYER_CORE_DVDPLAYER).play(url, listitem)
+    def onPlayBackEnded( self ):
+        # Will be called when xbmc stops playing a file
+        print "seting event in onPlayBackEnded " 
+        stopPlaying.set();
+        print "stop Event is SET" 
+    def onPlayBackStopped( self ):
+        # Will be called when user stops xbmc playing a file
+        print "seting event in onPlayBackStopped " 
+        stopPlaying.set();
+        print "stop Event is SET" 
+
 VIEW_MODES = {
     'thumbnail': {
         'skin.confluence': 500,
