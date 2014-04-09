@@ -649,7 +649,7 @@ def addCommunityChannels(catType):
 		chName=channel[1]
 		chUrl = channel[0]
 		imageUrl = channel[2]
- 		addDir(chName ,chUrl ,16,imageUrl, False, False,isItFolder=True)		#name,url,mode,icon
+ 		addDir(chName ,chUrl ,16,imageUrl, False, False,isItFolder=False)		#name,url,mode,icon
 	return
 
 	
