@@ -237,6 +237,8 @@ class F4MDownloader():
         try:
             stopDownloading=stopPlaying
             print 'download_info_dict started'
+            if not os.path.exists(downloadPath):
+                os.makedirs(downloadPath)
             self.outputfile = os.path.join(downloadPath, filename)
             man_url = url
             print 'Downloading f4m manifest'
