@@ -20,6 +20,16 @@
 		</item>
 	</streaminginfo>
 
+        	<streaminginfo>
+        
+		<cname>Echorouk Tv</cname>
+        <item>
+    <title>Echorouk Tv</title>
+<link>rtmp://live.echoroukonline.com/live/EchoroukTV</link>
+<thumbnail></thumbnail>
+</item>
+</streaminginfo>
+
     	<streaminginfo>
         
 		<cname>Al Baghdadia Drama</cname>
