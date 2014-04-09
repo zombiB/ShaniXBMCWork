@@ -1,5 +1,14 @@
 <channels>
 	<channel>
+		<cname>Al Magharibia</cname>
+		<imageurl>http://almagharibia.tv/neue/web/assets/almagharibia.png</imageurl>
+		<enabled>True</enabled>
+		<assignedcategory>
+			<category>magreb</category>
+            <category>news</category>
+		</assignedcategory>
+	</channel>
+	<channel>
 		<cname>Aghani</cname>
 		<imageurl>http://www.lyngsat-logo.com/hires/aa/aghani_aghani_tv_lb.png</imageurl>
 		<enabled>True</enabled>

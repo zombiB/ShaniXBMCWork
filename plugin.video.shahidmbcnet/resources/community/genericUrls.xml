@@ -40,5 +40,14 @@
 			<link>rtmp://38.96.148.206/Melody/ playpath=MArabiaWeb swfUrl=http://p.jwpcdn.com/6/7/jwplayer.flash.swf pageUrl=http://freetv247.com/content/melody-hits-channel live=1 swfVfy=1 timeout=15</link>
 		</item>
 	</streaminginfo>
+	<streaminginfo>
+		<cname>Al Magharibia</cname>
+
+		<item>
+			<title>Al Magharibia (Direct)</title>
+			<thumbnail>http://almagharibia.tv/neue/web/assets/almagharibia.png</thumbnail>
+			<link>rtmp://37.130.230.45/livepkgr/ playpath=livestream swfUrl=http://p.jwpcdn.com/6/8/jwplayer.flash.swf live=true timeout=15 pageUrl=http://almagharibia.tv/livestream</link>
+		</item>
+	</streaminginfo>
 
 </streamingInfos>
