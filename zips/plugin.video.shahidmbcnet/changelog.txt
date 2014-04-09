@@ -40,3 +40,5 @@
 - PlayFirstChannels support
 [B]Version 2.5.2[/B]
 - Name display when playing generic
+[B]Version 2.5.3[/B]
+- Name display when playing generic
