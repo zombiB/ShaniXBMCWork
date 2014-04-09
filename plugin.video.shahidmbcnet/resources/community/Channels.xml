@@ -1,4 +1,15 @@
 <channels>
+
+	<channel>
+		<cname>Al Baghdadia Drama</cname>
+		<imageurl>http://albaghdadiagroup.com/modules/mod_image_show_gk4/cache/demo.image_show.P-b2gk-is-93.png</imageurl>
+		<enabled>True</enabled>
+		<assignedcategory>
+			<category>Iraq</category>
+            <category>drama</category>
+		</assignedcategory>
+	</channel>
+    
 	<channel>
 		<cname>Al Magharibia</cname>
 		<imageurl>http://almagharibia.tv/neue/web/assets/almagharibia.png</imageurl>
@@ -542,7 +553,7 @@
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>news</category>
-			<category>iraq</category>
+			<category>Iraq</category>
 		</assignedcategory>
 	</channel>
 	<channel>
@@ -2170,7 +2181,7 @@
 		<imageurl>https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRjGgdfV4kyvymLezXKK1klGWfrbiDJvYmQVh7p6-1nxHZWRoSG</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
-			<category>iraq</category>
+			<category>Iraq</category>
 		</assignedcategory>
 	</channel>
 	<channel>
@@ -2178,7 +2189,7 @@
 		<imageurl>https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB2wvyyL0np8oL_HJisgfzZ1aGpQHn7OzxGMcN4YFiyRBGesIb6Q</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
-			<category>iraq</category>
+			<category>Iraq</category>
 		</assignedcategory>
 	</channel>
 	<channel>
@@ -2186,7 +2197,7 @@
 		<imageurl>http://3.bp.blogspot.com/-g_BZ0xkQMAo/UuNmALNtPnI/AAAAAAAAA3o/D2_QpijiMPI/s1600/al_iraqya.png</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
-			<category>iraq</category>
+			<category>Iraq</category>
 		</assignedcategory>
 	</channel>
 	<channel>

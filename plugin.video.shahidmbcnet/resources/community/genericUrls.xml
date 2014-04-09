@@ -20,7 +20,15 @@
 		</item>
 	</streaminginfo>
 
-
+    	<streaminginfo>
+        
+		<cname>Al Baghdadia Drama</cname>
+        <item>
+    <title>Al Baghdadia 2</title>
+<link>rtmp://cp44832.live.edgefcs.net/live playpath=albag2_500@90978 swfUrl=http://player.longtailvideo.com/player.swf live=true timeout=15 pageUrl=http://freetv247.com/tags/al-baghdadia-2-live-tv</link>
+<thumbnail>http://a1.mzstatic.com/us/r1000/107/Purple/cf/aa/5c/mzl.bjffmkul.jpg</thumbnail>
+</item>
+</streaminginfo>
 	<streaminginfo>
 		<cname>Melody Arabia</cname>
 
