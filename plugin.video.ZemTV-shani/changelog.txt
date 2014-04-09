@@ -32,3 +32,5 @@
 - Small bug in next page
 [B]Version 2.2.9[/B]
 - change on the website reflected in the addon
+[B]Version 2.3.0[/B]
+- Gotham dependencies
