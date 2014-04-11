@@ -10,6 +10,9 @@ import xbmcaddon
 import xbmc
 import urllib2
 import traceback
+import urlparse
+import posixpath
+import re
 
 #import youtube_dl
 #from youtube_dl.utils import *
@@ -18,7 +21,7 @@ selfAddon = xbmcaddon.Addon(id=addon_id)
 __addonname__   = selfAddon.getAddonInfo('name')
 __icon__        = selfAddon.getAddonInfo('icon')
 downloadPath   = xbmc.translatePath(selfAddon.getAddonInfo('profile'))#selfAddon["profile"])
-
+F4Mversion=''
 
 class FlvReader(io.BytesIO):
     """
@@ -64,11 +67,12 @@ class FlvReader(io.BytesIO):
             quality_modifiers.append(quality_modifier)
         segment_run_count = self.read_unsigned_int()
         segments = []
+        print 'segment_run_count',segment_run_count
         for i in range(segment_run_count):
             first_segment = self.read_unsigned_int()
             fragments_per_segment = self.read_unsigned_int()
             segments.append((first_segment, fragments_per_segment))
-
+        print 'segments',segments
         return {'version': version,
                 'quality_segment_modifiers': quality_modifiers,
                 'segment_run': segments,
@@ -84,6 +88,7 @@ class FlvReader(io.BytesIO):
             mod = self.read_string()
             quality_entries.append(mod)
         fragments_count = self.read_unsigned_int()
+        print 'fragments_count',fragments_count
         fragments = []
         for i in range(fragments_count):
             first = self.read_unsigned_int()
@@ -127,6 +132,7 @@ class FlvReader(io.BytesIO):
         drm_data = self.read_string()
         metadata = self.read_string()
         segments_count = self.read_unsigned_char()
+        print 'segments_count11',segments_count
         segments = []
         for i in range(segments_count):
             box_size, box_type, box_data = self.read_box_info()
@@ -134,6 +140,7 @@ class FlvReader(io.BytesIO):
             segment = FlvReader(box_data).read_asrt()
             segments.append(segment)
         fragments_run_count = self.read_unsigned_char()
+        print 'fragments_run_count11',fragments_run_count
         fragments = []
         for i in range(fragments_run_count):
             # This info is only useful for the player, it doesn't give more info 
@@ -162,23 +169,87 @@ class FlvReader(io.BytesIO):
 def read_bootstrap_info(bootstrap_bytes):
     return FlvReader(bootstrap_bytes).read_bootstrap_info()
 
-def build_fragments_list(boot_info):
+def build_fragments_list(boot_info, startFromFregment=None):
     """ Return a list of (segment, fragment) for each fragment in the video """
     res = []
     segment_run_table = boot_info['segments'][0]
     # I've only found videos with one segment
-    segment_run_entry = segment_run_table['segment_run'][0]
-    n_frags = segment_run_entry[1]
-    fragment_run_entry_table = boot_info['fragments'][0]['fragments']
-    frag_entry_index = 0
-    first_frag_number = fragment_run_entry_table[0]['first']
-    for (i, frag_number) in zip(range(1, n_frags+1), itertools.count(first_frag_number)):
-        res.append((1, frag_number))
+    #if len(segment_run_table['segment_run'])>1:
+    #    segment_run_table['segment_run']=segment_run_table['segment_run'][-2:] #pick latest
+    #totalFrags=sum(segment_run_table['segment_run'][1])
+    
+    frag_start = boot_info['fragments'][0]['fragments']
+    first_frag_number=frag_start[0]['first']
+    endfragment=0
+    segment_to_start=None
+    for current in range (len(segment_run_table['segment_run'])):
+        seg,fregCount=segment_run_table['segment_run'][current]
+        frag_end=first_frag_number+fregCount-1
+        segment_run_table['segment_run'][current]=(seg,fregCount,first_frag_number,frag_end)
+        if (not startFromFregment==None) and startFromFregment>=first_frag_number and startFromFregment<=frag_end:
+            segment_to_start=current
+        first_frag_number+=fregCount
+    #if we have no index then take the last segment
+    if segment_to_start==None:
+        segment_to_start=len(segment_run_table['segment_run'])-1
+        if len(segment_run_table['segment_run'])>2:
+            segment_to_start=len(segment_run_table['segment_run'])-2;
+        if len(boot_info['fragments'][0]['fragments'])>2: #go bit back
+            startFromFregment= boot_info['fragments'][0]['fragments'][-2]['first']
+        if len(boot_info['fragments'][0]['fragments'])>10: #go little bit back
+            startFromFregment= boot_info['fragments'][0]['fragments'][-10]['first']
+        
+    print 'segment_to_start',segment_to_start
+    for currentIndex in range (segment_to_start,len(segment_run_table['segment_run'])):
+        currentSegment=segment_run_table['segment_run'][currentIndex]
+        print 'currentSegment',currentSegment
+        (seg,fregCount,frag_start,frag_end)=currentSegment
+        print 'startFromFregment',startFromFregment, 
+        if (not startFromFregment==None) and startFromFregment>=frag_start and startFromFregment<=frag_end:
+            frag_start=startFromFregment
+        for currentFreg in range(frag_start,frag_end+1):
+             res.append((seg,currentFreg ))
     return res
 
+    
+    #totalFrags=sum(j for i, j in segment_run_table['segment_run'])
+    #lastSegment=segment_run_table['segment_run'][-1]
+    #lastSegmentStart= lastSegment[0]
+    #lastSegmentFragCount = lastSegment[1]
+    #print 'totalFrags',totalFrags
+    
+    #first_frag_number = frag_start[0]['first']
+    #startFragOfLastSegment= first_frag_number +totalFrags - lastSegmentFragCount
+    
+    #for (i, frag_number) in zip(range(1, lastSegmentFragCount+1), itertools.count(startFragOfLastSegment)):
+    #    res.append((lastSegmentStart,frag_number )) #this was i, i am using first segement start
+    #return res
+    
+    #segment_run_entry = segment_run_table['segment_run'][0]
+    #print 'segment_run_entry',segment_run_entry,segment_run_table
+    #n_frags = segment_run_entry[1]
+    #startingPoint = segment_run_entry[0]
+    #fragment_run_entry_table = boot_info['fragments'][0]['fragments']
+    #frag_entry_index = 0
+    #first_frag_number = fragment_run_entry_table[0]['first']
 
+    #first_frag_number=(startingPoint*n_frags) -(n_frags)+1
+    #print 'THENUMBERS',startingPoint,n_frags,first_frag_number
+    #for (i, frag_number) in zip(range(1, n_frags+1), itertools.count(first_frag_number)):
+    #    res.append((startingPoint,frag_number )) #this was i, i am using first segement start
+    #return res
+
+def join(base,url):
+    join = urlparse.urljoin(base,url)
+    url = urlparse.urlparse(join)
+    path = posixpath.normpath(url[2])
+    return urlparse.urlunparse(
+        (url.scheme,url.netloc,path,url.params,url.query,url.fragment)
+        )
+        
 def _add_ns(prop):
-    return '{http://ns.adobe.com/f4m/2.0}%s' % prop
+    print 'F4Mversion',F4Mversion
+    return '{http://ns.adobe.com/f4m/%s}%s' %(F4Mversion, prop)
 
 
 #class ReallyQuietDownloader(youtube_dl.FileDownloader):
@@ -190,25 +261,42 @@ class F4MDownloader():
     A downloader for f4m manifests or AdobeHDS.
     """
     outputfile =''
-    stopDownloading=None
+    #stopDownloading=None
     def to_screen(self, msg, prefix=False, *args, **kargs):
         if prefix:
             msg = u'[download] %s' % msg
         super(F4MDownloader, self).to_screen(msg, *args, **kargs)
     
     def downloadIntoFile(self,fileName=None, url=''):
+        try:
         
-        req = urllib2.Request(url)
-        req.add_header('User-Agent','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36')
-        response = urllib2.urlopen(req)
-        data=response.read()
-        if not fileName:
-            return data
-        if len(data)>0:
-            with open(os.path.join(downloadFolder, fname), "wb") as filewriter:
-                filewriter.write(data)
-            return True
-        return False
+            if self.proxy:
+                #proxy = "61.233.25.166:80"
+                proxy = self.proxy
+
+                proxies = {"http":"http://%s" % proxy}
+                print 'proxies',proxies
+
+                proxy_support = urllib2.ProxyHandler(proxies)
+                opener = urllib2.build_opener(proxy_support, urllib2.HTTPHandler())#debuglevel=1))
+                urllib2.install_opener(opener)
+
+            req = urllib2.Request(url)
+            req.add_header('User-Agent','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36')
+            response = urllib2.urlopen(req)
+            data=response.read()
+            print 'datalen',len(data)
+            if not fileName:
+                return data
+            if len(data)>0:
+                with open(os.path.join(downloadFolder, fname), "wb") as filewriter:
+                    filewriter.write(data)
+                return True
+            return False
+        except:
+            print 'Error in downloadIntoFile'
+            traceback.print_exc()
+            return None
 
     def _write_flv_header(self, stream, metadata):
         """Writes the FLV header and the metadata to stream"""
@@ -227,13 +315,17 @@ class F4MDownloader():
         # produced by AdobeHDS.php (https://github.com/K-S-V/Scripts)
         stream.write(b'\x00\x00\x01\x73')
 
-    def download(self, filename, url, stopPlaying):
+    def download(self, filename, url, stopPlaying, proxy=None):
         try:
+            self.proxy = proxy
             self.downloadInternal( filename, url, stopPlaying)
+            os.remove(self.outputfile)
         except: 
             traceback.print_exc()
+        return
         
     def downloadInternal(self, filename, url, stopPlaying):
+        global F4Mversion
         try:
             stopDownloading=stopPlaying
             print 'download_info_dict started'
@@ -245,34 +337,57 @@ class F4MDownloader():
             manifest = self.downloadIntoFile('',man_url)#.read()
             #self.report_destination(filename)
             #dl = ReallyQuietDownloader(self.ydl, {'continuedl': True, 'quiet': True, 'noprogress':True})
-
+            version_fine="xmlns=\".*?\/([0-9].*?)\""
+            F4Mversion =re.findall(version_fine, manifest)[0]
+            print F4Mversion,_add_ns('media')
             doc = etree.fromstring(manifest)
             formats = [(int(f.attrib.get('bitrate', -1)),f) for f in doc.findall(_add_ns('media'))]
             print 'formats',formats
             formats = sorted(formats, key=lambda f: f[0])
             rate, media = formats[0]
-            base_url = man_url+media.attrib['url']#compat_urlparse.urljoin(man_url,media.attrib['url'])
+            mediaUrl=media.attrib['url']
+            print 'mediaUrl',mediaUrl
+            base_url = join(man_url,mediaUrl)#compat_urlparse.urljoin(man_url,media.attrib['url'])
+            if mediaUrl.endswith('/') and not base_url.endswith('/'):
+                    base_url += '/'
             print 'base_url',base_url,  doc.findall(_add_ns('bootstrapInfo'))[0]
             bootstrap=doc.findall(_add_ns('bootstrapInfo'))[0]
             print 'bootstrap',bootstrap
-            baseURl=url[0:url.rindex('/')]
-            base_url = baseURl+'/'+media.attrib['url']#compat_urlparse.urljoin(man_url,media.attrib['url'])
-            #base_url=baseURl
-            queryString = url.split('?')[-1]
-            bootstrapURL = baseURl+'/'+bootstrap.attrib['url']#+'?'+queryString
-            print 'bootstrapData',bootstrapURL
-            bootStrapData =self.downloadIntoFile('',bootstrapURL)
-            print 'bootstrapData',len(bootStrapData)
-            bootstrap = bootStrapData#base64.b64decode(bootStrapData)#doc.findall(_add_ns('bootstrapInfo'))[0].text)
-            print 'boot stream read done'
+            
+
+            bootstrapURL1=''
+            try:
+                bootstrapURL1=bootstrap.attrib['url']
+            except: pass
+            
+            #bootstrapURL=''
+            #if bootstrapURL1=='':
+            #    bootstrap=base64.b64decode(doc.findall(_add_ns('bootstrapInfo'))[0].text)
+            #else:
+            #    bootstrapURL = join(man_url,bootstrap.attrib['url'])#+'?'+queryString
+            #    print 'bootstrapData',bootstrapURL
+            #    bootStrapData =self.downloadIntoFile('',bootstrapURL)
+            #    print 'bootstrapData',len(bootStrapData)
+            #    bootstrap = bootStrapData#base64.b64decode(bootStrapData)#doc.findall(_add_ns('bootstrapInfo'))[0].text)
+            #    print 'boot stream read done'
+            
+            #boot_info = read_bootstrap_info(bootstrap)
+            #print 'boot_info  read done',boot_info
+            #fragments_list = build_fragments_list(boot_info)
+            #total_frags = len(fragments_list)
+            #print 'fragments_list',fragments_list
+            bootstrapURL=''
+            bootstrapData=None
+            if bootstrapURL1=='':
+                bootstrapData=base64.b64decode(doc.findall(_add_ns('bootstrapInfo'))[0].text)
+            else:
+                bootstrapURL = join(man_url,bootstrap.attrib['url'])#+'?'+queryString
+                print 'bootstrapURL',bootstrapURL
+            
+            bootstrap, boot_info, fragments_list,total_frags=self.readBootStrapInfo(bootstrapURL,bootstrapData,stopDownloading)
+
             metadata = base64.b64decode(media.find(_add_ns('metadata')).text)
             print 'metadata stream read done'
-            boot_info = read_bootstrap_info(bootstrap)
-            print 'boot_info  read done'
-            fragments_list = build_fragments_list(boot_info)
-            total_frags = len(fragments_list)
-            print 'fragments_list',fragments_list
-
 
             tmpfilename = filename#self.temp_name(filename)
             #(dest_stream, tmpfilename) = sanitize_open(tmpfilename, 'wb')
@@ -301,18 +416,27 @@ class F4MDownloader():
             #dl.add_progress_hook(frag_progress_hook)
 
             frags_filenames = []
-            for (seg_i, frag_i) in fragments_list:
+            seqNumber=0
+            live=True #todo find if its Live or not
+            #for (seg_i, frag_i) in fragments_list:
+            #for seqNumber in range(0,len(fragments_list)):
+            while True:
                 if stopDownloading.isSet():
                     break
+                seg_i, frag_i=fragments_list[seqNumber]
+                seqNumber+=1
+
                 name = u'Seg%d-Frag%d' % (seg_i, frag_i)
+                print 'base_url',base_url,name
                 url = base_url + name
-                print(url)
+                print(url),base_url,name
                 frag_filename = u'%s-%s' % (tmpfilename, name)
                 #success = dl._do_download(frag_filename, {'url': url})
                 success = self.downloadIntoFile('', url)
                 if not success:
                     return False
                 #with open(frag_filename, 'rb') as down:
+                
                 if 1==1:
                     down_data = success#down.read()
                     reader = FlvReader(down_data)
@@ -333,6 +457,17 @@ class F4MDownloader():
                             # dest_stream.write(b'\x00')
                             # dest_stream.write(mdat_reader.read())
                             # break
+                if live and seqNumber==len(fragments_list):
+                    seqNumber=0
+                    #todo if the url not available then get manifest and get the data again
+                    total_frags=None
+                    try:
+                        bootstrap, boot_info, fragments_list,total_frags=self.readBootStrapInfo(bootstrapURL,None,stopDownloading,updateMode=True,lastSegment=seg_i, lastFragement=frag_i)
+                    except: pass
+                    if total_frags==None:
+                        break
+                    #read teh data again and let the loop continue
+                    
                 #frags_filenames.append(frag_filename)
             dest_stream.close()
 
@@ -341,7 +476,7 @@ class F4MDownloader():
             #self.try_rename(tmpfilename, filename)
             #for frag_file in frags_filenames:
             #    os.remove(frag_file)
-            os.remove(self.outputfile)
+            #os.remove(self.outputfile)
             #fsize = os.path.getsize(encodeFilename(filename))
             #self._hook_progress({
             #        'downloaded_bytes': fsize,
@@ -353,6 +488,41 @@ class F4MDownloader():
             del self.frag_counter
         except:
             traceback.print_exc()
-        
-        
+            return
+    def readBootStrapInfo(self,bootstrapUrl,bootStrapData,stopDownloading, updateMode=False, lastFragement=None,lastSegment=None):
+
+        try:
+            retries=0
+            while retries<=30:
+                if stopDownloading.isSet():
+                    break
+                if not bootStrapData:
+                    bootStrapData =self.downloadIntoFile('',bootstrapUrl)
+                if bootStrapData==None:
+                    retries+=1
+                    continue
+                print 'bootstrapData',len(bootStrapData)
+                bootstrap = bootStrapData#base64.b64decode(bootStrapData)#doc.findall(_add_ns('bootstrapInfo'))[0].text)
+                print 'boot stream read done'
+                boot_info = read_bootstrap_info(bootstrap)
+                print 'boot_info  read done',boot_info
+                newFragement=None
+                if not lastFragement==None:
+                    newFragement=lastFragement+1
+                fragments_list = build_fragments_list(boot_info,newFragement)
+                total_frags = len(fragments_list)
+                print 'fragments_list',fragments_list, newFragement
+                print lastSegment
+                if len(fragments_list)==0 or (  newFragement and newFragement>fragments_list[0][1]):
+                    #todo check lastFragement to see if we got valid data
+                    print 'retrying......'
+                    bootStrapData=None
+                    retries+=1
+                    xbmc.sleep(4000)
+                    continue
+                return bootstrap, boot_info, fragments_list,total_frags
+        except:
+            traceback.print_exc()
+    
+
         

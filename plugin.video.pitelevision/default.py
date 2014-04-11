@@ -68,7 +68,7 @@ def getMainMenu():
     list=[]
     list.append({'name':'Video On Demand','url':'http://www.pitelevision.com/index.php?option=com_allvideoshare&view=category&slg=on-demand&orderby=default&lang=en','mode':'VOD'})
     list.append({'name':'All Live Channels','url':'http://www.pitelevision.com/index.php?option=com_allvideoshare&view=category&slg=all-channels&orderby=default&Itemid=142&lang=en','mode':'ALLC'})
-    list.append({'name':'Settings','url':'Settings','mode':'Settings'})
+    list.append({'name':'Settings','url':'Settings','mode':'Settings','isFolder':False})
     #print list;
     return list;
 
@@ -96,7 +96,10 @@ def getVODList(Fromurl,mode):
 
 	
 def ShowSettings(Fromurl):
-	selfAddon.openSettings()
+	#playF4mLink('http://bbcfmhds.vo.llnwd.net/hds-live/livepkgr/_definst_/bbc1/bbc1_480.f4m','mymovie')
+	#playF4mLink('http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/bbc1/bbc1_1500.f4m','mymovie')
+	#return
+    selfAddon.openSettings()
 
 
 def AddEnteries(Fromurl,PageNumber,mode):
@@ -234,6 +237,10 @@ def getLiveUrl(url):
 #flashvars="src=(.*?)\.f
 
 def PlayLiveLink ( url,name ): 
+    line1="fetching URL";
+    timeWait=2000
+    xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(__addonname__,line1, timeWait, __icon__))
+
     urlDic=getLiveUrl(url)
     #urlDic='rtsp://202.125.131.170:554/pitelevision/starsports41'	
     if not urlDic==None:
@@ -248,43 +255,65 @@ def PlayLiveLink ( url,name ):
         #print "playing stream name: " + str(name) 
         #xbmc.Player( xbmc.PLAYER_CORE_AUTO ).play( playfile, listitem)
         print 'playfile',playfile
-        playF4mLink(playfile,name)
+        proxy=getProxy()
+        if proxy:
+            line1="using proxy %s"%proxy;
+            timeWait=2000
+            xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(__addonname__,line1, timeWait, __icon__))
+        playF4mLink(playfile,name,proxy)
     else:
           line1="Url not found";
           timeWait=2000
           xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(__addonname__,line1, timeWait, __icon__))
 
     return
-def playF4mLink(url,name):
+    
+def getProxy():
+    isproxy=selfAddon.getSetting( "isProxyEnabled" ) 
+    proxy=None
+    if isproxy=="true":
+        is_custom_proxy=selfAddon.getSetting( "isCustomProxy" )
+        if is_custom_proxy=="true":
+            proxy="%s:%s"%(selfAddon.getSetting( "proxyName" ),selfAddon.getSetting( "proxyPort" ))
+        else:
+            proxy=selfAddon.getSetting( "selectedProxy" )
+    return proxy
+
+
+def playF4mLink(url,name,proxy=None):
 	print "URL: " + url
 	
 	listitem = xbmcgui.ListItem("myfile")
 	downloader=F4MDownloader()
-	runningthread=thread.start_new_thread(downloader.download,('myfile.flv',url,stopPlaying,))
+	runningthread=thread.start_new_thread(downloader.download,('myfile.flv',url,stopPlaying,proxy,))
 	progress = xbmcgui.DialogProgress()
 	progress.create('Starting Stream')
+    
 	stream_delay = 10
-
-	xbmc.sleep(stream_delay*1000)
+	if proxy:
+		stream_delay+=6
+	cancelled=False
+	for i in range(stream_delay):
+		percent=(i*100/stream_delay)
+		print 'percent',percent
+		progress.update( percent, "", 'Trying to cache data...', "" )
+		if progress.iscanceled():
+			stopPlaying.set()
+			cancelled=True
+			break
+		xbmc.sleep(1000)
 	mplayer = MyPlayer()
 
-	filename =downloader.outputfile;#DIR_USERDATA + "/myfile.flv"
-	progress.close()
-	mplayer.play(filename,listitem)
-	while True:
-		xbmc.log('Sleeping...')
-		xbmc.sleep(1000)
-		if stopPlaying.isSet():
-			break;
-		#if  not mplayer.isPlaying():
-		#	break
-        
-	#runningthread.event.set()
+	if not cancelled:
+		filename =downloader.outputfile;#DIR_USERDATA + "/myfile.flv"
+		progress.close()
+		mplayer.play(filename,listitem)
+		while True:
+			xbmc.log('Sleeping...')
+			xbmc.sleep(1000)
+			if stopPlaying.isSet():
+				break;
 	print 'Job done'
-	#xbmc.sleep(3)
-	#while xbmc.Player().isPlaying():
-	#	print "Playing"
-	#	xbmc.sleep(100)
 	try:    
 		os.remove(filename)
 	except: pass
@@ -409,7 +438,7 @@ if (not mode==None) and mode>1:
         #print 'Container.SetViewMode(%d)' % view_mode_id
         xbmc.executebuiltin('Container.SetViewMode(%d)' % view_mode_id)
    
-if not (mode=='PlayVOD' or  mode=='PlayLive'): 
+if not (mode=='PlayVOD' or  mode=='PlayLive' or mode=='Settings'): 
     xbmcplugin.endOfDirectory(int(sys.argv[1]))
 
 

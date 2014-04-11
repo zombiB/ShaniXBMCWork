@@ -16,3 +16,5 @@
 - Small bug
 [B]Version 1.2.2[/B]
 - repeat bug
+[B]Version 1.3.0[/B]
+- Proxy support because the channels are not available outside Pakistan

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+    <category label="32010">
+    
+    <setting label="32011" type="bool"   id="isProxyEnabled" default="false"/>
+    <setting label="32012" type="labelenum" id="selectedProxy" values="121.52.159.236:8080" default="121.52.159.236:8080" enable="!eq(-1,false))" />
+    <setting type="sep"/>
+    <setting label="32013" type="bool"   id="isCustomProxy" default="false" enable="!eq(-3,false)"/>
+    <setting label="32014" type="text"   id="proxyName" default=""  enable="!eq(-1,false)"  />
+    <setting label="32015" type="text"   id="proxyPort" default=""  enable="!eq(-2,false)"  />  
+   
+    
+     </category>
+
+</settings>
