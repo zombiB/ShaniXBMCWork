@@ -118,6 +118,14 @@
 		</assignedcategory>
 	</channel>
 	<channel>
+		<cname>Al Resoul TV</cname>
+		<imageurl>http://www.lyngsat-logo.com/logo/tv/aa/al_resoul_tv.png</imageurl>
+		<enabled>True</enabled>
+		<assignedcategory>
+			<category>islam</category>
+		</assignedcategory>
+	</channel>
+	<channel>
 		<cname>Al Manar</cname>
 		<imageurl>http://www.teledunet.com/tv_/icones/al_manar.jpg</imageurl>
 		<enabled>True</enabled>
