@@ -22,10 +22,13 @@ def PlayStream(sourceSoup, urlSoup, name, url):
 	response.close()
 	match =re.findall('time_player=(.*?);', link)
 	match=str(long(float(match[0])))
+	rtmp =re.findall('curent_media=\'(.*?)\'', link)[0]
+
+    
 	liveLink= sourceSoup.rtmpstring.text;
 
 	print 'rtmpstring',liveLink
-	liveLink=liveLink%(channelId,match,channelId,channelId)
+	liveLink=liveLink%(rtmp,channelId,match,channelId,channelId)
 	name+='-Teledunet'
 	print 'liveLink',liveLink
 	listitem = xbmcgui.ListItem( label = str(name), iconImage = "DefaultVideo.png", thumbnailImage = xbmc.getInfoImage( "ListItem.Thumb" ), path=liveLink )

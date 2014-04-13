@@ -122,7 +122,7 @@
 	</channel>
 	<channel>
 		<cname>Aghanina</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/aghanina.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/aghanina.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>music</category>
@@ -147,7 +147,7 @@
 	</channel>
 	<channel>
 		<cname>Al Haneen Music</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/al_haneen_music.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/al_haneen_music.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>music</category>
@@ -156,7 +156,7 @@
 	</channel>
 	<channel>
 		<cname>Al Janoubiya</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/al_janoubiya.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/al_janoubiya.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>magreb</category>
@@ -164,7 +164,7 @@
 	</channel>
 	<channel>
 		<cname>Al Karama</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/al_karama.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/al_karama.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>oth</category>
@@ -172,7 +172,7 @@
 	</channel>
 	<channel>
 		<cname>Al Maghribia</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/al_maghribia.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/al_maghribia.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>magreb</category>
@@ -198,7 +198,7 @@
 	</channel>
 	<channel>
 		<cname>Al Manar</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/al_manar.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/al_manar.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>news</category>
@@ -215,7 +215,7 @@
 	</channel>
 	<channel>
 		<cname>Al Moustakilla</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/al_moustakilla.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/al_moustakilla.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>magreb</category>
@@ -223,7 +223,7 @@
 	</channel>
 	<channel>
 		<cname>Al Mutawasit</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/al_mutawasit.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/al_mutawasit.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>magreb</category>
@@ -231,7 +231,7 @@
 	</channel>
 	<channel>
 		<cname>Al Rafidain</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/al_rafidain.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/al_rafidain.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>Iraq</category>
@@ -239,7 +239,7 @@
 	</channel>
 	<channel>
 		<cname>Al Sharqiya</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/al_sharqiya.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/al_sharqiya.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>Iraq</category>
@@ -247,7 +247,7 @@
 	</channel>
 	<channel>
 		<cname>Al Sumaria</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/al_sumaria.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/al_sumaria.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>Iraq</category>
@@ -263,7 +263,7 @@
 	</channel>
 	<channel>
 		<cname>Al Tunisia</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/al_tunisia.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/al_tunisia.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>magreb</category>
@@ -271,7 +271,7 @@
 	</channel>
 	<channel>
 		<cname>Al mayaden</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/al_mayaden.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/al_mayaden.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>news</category>
@@ -279,7 +279,7 @@
 	</channel>
 	<channel>
 		<cname>Al-Hurria</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/al_hurria.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/al_hurria.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>news</category>
@@ -295,7 +295,7 @@
 	</channel>
 	<channel>
 		<cname>Al-Resalah</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/al_resalah.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/al_resalah.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>gulf</category>
@@ -304,7 +304,7 @@
 	</channel>
 	<channel>
 		<cname>Al-hurra Iraq</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/al_hurra_iraq.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/al_hurra_iraq.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>Iraq</category>
@@ -313,7 +313,7 @@
 	</channel>
 	<channel>
 		<cname>AlGeria</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/algeria.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/algeria.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>magreb</category>
@@ -321,7 +321,7 @@
 	</channel>
 	<channel>
 		<cname>Alan</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/alan.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/alan.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>news</category>
@@ -345,7 +345,7 @@
 	</channel>
 	<channel>
 		<cname>Algeria 3</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/algeria_3.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/algeria_3.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>magreb</category>
@@ -353,7 +353,7 @@
 	</channel>
 	<channel>
 		<cname>Alhayat 1</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/alhayat_1.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/alhayat_1.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>ent</category>
@@ -378,7 +378,7 @@
 	</channel>
 	<channel>
 		<cname>Aliraqiya</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/aliraqiya.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/aliraqiya.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>Iraq</category>
@@ -386,7 +386,7 @@
 	</channel>
 	<channel>
 		<cname>Aljadeed</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/aljadeed.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/aljadeed.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>sham</category>
@@ -402,7 +402,7 @@
 	</channel>
 	<channel>
 		<cname>Aljazeera Doc</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/aljazeera_doc.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/aljazeera_doc.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>doc</category>
@@ -434,7 +434,7 @@
 	</channel>
 	<channel>
 		<cname>Aljazeera</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/aljazeera.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/aljazeera.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>news</category>
@@ -442,7 +442,7 @@
 	</channel>
 	<channel>
 		<cname>Alqudis</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/alqudis.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/alqudis.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>news</category>
@@ -451,7 +451,7 @@
 	</channel>
 	<channel>
 		<cname>Al Rasheed</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/alrashid.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/alrashid.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>Iraq</category>
@@ -459,7 +459,7 @@
 	</channel>
 	<channel>
 		<cname>Alriadia Sport</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/alriadia_sport.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/alriadia_sport.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>sports</category>
@@ -467,7 +467,7 @@
 	</channel>
 	<channel>
 		<cname>Arabica Music</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/arabica_music.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/arabica_music.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>music</category>
@@ -475,7 +475,7 @@
 	</channel>
 	<channel>
 		<cname>Arrabia</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/arrabia.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/arrabia.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>sport</category>
@@ -500,7 +500,7 @@
 	</channel>
 	<channel>
 		<cname>Assadissa</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/assadissa.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/assadissa.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>islam</category>
@@ -509,7 +509,7 @@
 	</channel>
 	<channel>
 		<cname>BBC Arabic</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/bbc_arabic.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/bbc_arabic.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>news</category>
@@ -567,7 +567,7 @@
 	</channel>
 	<channel>
 		<cname>Al Baghdadia</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/baghdadia.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/baghdadia.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>Iraq</category>
@@ -575,7 +575,7 @@
 	</channel>
 	<channel>
 		<cname>Bahrain</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/bahrain.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/bahrain.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>gulf</category>
@@ -743,7 +743,7 @@
 	</channel>	
 	<channel>
 		<cname>CBC 2</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/cbc_2.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/cbc_2.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>egypt</category>
@@ -751,7 +751,7 @@
 	</channel>
 	<channel>
 		<cname>CBC Drama</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/cbc_drama.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/cbc_drama.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>drama</category>
@@ -759,7 +759,7 @@
 	</channel>
 	<channel>
 		<cname>CBC Extra</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/cbc_extra.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/cbc_extra.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>egypt</category>
@@ -767,7 +767,7 @@
 	</channel>
 	<channel>
 		<cname>CBC Sofra</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/cbc_sofra.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/cbc_sofra.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>cook</category>
@@ -775,7 +775,7 @@
 	</channel>
 	<channel>
 		<cname>CBC Tv</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/cbc_tv.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/cbc_tv.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>oth</category>
@@ -792,7 +792,7 @@
 	</channel>
 	<channel>
 		<cname>CCTV Arabic</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/cctv_arabic.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/cctv_arabic.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>news</category>
@@ -800,7 +800,7 @@
 	</channel>
 	<channel>
 		<cname>Cairo Cinema</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/cairo_cinema.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/cairo_cinema.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>drama</category>
@@ -808,7 +808,7 @@
 	</channel>
 	<channel>
 		<cname>Cairo Drama</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/cairo_drama.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/cairo_drama.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>drama</category>
@@ -816,7 +816,7 @@
 	</channel>
 	<channel>
 		<cname>Canal plus</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/canal_plus.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/canal_plus.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>french</category>
@@ -840,7 +840,7 @@
 	</channel>
 	<channel>
 		<cname>Coran</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/coran.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/coran.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>islam</category>
@@ -848,7 +848,7 @@
 	</channel>
 	<channel>
 		<cname>Dream 1</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/dream_1.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/dream_1.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>ent</category>
@@ -865,7 +865,7 @@
 	</channel>
 	<channel>
 		<cname>Dubai Sport 1</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/dubai_sport_1.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/dubai_sport_1.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>sports</category>
@@ -873,7 +873,7 @@
 	</channel>
 	<channel>
 		<cname>Dubai Sport 2</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/dubai_sport_2.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/dubai_sport_2.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>sports</category>
@@ -881,7 +881,7 @@
 	</channel>
 	<channel>
 		<cname>Dubai</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/dubai.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/dubai.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>gulf</category>
@@ -890,7 +890,7 @@
 	</channel>
 	<channel>
 		<cname>Dzair 24</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/dzair_24.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/dzair_24.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>magreb</category>
@@ -898,7 +898,7 @@
 	</channel>
 	<channel>
 		<cname>Echorouk Tv</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/echorouk_tv.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/echorouk_tv.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>magreb</category>
@@ -906,7 +906,7 @@
 	</channel>
 	<channel>
 		<cname>Fatafeat</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/fatafeat.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/fatafeat.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>cook</category>
@@ -929,7 +929,7 @@
 	</channel>
 	<channel>
 		<cname>France24 Arabic</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/france24_arabic.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/france24_arabic.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>news</category>
@@ -937,7 +937,7 @@
 	</channel>
 	<channel>
 		<cname>Funoon</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/funoon.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/funoon.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>drama</category>
@@ -945,7 +945,7 @@
 	</channel>
 	<channel>
 		<cname>Fx Arabia</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/fx_arabia.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/fx_arabia.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>drama</category>
@@ -953,7 +953,7 @@
 	</channel>
 	<channel>
 		<cname>Ghinwa</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/ghinwa.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/ghinwa.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>music</category>
@@ -961,7 +961,7 @@
 	</channel>
 	<channel>
 		<cname>Hanibal</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/hanibal.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/hanibal.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>magreb</category>
@@ -969,7 +969,7 @@
 	</channel>
 	<channel>
 		<cname>Iqra</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/iqra.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/iqra.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>islam</category>
@@ -977,7 +977,7 @@
 	</channel>
 	<channel>
 		<cname>Jordan</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/jordan.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/jordan.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>sham</category>
@@ -985,7 +985,7 @@
 	</channel>
 	<channel>
 		<cname>KSA 1</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/ksa_1.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/ksa_1.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>gulf</category>
@@ -993,7 +993,7 @@
 	</channel>
 	<channel>
 		<cname>KSA 2</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/ksa_1.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/ksa_1.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>gulf</category>
@@ -1001,7 +1001,7 @@
 	</channel>
 	<channel>
 		<cname>Kalsan Tv</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/kalsan_tv.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/kalsan_tv.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>oth</category>
@@ -1009,7 +1009,7 @@
 	</channel>
 	<channel>
 		<cname>Kuwait</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/kuwait.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/kuwait.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>gulf</category>
@@ -1017,7 +1017,7 @@
 	</channel>
 	<channel>
 		<cname>LBC</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/lbc.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/lbc.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>ent</category>
@@ -1026,7 +1026,7 @@
 	</channel>
 	<channel>
 		<cname>LLBN</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/llbn.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/llbn.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>ent</category>
@@ -1035,7 +1035,7 @@
 	</channel>
 	<channel>
 		<cname>Lbc Europe</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/lbc_europe.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/lbc_europe.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>ent</category>
@@ -1053,7 +1053,7 @@
 	</channel>
 	<channel>
 		<cname>Libya</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/libya.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/libya.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>magreb</category>
@@ -1061,7 +1061,7 @@
 	</channel>
 	<channel>
 		<cname>M6</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/m6.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/m6.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>french</category>
@@ -1069,7 +1069,7 @@
 	</channel>
 	<channel>
 		<cname>MBC 1</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/mbc_1.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/mbc_1.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>ent</category>
@@ -1127,7 +1127,7 @@
 	</channel>
 	<channel>
 		<cname>MBC Masr</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/mbc_masr.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/mbc_masr.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>ent</category>
@@ -1145,7 +1145,7 @@
 	</channel>
 	<channel>
 		<cname>MBC Persia</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/mbc_persia.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/mbc_persia.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>drama</category>
@@ -1153,7 +1153,7 @@
 	</channel>
 	<channel>
 		<cname>MTV</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/mtv.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/mtv.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>music</category>
@@ -1161,7 +1161,7 @@
 	</channel>
 	<channel>
 		<cname>Maghreb 1</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/maghreb_1.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/maghreb_1.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>magreb</category>
@@ -1169,7 +1169,7 @@
 	</channel>
 	<channel>
 		<cname>Masrawi Aflam</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/masrawi_aflam.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/masrawi_aflam.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>drama</category>
@@ -1177,7 +1177,7 @@
 	</channel>
 	<channel>
 		<cname>Mauritanie</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/mauritanie.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/mauritanie.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>africa</category>
@@ -1185,7 +1185,7 @@
 	</channel>
 	<channel>
 		<cname>Mazeka zoom</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/mazeka_zoom.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/mazeka_zoom.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>music</category>
@@ -1193,7 +1193,7 @@
 	</channel>
 	<channel>
 		<cname>Mazzika</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/mazzika.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/mazzika.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>music</category>
@@ -1201,7 +1201,7 @@
 	</channel>
 	<channel>
 		<cname>Medi 1 Sat</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/medi_1_sat.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/medi_1_sat.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>magreb</category>
@@ -1209,7 +1209,7 @@
 	</channel>
 	<channel>
 		<cname>Mehwar</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/mehwar.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/mehwar.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>egypt</category>
@@ -1217,7 +1217,7 @@
 	</channel>
 	<channel>
 		<cname>Melody</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/melody.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/melody.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>music</category>
@@ -1241,7 +1241,7 @@
 	</channel>
 	<channel>
 		<cname>Moga Comedy</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/moga_comedy.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/moga_comedy.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>drama</category>
@@ -1249,7 +1249,7 @@
 	</channel>
 	<channel>
 		<cname>NBN</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/nbn.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/nbn.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>sham</category>
@@ -1257,7 +1257,7 @@
 	</channel>
 	<channel>
 		<cname>National Geo Ad</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/national_geo_ad.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/national_geo_ad.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>doc</category>
@@ -1265,7 +1265,7 @@
 	</channel>
 	<channel>
 		<cname>Nessma</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/nessma.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/nessma.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>magreb</category>
@@ -1280,7 +1280,7 @@
 	</channel>
 	<channel>
 		<cname>Nile Comedy</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/nile_comedy.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/nile_comedy.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>drama</category>
@@ -1288,7 +1288,7 @@
 	</channel>
 	<channel>
 		<cname>Nile Drama 2</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/nile_drama_2.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/nile_drama_2.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>drama</category>
@@ -1296,7 +1296,7 @@
 	</channel>
 	<channel>
 		<cname>Nile Drama</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/nile_drama.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/nile_drama.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>drama</category>
@@ -1304,7 +1304,7 @@
 	</channel>
 	<channel>
 		<cname>Nile Family</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/nile_family.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/nile_family.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>egypt</category>
@@ -1312,7 +1312,7 @@
 	</channel>
 	<channel>
 		<cname>Nile Life</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/nile_life.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/nile_life.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>egypt</category>
@@ -1320,7 +1320,7 @@
 	</channel>
 	<channel>
 		<cname>Nile News</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/nile_news.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/nile_news.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>news</category>
@@ -1328,7 +1328,7 @@
 	</channel>
 	<channel>
 		<cname>Nile Sport</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/nile_sport.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/nile_sport.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>sports</category>
@@ -1336,7 +1336,7 @@
 	</channel>
 	<channel>
 		<cname>Nile Tv</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/nile_tv.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/nile_tv.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>egypt</category>
@@ -1344,7 +1344,7 @@
 	</channel>
 	<channel>
 		<cname>Noor Dubai</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/noor_dubai.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/noor_dubai.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>gulf</category>
@@ -1353,7 +1353,7 @@
 	</channel>
 	<channel>
 		<cname>Noursat</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/noursat.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/noursat.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>oth</category>
@@ -1361,7 +1361,7 @@
 	</channel>
 	<channel>
 		<cname>OTV Lebanon</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/otv_lebanon.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/otv_lebanon.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>sham</category>
@@ -1369,7 +1369,7 @@
 	</channel>
 	<channel>
 		<cname>On TV</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/on_tv.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/on_tv.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>news</category>
@@ -1394,7 +1394,7 @@
 	</channel>
 	<channel>
 		<cname>Rotana Clip</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/rotana_clip.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/rotana_clip.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>music</category>
@@ -1402,7 +1402,7 @@
 	</channel>
 	<channel>
 		<cname>Rotana Khaligi</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/rotana_khaligi.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/rotana_khaligi.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>gulf</category>
@@ -1410,7 +1410,7 @@
 	</channel>
 	<channel>
 		<cname>Rotana Masriya</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/rotana_masriya.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/rotana_masriya.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>egypt</category>
@@ -1418,7 +1418,7 @@
 	</channel>
 	<channel>
 		<cname>Rotana Music</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/rotana_music.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/rotana_music.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>music</category>
@@ -1434,7 +1434,7 @@
 	</channel>
 	<channel>
 		<cname>Roya</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/roya.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/roya.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>sham</category>
@@ -1442,7 +1442,7 @@
 	</channel>
 	<channel>
 		<cname>Royali Somali</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/royali_somali.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/royali_somali.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>africa</category>
@@ -1450,7 +1450,7 @@
 	</channel>
 	<channel>
 		<cname>Russia Alyaum</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/russia_alyaum.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/russia_alyaum.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>news</category>
@@ -1458,7 +1458,7 @@
 	</channel>
 	<channel>
 		<cname>Sama Dubai</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/sama_dubai.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/sama_dubai.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>gulf</category>
@@ -1466,7 +1466,7 @@
 	</channel>
 	<channel>
 		<cname>Samira Tv</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/samira_tv.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/samira_tv.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>cook</category>
@@ -1474,7 +1474,7 @@
 	</channel>
 	<channel>
 		<cname>Sharjah</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/sharjah.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/sharjah.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>gulf</category>
@@ -1483,7 +1483,7 @@
 	</channel>
 	<channel>
 		<cname>Somali Channel</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/somali_channel.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/somali_channel.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>africa</category>
@@ -1491,7 +1491,7 @@
 	</channel>
 	<channel>
 		<cname>Somsat Tv</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/somsat_tv.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/somsat_tv.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>french</category>
@@ -1499,7 +1499,7 @@
 	</channel>
 	<channel>
 		<cname>Spacetoon</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/spacetoon.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/spacetoon.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>kids</category>
@@ -1507,7 +1507,7 @@
 	</channel>
 	<channel>
 		<cname>Star Cinema</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/star_cinema.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/star_cinema.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>drama</category>
@@ -1515,7 +1515,7 @@
 	</channel>
 	<channel>
 		<cname>Sudan TV</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/sudan_tv.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/sudan_tv.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>africa</category>
@@ -1523,7 +1523,7 @@
 	</channel>
 	<channel>
 		<cname>Syria Drama</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/syria_drama.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/syria_drama.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>drama</category>
@@ -1531,7 +1531,7 @@
 	</channel>
 	<channel>
 		<cname>Syria</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/syria.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/syria.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>sham</category>
@@ -1539,7 +1539,7 @@
 	</channel>
 	<channel>
 		<cname>TF1</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/tf1.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/tf1.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>french</category>
@@ -1547,7 +1547,7 @@
 	</channel>
 	<channel>
 		<cname>TNN</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/tnn.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/tnn.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>news</category>
@@ -1556,7 +1556,7 @@
 	</channel>
 	<channel>
 		<cname>TVP 1 HD</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/tvp_1_hd.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/tvp_1_hd.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>oth</category>
@@ -1564,7 +1564,7 @@
 	</channel>
 	<channel>
 		<cname>TVP 2 HD</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/tvp_2_hd.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/tvp_2_hd.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>oth</category>
@@ -1572,7 +1572,7 @@
 	</channel>
 	<channel>
 		<cname>TVS</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/tvs.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/tvs.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>oth</category>
@@ -1580,7 +1580,7 @@
 	</channel>
 	<channel>
 		<cname>Tamazigh Algeria</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/tamazigh_algeria.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/tamazigh_algeria.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>magreb</category>
@@ -1588,7 +1588,7 @@
 	</channel>
 	<channel>
 		<cname>Tchad</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/tchad.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/tchad.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>africa</category>
@@ -1596,7 +1596,7 @@
 	</channel>
 	<channel>
 		<cname>Tele Liban</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/tele_liban.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/tele_liban.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>sham</category>
@@ -1604,7 +1604,7 @@
 	</channel>
 	<channel>
 		<cname>Tele Sports</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/tele_sports.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/tele_sports.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>sports</category>
@@ -1612,7 +1612,7 @@
 	</channel>
 	<channel>
 		<cname>Time Comedy</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/time_comedy.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/time_comedy.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>drama</category>
@@ -1620,7 +1620,7 @@
 	</channel>
 	<channel>
 		<cname>Top Movies</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/top_movies.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/top_movies.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>drama</category>
@@ -1628,7 +1628,7 @@
 	</channel>
 	<channel>
 		<cname>Tounesna</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/tounesna.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/tounesna.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>magreb</category>
@@ -1636,7 +1636,7 @@
 	</channel>
 	<channel>
 		<cname>Toyor Al Janah</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/toyor_al_janah.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/toyor_al_janah.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>kids</category>
@@ -1644,7 +1644,7 @@
 	</channel>
 	<channel>
 		<cname>Toyor baby</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/toyor_baby.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/toyor_baby.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>kids</category>
@@ -1652,7 +1652,7 @@
 	</channel>
 	<channel>
 		<cname>Tunisia national 1</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/tunisia_national_1.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/tunisia_national_1.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>magreb</category>
@@ -1660,7 +1660,7 @@
 	</channel>
 	<channel>
 		<cname>Tunisia national 2</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/tunisia_national_2.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/tunisia_national_2.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>magreb</category>
@@ -1668,7 +1668,7 @@
 	</channel>
 	<channel>
 		<cname>Tv Polonia</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/tv_polonia.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/tv_polonia.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>oth</category>
@@ -1676,7 +1676,7 @@
 	</channel>
 	<channel>
 		<cname>nbn lebanon</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/tunisia_national_1.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/tunisia_national_1.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>sham</category>
@@ -1684,7 +1684,7 @@
 	</channel>
 	<channel>
 		<cname>Wanasah</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/wanasah.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/wanasah.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>music</category>
@@ -1692,7 +1692,7 @@
 	</channel>
 	<channel>
 		<cname>Yemen</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/yemen.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/yemen.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>gulf</category>
@@ -1700,7 +1700,7 @@
 	</channel>
 	<channel>
 		<cname>Zagros</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/zagros.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/zagros.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>oth</category>
@@ -1708,7 +1708,7 @@
 	</channel>
 	<channel>
 		<cname>Zaitouna</cname>
-		<imageurl>http://www.teledunet.com/tv_/icones/zaitouna.jpg</imageurl>
+		<imageurl>http://www.teledunet.com/player/icones/zaitouna.jpg</imageurl>
 		<enabled>True</enabled>
 		<assignedcategory>
 			<category>magreb</category>
