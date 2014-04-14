@@ -81,7 +81,7 @@
 
 <addon id="plugin.video.pitelevision"
        name="PiTelevision.com"
-       version="1.4.0"
+       version="1.4.1"
        provider-name="shani">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>

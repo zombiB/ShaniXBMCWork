@@ -20,3 +20,5 @@
 - Proxy support because the channels are not available outside Pakistan
 [B]Version 1.4.0[/B]
 - Proxy server implemenation to feed the stream into XBMC player
+[B]Version 1.4.1[/B]
+- settings menu debug removed

@@ -98,9 +98,9 @@ def getVODList(Fromurl,mode):
 	
 def ShowSettings(Fromurl):
 	#playF4mLink('http://bbcfmhds.vo.llnwd.net/hds-live/livepkgr/_definst_/bbc1/bbc1_480.f4m','mymovie')
-	playF4mLink('http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/bbc1/bbc1_1500.f4m','mymovie')
-	return
-    #selfAddon.openSettings()
+	#playF4mLink('http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/bbc1/bbc1_1500.f4m','mymovie')
+	#return
+    selfAddon.openSettings()
 
 
 def AddEnteries(Fromurl,PageNumber,mode):
