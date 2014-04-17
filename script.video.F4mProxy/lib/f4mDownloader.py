@@ -16,7 +16,7 @@ import re
 
 #import youtube_dl
 #from youtube_dl.utils import *
-addon_id = 'script.module.F4mProxy'
+addon_id = 'script.video.F4mProxy'
 selfAddon = xbmcaddon.Addon(id=addon_id)
 __addonname__   = selfAddon.getAddonInfo('name')
 __icon__        = selfAddon.getAddonInfo('icon')
