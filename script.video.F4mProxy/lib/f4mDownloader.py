@@ -261,6 +261,7 @@ class F4MDownloader():
     A downloader for f4m manifests or AdobeHDS.
     """
     outputfile =''
+    clientHeader=None
     #stopDownloading=None
     def to_screen(self, msg, prefix=False, *args, **kargs):
         if prefix:
@@ -296,7 +297,16 @@ class F4MDownloader():
                 req = urllib2.Request(url, post)
             else:
                 req = urllib2.Request(url)
-            req.add_header('User-Agent','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36')
+            
+            ua_header=False
+            if self.clientHeader:
+                for n,v in self.clientHeader:
+                    req.add_header(n,v)
+                    if n=='User-Agent':
+                        ua_header=True
+
+            if not ua_header:
+                req.add_header('User-Agent','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36')
             response = urllib2.urlopen(req)
             data=response.read()
             #print 'datalen',len(data)
@@ -332,12 +342,21 @@ class F4MDownloader():
 
     def download(self, out_stream, url, proxy=None,use_proxy_for_chunks=True):
         try:
+            self.clientHeader=None
             self.status='init'
             self.proxy = proxy
             self.use_proxy_for_chunks=use_proxy_for_chunks
             self.out_stream=out_stream
-            self.downloadInternal(  url)
+            if '|' in url:
+                sp = url.split('|')
+                url = sp[0]
+                self.clientHeader = sp[1]
+                self.clientHeader= urlparse.parse_qsl(self.clientHeader)
+                
+                print 'header recieved now url and headers are',url, self.clientHeader 
             self.status='finished'
+            self.downloadInternal(  url)
+
             #os.remove(self.outputfile)
         except: 
             traceback.print_exc()
