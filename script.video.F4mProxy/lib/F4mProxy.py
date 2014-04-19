@@ -95,10 +95,11 @@ class MyHandler(BaseHTTPRequestHandler):
             self.end_headers()
             
             downloader=F4MDownloader()
-            runningthread=thread.start_new_thread(downloader.download,(self.wfile,url,proxy,use_proxy_for_chunks,))
-            xbmc.sleep(1000)
-            while not downloader.status=="finished":
-                xbmc.sleep(1000);
+            downloader.download(self.wfile,url,proxy,use_proxy_for_chunks)
+            #runningthread=thread.start_new_thread(downloader.download,(self.wfile,url,proxy,use_proxy_for_chunks,))
+            #xbmc.sleep(500)
+            #while not downloader.status=="finished":
+            #    xbmc.sleep(200);
 
 
         except:
@@ -184,23 +185,35 @@ class f4mProxyHelper():
         stopPlaying=threading.Event()
         progress = xbmcgui.DialogProgress()
         listitem = xbmcgui.ListItem(name)
+        listitem.setInfo('video', {'Title': name})
+        
         f4m_proxy=f4mProxy()
         stopPlaying.clear()
         runningthread=thread.start_new_thread(f4m_proxy.start,(stopPlaying,))
         progress.create('Starting local proxy')
         stream_delay = 1
-        progress.update( 50, "", 'Loading local proxy', "" )
+        progress.update( 20, "", 'Loading local proxy', "" )
         xbmc.sleep(stream_delay*1000)
+        progress.update( 100, "", 'Loading local proxy', "" )
         url_to_play=f4m_proxy.prepare_url(url,proxy,use_proxy_for_chunks)
         mplayer = MyPlayer()    
         mplayer.stopPlaying = stopPlaying
         progress.close() 
         mplayer.play(url_to_play,listitem)
+       
+        #xbmc.Player(xbmc.PLAYER_CORE_AUTO).play(url, listitem)
+        firstTime=True
         while True:
             if stopPlaying.isSet():
                 break;
+            #if not xbmc.Player().isPlaying():
+            #    break
             xbmc.log('Sleeping...')
             xbmc.sleep(200)
+            #if firstTime:
+            #    xbmc.executebuiltin('Dialog.Close(all,True)')
+            #    firstTime=False
+        stopPlaying.isSet()
 
         print 'Job done'
         return
@@ -226,6 +239,7 @@ class MyPlayer (xbmc.Player):
         print 'Now im playing... %s' % url
         self.stopPlaying.clear()
         xbmc.Player(xbmc.PLAYER_CORE_AUTO).play(url, listitem)
+        
     def onPlayBackEnded( self ):
         # Will be called when xbmc stops playing a file
         print "seting event in onPlayBackEnded " 

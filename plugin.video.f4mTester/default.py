@@ -7,19 +7,33 @@ import base64
 from t0mm0.common.addon import Addon
 from t0mm0.common.net import Net
 import urlparse
-
+import xbmcplugin
 addon = Addon('plugin.video.f4mTester', sys.argv)
 net = Net()
 
-mode = addon.queries['mode']
-play = addon.queries.get('play', None)
-url = addon.queries.get('url', None)
-if url:
-    url = urlparse.parse_qs(url)['url'][0]#
-name = addon.queries.get('name', None)
+mode =None
+play=False
+
+#play = addon.queries.get('play', None)
+paramstring=sys.argv[2]
+#url = addon.queries.get('playurl', None)
+print paramstring
+if paramstring:
+    paramstring="".join(paramstring[1:])
+    params=urlparse.parse_qs(paramstring)
+    print params
+    url = params['url'][0]#
+    name = params['name'][0]
+    mode =  params['mode'][0]
+    play=True
+
 def playF4mLink(url,name,proxy=None,use_proxy_for_chunks=False):
     from F4mProxy import f4mProxyHelper
     player=f4mProxyHelper()
+    #progress = xbmcgui.DialogProgress()
+    #progress.create('Starting local proxy')
+    xbmcplugin.endOfDirectory(int(sys.argv[1]), cacheToDisc=False)
+    
     player.playF4mLink(url, name, proxy, use_proxy_for_chunks)
     return   
     
@@ -45,7 +59,7 @@ def GUIEditExportName(name):
           exit = False
     return(name)
     
-if mode == 'main':
+if mode ==None:
     
     videos=[['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/bbc1/bbc1_1500.f4m','bbc1 (uk) 1500kbps'],
     ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/bbc2/bbc2_1500.f4m','bbc2 (uk) 1500kbps'],
@@ -63,15 +77,20 @@ if mode == 'main':
     ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/cbeebies/cbeebies_1500.f4m|X-Forwarded-For=212.58.241.131','cbeebeies (outside uk) 1500kbps'],
     ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/parl/parl_1500.f4m|X-Forwarded-For=212.58.241.131','bbc parliment (outside uk) 1500kbps'],
     ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/newsch/newsch_1500.f4m|X-Forwarded-For=212.58.241.131','bbc news (outside uk) 1500kbps'],
+    ['http://nhkworld-hds-live1.hds1.fmslive.stream.ne.jp/hds-live/nhkworld-hds-live1/_definst_/livestream/nhkworld-live-128.f4m','nhk 128'],
+    ['http://nhkworld-hds-live1.hds1.fmslive.stream.ne.jp/hds-live/nhkworld-hds-live1/_definst_/livestream/nhkworld-live-256.f4m','nhk 256'],
+    ['http://nhkworld-hds-live1.hds1.fmslive.stream.ne.jp/hds-live/nhkworld-hds-live1/_definst_/livestream/nhkworld-live-512.f4m','nhk 512'],
     ['http://77.245.150.95/hds-live/livepkgr/_definst_/liveevent/livestream.f4m','something else']]
-    
     
     #['http://dummy','Custom']]
     print videos
     for (file_link,name) in videos:
         liz=xbmcgui.ListItem(name)
         liz.setInfo( type="Video", infoLabels={ "Title": name} )
-        u = sys.argv[0] + "?url=" + urllib.urlencode({'url': file_link}) + "&mode=play&name=" +name
+        #liz.setProperty("IsPlayable","true")
+        u = sys.argv[0] + "?" + urllib.urlencode({'url': file_link,'mode':'play','name':name}) 
+        print u
+        
         ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=False)
 
 
@@ -90,6 +109,6 @@ elif mode == "play":
 
 
 if not play:
-    addon.end_of_directory()
+    xbmcplugin.endOfDirectory(int(sys.argv[1]), cacheToDisc=False)
     
  
