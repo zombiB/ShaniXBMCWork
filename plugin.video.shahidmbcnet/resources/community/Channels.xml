@@ -1,5 +1,50 @@
 <channels>
+	<channel>
+		<cname>Sada Al Balad2</cname>
+		<imageurl>http://www.lyngsat-logo.com/hires/ss/sada_el_balad_drama_plus2.png</imageurl>
+		<enabled>True</enabled>
+		<assignedcategory>
+			<category>egypt</category>
+		</assignedcategory>
+	</channel>
 
+	<channel>
+		<cname>Sada Al Balad</cname>
+		<imageurl>http://www.lyngsat-logo.com/hires/ss/sada_el_balad_tv.png</imageurl>
+		<enabled>True</enabled>
+		<assignedcategory>
+			<category>egypt</category>
+		</assignedcategory>
+	</channel>
+    
+    <channel>
+		<cname>Panorama Comedy</cname>
+		<imageurl>http://www.teledunet.com//player/icones/panorama_comedy.jpg</imageurl>
+		<enabled>True</enabled>
+		<assignedcategory>
+			<category>egypt</category>
+		</assignedcategory>
+	</channel>
+
+	<channel>
+		<cname>Panorama Drama</cname>
+		<imageurl>http://www.lyngsat-logo.com/logo/tv/pp/panorama_drama.png</imageurl>
+		<enabled>True</enabled>
+		<assignedcategory>
+			<category>egypt</category>
+		</assignedcategory>
+	</channel>
+	
+	<channel>
+		<cname>Panorama Drama2</cname>
+		<imageurl>http://www.lyngsat-logo.com/logo/tv/pp/panorama_drama_2.png</imageurl>
+		<enabled>True</enabled>
+		<assignedcategory>
+			<category>egypt</category>
+		</assignedcategory>
+	</channel>
+	
+    
 	<channel>
 		<cname>Al Baghdadia Drama</cname>
 		<imageurl>http://albaghdadiagroup.com/modules/mod_image_show_gk4/cache/demo.image_show.P-b2gk-is-93.png</imageurl>

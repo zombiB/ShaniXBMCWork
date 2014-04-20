@@ -1,4 +1,27 @@
 <streamingInfos>
+	 <streaminginfo>
+		<cname>Sada Al Balad2</cname>
+		<url>sada_albalad</url>
+	</streaminginfo>
+	
+	<streaminginfo>
+		<cname>Sada Al Balad</cname>
+		<url>sada_el_balad</url>
+	</streaminginfo>
+	<streaminginfo>
+		<cname>Panorama Comedy</cname>
+		<url>panorama_comedy</url>
+	</streaminginfo>
+	
+	<streaminginfo>
+		<cname>Panorama Drama</cname>
+		<url>panorama_drama</url>
+	</streaminginfo>
+	
+	<streaminginfo>
+		<cname>Panorama Drama2</cname>
+		<url>panorama_drama_2</url>
+	</streaminginfo>
 	<streaminginfo>
 		<cname>2M</cname>
 		<url>2m</url>
