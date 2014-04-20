@@ -88,7 +88,7 @@ class FlvReader(io.BytesIO):
             mod = self.read_string()
             quality_entries.append(mod)
         fragments_count = self.read_unsigned_int()
-        #print 'fragments_count',fragments_count
+        print 'fragments_count',fragments_count
         fragments = []
         for i in range(fragments_count):
             first = self.read_unsigned_int()
@@ -389,6 +389,12 @@ class F4MDownloader():
             #print 'formats',formats
             formats = sorted(formats, key=lambda f: f[0],reverse=True)
             rate, media = formats[0]
+            metadata = base64.b64decode(media.find(_add_ns('metadata')).text)
+            print 'metadata stream read done'#,media.find(_add_ns('metadata')).text
+            dest_stream =  self.out_stream
+            self._write_flv_header(dest_stream, metadata)
+            dest_stream.flush()
+            
             mediaUrl=media.attrib['url']
             try:
                 bootStrapID = media.attrib['bootstrapInfoId']
@@ -456,14 +462,11 @@ class F4MDownloader():
             bootstrap, boot_info, fragments_list,total_frags=self.readBootStrapInfo(bootstrapURL,bootstrapData)
             print  boot_info, fragments_list,total_frags
             self.status='bootstrap done'
-            metadata = base64.b64decode(media.find(_add_ns('metadata')).text)
-            print 'metadata stream read done'
+
 
             #tmpfilename = filename#self.temp_name(filename)
             #(dest_stream, tmpfilename) = sanitize_open(tmpfilename, 'wb')
-            dest_stream =  self.out_stream
-            self._write_flv_header(dest_stream, metadata)
-            dest_stream.flush()
+
             self.status='file created'
             self.downloaded_bytes = 0
             self.bytes_in_disk = 0

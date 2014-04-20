@@ -47,16 +47,18 @@ class MyHandler(BaseHTTPRequestHandler):
     """
    Serves a HEAD request
    """
-    def do_HEAD(s):
+    def do_HEAD(self):
         print "XBMCLocalProxy: Serving HEAD request..."
-        s.answer_request(0)
- 
+        self.send_response(200)
+        rtype=" flv-application/octet-stream"  #default type could have gone to the server to get it.
+        self.send_header("Content-Type", rtype)
+        self.end_headers() 
     """
    Serves a GET request.
    """
     def do_GET(s):
         print "XBMCLocalProxy: Serving GET request..."
-        s.answer_request(1)
+        s.answer_request(True)
  
     def answer_request(self, sendData):
         try:
@@ -82,24 +84,24 @@ class MyHandler(BaseHTTPRequestHandler):
             #Send file request
             #self.handle_send_request(download_id,file_url, file_name, requested_range,download_mode ,keep_file,connections)
             self.send_response(200)
-            rtype="video/mp4"  #default type could have gone to the server to get it.
+            rtype="flv-application/octet-stream"  #default type could have gone to the server to get it.
             self.send_header("Content-Type", rtype)
 
-            self.send_header("Last-Modified","Wed, 21 Feb 2000 08:43:39 GMT")
-            self.send_header("Cache-Control","public, must-revalidate")
-            self.send_header("Cache-Control","no-cache")
-            self.send_header("Pragma","no-cache")
+            #self.send_header("Last-Modified","Wed, 21 Feb 2000 08:43:39 GMT")
+            #self.send_header("Cache-Control","public, must-revalidate")
+            #self.send_header("Cache-Control","no-cache")
+            #self.send_header("Pragma","no-cache")
             
             #self.send_header("features","seekable,stridable")
-            self.send_header("client-id","12345")
+            #self.send_header("client-id","12345")
             self.end_headers()
-            
-            downloader=F4MDownloader()
-            downloader.download(self.wfile,url,proxy,use_proxy_for_chunks)
-            #runningthread=thread.start_new_thread(downloader.download,(self.wfile,url,proxy,use_proxy_for_chunks,))
-            #xbmc.sleep(500)
-            #while not downloader.status=="finished":
-            #    xbmc.sleep(200);
+            if sendData:
+                downloader=F4MDownloader()
+                downloader.download(self.wfile,url,proxy,use_proxy_for_chunks)
+                #runningthread=thread.start_new_thread(downloader.download,(self.wfile,url,proxy,use_proxy_for_chunks,))
+                #xbmc.sleep(500)
+                #while not downloader.status=="finished":
+                #    xbmc.sleep(200);
 
 
         except:
@@ -163,9 +165,11 @@ class f4mProxy():
         global PORT_NUMBER
         global HOST_NAME
         print 'port',port,'HOST_NAME',HOST_NAME
-        socket.setdefaulttimeout(10)
+        socket.setdefaulttimeout(30)
         server_class = ThreadedHTTPServer
+        MyHandler.protocol_version = "HTTP/1.0"
         httpd = server_class((HOST_NAME, port), MyHandler)
+        
         print "XBMCLocalProxy Starts - %s:%s" % (HOST_NAME, port)
         while(True and not stopEvent.isSet()):
             httpd.handle_request()
@@ -238,7 +242,7 @@ class MyPlayer (xbmc.Player):
     def play(self, url, listitem):
         print 'Now im playing... %s' % url
         self.stopPlaying.clear()
-        xbmc.Player(xbmc.PLAYER_CORE_AUTO).play(url, listitem)
+        xbmc.Player(xbmc.PLAYER_CORE_DVDPLAYER).play(url, listitem)
         
     def onPlayBackEnded( self ):
         # Will be called when xbmc stops playing a file
