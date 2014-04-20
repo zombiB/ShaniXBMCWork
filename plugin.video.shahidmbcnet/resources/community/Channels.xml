@@ -4,7 +4,7 @@
 <imageurl>http://www.lyngsat-logo.com/hires/pp/palestine_satellite_channel.png</imageurl>
 <enabled>True</enabled>
 <assignedcategory>
-<category>AlSham</category>
+<category>sham</category>
 </assignedcategory>
 </channel>
 
@@ -39,7 +39,7 @@
 <imageurl>http://www.lyngsat-logo.com/logo/tv/aa/al_ikhbaria_sy.png</imageurl>
 <enabled>True</enabled>
 <assignedcategory>
-<category>AlSham</category>
+<category>sham</category>
 </assignedcategory>
 </channel>
 
