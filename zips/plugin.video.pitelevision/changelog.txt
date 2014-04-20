@@ -24,3 +24,5 @@
 - settings menu debug removed
 [B]Version 1.5.0[/B]
 - proxysetup
+[B]Version 1.5.1[/B]
+- FILE BUG
