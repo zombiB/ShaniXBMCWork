@@ -173,6 +173,7 @@ def build_fragments_list(boot_info, startFromFregment=None):
     """ Return a list of (segment, fragment) for each fragment in the video """
     res = []
     segment_run_table = boot_info['segments'][0]
+    print 'segment_run_table',segment_run_table
     # I've only found videos with one segment
     #if len(segment_run_table['segment_run'])>1:
     #    segment_run_table['segment_run']=segment_run_table['segment_run'][-2:] #pick latest
@@ -194,10 +195,10 @@ def build_fragments_list(boot_info, startFromFregment=None):
         segment_to_start=len(segment_run_table['segment_run'])-1
         #if len(segment_run_table['segment_run'])>2:
         #    segment_to_start=len(segment_run_table['segment_run'])-2;
-        if len(boot_info['fragments'][0]['fragments'])>2: #go bit back
-            startFromFregment= boot_info['fragments'][0]['fragments'][-2]['first']
-        if len(boot_info['fragments'][0]['fragments'])>10: #go little bit back
-            startFromFregment= boot_info['fragments'][0]['fragments'][-10]['first']
+        if len(boot_info['fragments'][0]['fragments'])>1: #go bit back
+            startFromFregment= boot_info['fragments'][0]['fragments'][-1]['first']
+        #if len(boot_info['fragments'][0]['fragments'])>2: #go little bit back
+        #    startFromFregment= boot_info['fragments'][0]['fragments'][-2]['first']
         
     #print 'segment_to_start',segment_to_start
     for currentIndex in range (segment_to_start,len(segment_run_table['segment_run'])):
@@ -386,15 +387,27 @@ class F4MDownloader():
             print doc
             formats = [(int(f.attrib.get('bitrate', -1)),f) for f in doc.findall(_add_ns('media'))]
             #print 'formats',formats
-            formats = sorted(formats, key=lambda f: f[0])
+            formats = sorted(formats, key=lambda f: f[0],reverse=True)
             rate, media = formats[0]
             mediaUrl=media.attrib['url']
+            try:
+                bootStrapID = media.attrib['bootstrapInfoId']
+            except: bootStrapID='xx'
             #print 'mediaUrl',mediaUrl
             base_url = join(man_url,mediaUrl)#compat_urlparse.urljoin(man_url,media.attrib['url'])
             if mediaUrl.endswith('/') and not base_url.endswith('/'):
                     base_url += '/'
             #print 'base_url',base_url,  doc.findall(_add_ns('bootstrapInfo'))[0]
-            bootstrap=doc.findall(_add_ns('bootstrapInfo'))[0]
+            #findall(".//year/..[@name='Singapore']")
+            bsArray=doc.findall(_add_ns('bootstrapInfo'))
+            print 'bootStrapID',bootStrapID
+            #bootStrapID='bootstrap_450'
+            bootstrap=self.getBootStrapWithId(bsArray,bootStrapID)
+            if bootstrap==None: #if not available then find any!
+                print 'bootStrapID NOT Found'
+                bootstrap=doc.findall(_add_ns('bootstrapInfo'))[0]
+            else:
+                print 'found bootstrap with id',bootstrap
             #print 'bootstrap',bootstrap
             
 
@@ -424,7 +437,20 @@ class F4MDownloader():
             if bootstrapURL1=='':
                 bootstrapData=base64.b64decode(doc.findall(_add_ns('bootstrapInfo'))[0].text)
             else:
-                bootstrapURL = join(man_url,bootstrap.attrib['url'])#+'?'+queryString
+                queryString=None
+                from urlparse import urlparse
+                queryString = urlparse(url).query
+                print 'queryString',queryString
+                if len(queryString)==0: queryString=None
+                
+                if queryString==None or '?'  in bootstrap.attrib['url']:
+                    bootstrapURL = join(man_url,bootstrap.attrib['url'])# take out querystring for later
+                    queryString = urlparse(bootstrapURL).query
+                    print 'queryString override',queryString
+                    if len(queryString)==0: queryString=None
+                     
+                else:
+                    bootstrapURL = join(man_url,bootstrap.attrib['url'])+'?'+queryString
                 print 'bootstrapURL',bootstrapURL
             
             bootstrap, boot_info, fragments_list,total_frags=self.readBootStrapInfo(bootstrapURL,bootstrapData)
@@ -474,10 +500,12 @@ class F4MDownloader():
                 name = u'Seg%d-Frag%d' % (seg_i, frag_i)
                 #print 'base_url',base_url,name
                 url = base_url + name
+                if queryString and '?' not in url:
+                    url+='?'+queryString
                 #print(url),base_url,name
                 #frag_filename = u'%s-%s' % (tmpfilename, name)
                 #success = dl._do_download(frag_filename, {'url': url})
-                print 'downloading....',name
+                print 'downloading....',url
                 success=False
                 urlTry=0
                 while not success and urlTry<5:
@@ -543,6 +571,16 @@ class F4MDownloader():
         except:
             traceback.print_exc()
             return
+    def getBootStrapWithId (self,BSarray, id):
+        try:
+            for bs in BSarray:
+                print 'compare val is ',bs.attrib['id'], 'id', id
+                if bs.attrib['id']==id:
+                    print 'gotcha'
+                    return bs
+        except: pass
+        return None
+    
     def readBootStrapInfo(self,bootstrapUrl,bootStrapData, updateMode=False, lastFragement=None,lastSegment=None):
 
         try:

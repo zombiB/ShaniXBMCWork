@@ -1,4 +1,4 @@
-import xbmc, xbmcgui, xbmcaddon, xbmcplugin
+import xbmc, xbmcgui, xbmcaddon, xbmcplugin, re
 import urllib, urllib2
 import re, string
 import threading
@@ -82,10 +82,30 @@ if mode ==None:
     ['http://nhkworld-hds-live1.hds1.fmslive.stream.ne.jp/hds-live/nhkworld-hds-live1/_definst_/livestream/nhkworld-live-512.f4m','nhk 512'],
     ['http://nhkworld-hds-live1.hds1.fmslive.stream.ne.jp/hds-live/nhkworld-hds-live1/_definst_/livestream/nhkworld-live-512.f4m','nhk 512'],
     ['http://88.157.194.246/live/ramdisk/zrtp1/HDS/zrtp1.f4m','j0anita'],
+    ['http://ak.live.cntv.cn/z/cctv9_1@139238/manifest.f4m?hdcore=2.11.3&g=OUVOVEOVETYH','cntv.cn'],
+    ['http://mlghds-lh.akamaihd.net/z/mlg17_1@167001/manifest.f4m?hdcore=2.11.3&g=TOFRPVFGXLFS','alibaba'],
     ['http://77.245.150.95/hds-live/livepkgr/_definst_/liveevent/livestream.f4m','something else']]
     
     #['http://dummy','Custom']]
-    print videos
+    #print videos
+
+    req = urllib2.Request('http://www.gzcbn.tv/app/?app=ios&controller=cmsapi&action=pindao')
+    req.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3')
+    response = urllib2.urlopen(req)
+    link=response.read()
+    response.close()
+    ##	print link
+
+    s='title\":\"(.*?)\",\"stream\":\"(.*?)\"'
+    #    
+    match=re.compile(s).findall(link)
+    i=0
+    for i in range(len(match)):
+        match[i]= (match[i][1].replace('\\/','/'),match[i][0])
+
+
+    #videos+=match disabled for time being as these are not working
+    #print videos
     for (file_link,name) in videos:
         liz=xbmcgui.ListItem(name)
         liz.setInfo( type="Video", infoLabels={ "Title": name} )
