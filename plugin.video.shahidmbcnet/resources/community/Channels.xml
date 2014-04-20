@@ -1,4 +1,39 @@
 <channels>
+<channel>
+<cname>El Djazairia</cname>
+<imageurl>http://www.lyngsat-logo.com/hires/ee/el_djazairia_tv_dz.png</imageurl>
+<enabled>True</enabled>
+<assignedcategory>
+<category>magreb</category>
+</assignedcategory>
+</channel>
+
+<channel>
+<cname>Dzair tv</cname>
+<imageurl>http://www.lyngsat-logo.com/logo/tv/dd/dzair_tv_dz.png</imageurl>
+<enabled>True</enabled>
+<assignedcategory>
+<category>magreb</category>
+</assignedcategory>
+</channel>
+
+<channel>
+<cname>Alhayet2</cname>
+<imageurl>http://www.lyngsat-logo.com/logo/tv/aa/alhayat_2.jpg</imageurl>
+<enabled>True</enabled>
+<assignedcategory>
+<category>magreb</category>
+</assignedcategory>
+</channel>
+<channel>
+<cname>Al Ikhbaria</cname>
+<imageurl>http://www.lyngsat-logo.com/logo/tv/aa/al_ikhbaria_sy.png</imageurl>
+<enabled>True</enabled>
+<assignedcategory>
+<category>magreb</category>
+</assignedcategory>
+</channel>
+
 	<channel>
 		<cname>Sada Al Balad2</cname>
 		<imageurl>http://www.lyngsat-logo.com/hires/ss/sada_el_balad_drama_plus2.png</imageurl>
