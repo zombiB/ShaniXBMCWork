@@ -1,5 +1,9 @@
 To Create new copy, only once
 git clone --mirror git@example.com/upstream-repository.git
+
+
+git clone --mirror https://github.com/Shani-08/ShaniXBMCWork.git ShaniBitBucket
+
 git clone --mirror https://github.com/Shani-08/ShaniXBMCWork.git ShaniBitBucket
 
 
