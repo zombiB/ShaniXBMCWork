@@ -22,3 +22,5 @@
 - Proxy server implemenation to feed the stream into XBMC player
 [B]Version 1.4.1[/B]
 - settings menu debug removed
+[B]Version 1.5.0[/B]
+- proxysetup

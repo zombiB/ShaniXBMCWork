@@ -8,7 +8,6 @@ from TurlLib import getURL;
 import thread
 import time
 #from f4mDownloader import F4MDownloader
-from F4mProxy import f4mProxy
 from operator import itemgetter
 import traceback
 import os
@@ -17,7 +16,7 @@ import traceback
 import threading
 
 REMOTE_DBG=False;
-stopPlaying=threading.Event()
+#stopPlaying=threading.Event()
 if REMOTE_DBG:
     # Make pydev debugger works for auto reload.
     # Note pydevd module need to be copied in XBMC\system\python\Lib\pysrc
@@ -98,7 +97,7 @@ def getVODList(Fromurl,mode):
 	
 def ShowSettings(Fromurl):
 	#playF4mLink('http://bbcfmhds.vo.llnwd.net/hds-live/livepkgr/_definst_/bbc1/bbc1_480.f4m','mymovie')
-	#playF4mLink('http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/bbc1/bbc1_1500.f4m','mymovie')
+	#playF4mLink2('http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/bbc1/bbc1_1500.f4m','Bbc')
 	#return
     selfAddon.openSettings()
 
@@ -261,7 +260,7 @@ def PlayLiveLink ( url,name ):
             line1="using proxy %s"%proxy;
             timeWait=2000
             xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(__addonname__,line1, timeWait, __icon__))
-        playF4mLink(playfile,name,proxy)
+        playF4mLink(playfile,name,proxy, True)
     else:
           line1="Url not found";
           timeWait=2000
@@ -281,93 +280,112 @@ def getProxy():
     return proxy
 
 
-def playF4mLinkOld(url,name,proxy=None):
-	print "URL: " + url
-	listitem = xbmcgui.ListItem("myfile")
-	downloader=F4MDownloader()
-	runningthread=thread.start_new_thread(downloader.download,('myfile.flv',url,stopPlaying,proxy,))
-	progress = xbmcgui.DialogProgress()
-	progress.create('Starting Stream')
-    
-	stream_delay = 10
-	if proxy:
-		stream_delay+=20
-	cancelled=False
-	for i in range(stream_delay):
-		percent=(i*100/stream_delay)
-		print 'percent',percent
-		progress.update( percent, "", 'Trying to cache data...'+downloader.status +' seq:' +str(downloader.seqNumber), "" )
-		if downloader.status=="play" and downloader.seqNumber>5:
-			break
-		if downloader.status=="finished":
-			stopPlaying.set()
-			cancelled=True
-			break
+#def playF4mLinkOld(url,name,proxy=None):
+#	print "URL: " + url
+#	listitem = xbmcgui.ListItem("myfile")
+#	downloader=F4MDownloader()
+#	runningthread=thread.start_new_thread(downloader.download,('myfile.flv',url,stopPlaying,proxy,))
+#	progress = xbmcgui.DialogProgress()
+#	progress.create('Starting Stream')
+#	stream_delay = 10
+#	if proxy:
+#		stream_delay+=20
+#	cancelled=False
+#	for i in range(stream_delay):
+#		percent=(i*100/stream_delay)
+#		print 'percent',percent
+#		progress.update( percent, "", 'Trying to cache data...'+downloader.status +' seq:' +str(downloader.seqNumber), "" )
+#		if downloader.status=="play" and downloader.seqNumber>5:
+#			break
+#		if downloader.status=="finished":
+#			stopPlaying.set()
+#			cancelled=True
+#			break
                         
-		if progress.iscanceled():
-			stopPlaying.set()
-			cancelled=True
-			break
-		xbmc.sleep(1000)
-	mplayer = MyPlayer()
+#		if progress.iscanceled():
+#			stopPlaying.set()
+#			cancelled=True
+#			break
+#		xbmc.sleep(1000)
+#	mplayer = MyPlayer()
+#
+#	if not cancelled:
+#		filename =downloader.outputfile;#DIR_USERDATA + "/myfile.flv"
+#		progress.close()
+#		mplayer.play(filename,listitem)
+#		while True:
+#			xbmc.log('Sleeping...')
+#			xbmc.sleep(1000)
+#			if stopPlaying.isSet():
+#				break;
+#	print 'Job done'
+#	try:    
+#		os.remove(filename)
+#	except: pass
+#	return
 
-	if not cancelled:
-		filename =downloader.outputfile;#DIR_USERDATA + "/myfile.flv"
-		progress.close()
-		mplayer.play(filename,listitem)
-		while True:
-			xbmc.log('Sleeping...')
-			xbmc.sleep(1000)
-			if stopPlaying.isSet():
-				break;
-	print 'Job done'
-	try:    
-		os.remove(filename)
-	except: pass
-	return
-
-def playF4mLink(url,name,proxy=None,use_proxy_for_chunks=False):
-	print "URL: " + url
-	progress = xbmcgui.DialogProgress()
-	listitem = xbmcgui.ListItem("myfile")
-	f4m_proxy=f4mProxy()
-	stopPlaying.clear()
-	runningthread=thread.start_new_thread(f4m_proxy.start,(stopPlaying,))
-	progress.create('Starting local proxy')
-	stream_delay = 1
-	progress.update( 50, "", 'Loading local proxy', "" )
-	xbmc.sleep(stream_delay*1000)
-	url_to_play=f4m_proxy.prepare_url(url,proxy,use_proxy_for_chunks)
-	mplayer = MyPlayer()    
-	progress.close() 
-	mplayer.play(url_to_play,listitem)
-	while True:
-		if stopPlaying.isSet():
-			break;
-		xbmc.log('Sleeping...')
-		xbmc.sleep(200)
-
-	print 'Job done'
-	return
+#def playF4mLinkOld2(url,name,proxy=None,use_proxy_for_chunks=False):
+#	print "URL: " + url
+#	progress = xbmcgui.DialogProgress()
+#	listitem = xbmcgui.ListItem("myfile")
+#	f4m_proxy=f4mProxy()
+#	stopPlaying.clear()
+#	runningthread=thread.start_new_thread(f4m_proxy.start,(stopPlaying,))
+#	progress.create('Starting local proxy')
+#	stream_delay = 1
+#	progress.update( 50, "", 'Loading local proxy', "" )
+#	xbmc.sleep(stream_delay*1000)
+#	url_to_play=f4m_proxy.prepare_url(url,proxy,use_proxy_for_chunks)
+#	mplayer = MyPlayer()    
+#	progress.close() 
+#	mplayer.play(url_to_play,listitem)
+#	while True:
+#		if stopPlaying.isSet():
+#			break;
+#		xbmc.log('Sleeping...')
+#		xbmc.sleep(200)
+#
+#	print 'Job done'
+#	return
     
+def playF4mLink(url,name,proxy=None,use_proxy_for_chunks=False):
+    from F4mProxy import f4mProxyHelper
+    player=f4mProxyHelper()
+    player.playF4mLink(url, name, proxy, use_proxy_for_chunks)
+    return    
 
+def playF4mLink2(url,name,proxy=None,use_proxy_for_chunks=False):
+    from F4mProxy import f4mProxyHelper
+    helper=f4mProxyHelper()
+    url_to_play,stopEvent = helper.start_proxy(url, name, proxy, use_proxy_for_chunks)
+    mplayer = MyPlayer()    
+    mplayer.stopPlaying = stopEvent
+    listitem = xbmcgui.ListItem(name)
+    mplayer.play(url_to_play,listitem)
+    while True:
+        if stopEvent.isSet():
+            break;
+        xbmc.log('Sleeping...')
+        xbmc.sleep(200)
+    return   
+    
 class MyPlayer (xbmc.Player):
     def __init__ (self):
         xbmc.Player.__init__(self)
 
     def play(self, url, listitem):
         print 'Now im playing... %s' % url
-        stopPlaying.clear()
+        self.stopPlaying.clear()
         xbmc.Player(xbmc.PLAYER_CORE_DVDPLAYER).play(url, listitem)
     def onPlayBackEnded( self ):
         # Will be called when xbmc stops playing a file
         print "seting event in onPlayBackEnded " 
-        stopPlaying.set();
+        self.stopPlaying.set();
         print "stop Event is SET" 
     def onPlayBackStopped( self ):
         # Will be called when user stops xbmc playing a file
         print "seting event in onPlayBackStopped " 
-        stopPlaying.set();
+        self.stopPlaying.set();
         print "stop Event is SET" 
 
 VIEW_MODES = {

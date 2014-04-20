@@ -8,3 +8,5 @@
 - now its working with querystring
 [B]Version 1.0.7[/B]
 - headbug
+[B]Version 1.0.8[/B]
+- proxysetup

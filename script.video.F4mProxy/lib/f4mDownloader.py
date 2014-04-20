@@ -269,30 +269,10 @@ class F4MDownloader():
             msg = u'[download] %s' % msg
         super(F4MDownloader, self).to_screen(msg, *args, **kargs)
     
-    def downloadIntoFile(self,fileName=None, url='', ischunkDownload=False):
+    def getUrl(self,url, ischunkDownloading=False):
         try:
             post=None
-            #if movie: #movie section proxy is not checked.
-            #    print 'movie section'
-                #post={'q':url}
-                #print url
-                #print urllib.quote_plus(url)
-                #url='http://dcs.aiou.edu.pk/dl/index.php?q=%s&hl=4'%(urllib.quote_plus(url))
-                #print url
-
-                #url='http://dcs.aiou.edu.pk/dl/index.php'
-                #post = urllib.urlencode(post)
-            
-            if self.proxy and (  (not ischunkDownload) or self.use_proxy_for_chunks ):
-                #proxy = "61.233.25.166:80"
-                proxy = self.proxy
-
-                proxies = {"http":"http://%s" % proxy}
-                print 'proxies',proxies
-
-                proxy_support = urllib2.ProxyHandler(proxies)
-                opener = urllib2.build_opener(proxy_support, urllib2.HTTPHandler())#debuglevel=1))
-                urllib2.install_opener(opener)
+            openner = urllib2.build_opener(urllib2.HTTPHandler, urllib2.HTTPSHandler)
 
             if post:
                 req = urllib2.Request(url, post)
@@ -308,19 +288,16 @@ class F4MDownloader():
 
             if not ua_header:
                 req.add_header('User-Agent','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36')
-            response = urllib2.urlopen(req)
+            #response = urllib2.urlopen(req)
+            if self.proxy and (  (not ischunkDownloading) or self.use_proxy_for_chunks ):
+                req.set_proxy(self.proxy, 'http')
+            response = openner.open(req)
             data=response.read()
-            #print 'datalen',len(data)
-            #if movie: print data
-            if not fileName:
-                return data
-            #if len(data)>0:
-            #    with open(os.path.join(downloadFolder, fname), "wb") as filewriter:
-            #        filewriter.write(data)
-            #    return True
-            return False
+
+            return data
+
         except:
-            print 'Error in downloadIntoFile'
+            print 'Error in getUrl'
             traceback.print_exc()
             return None
 
@@ -375,7 +352,7 @@ class F4MDownloader():
             #self.outputfile = os.path.join(downloadPath, filename)
             man_url = url
             print 'Downloading f4m manifest'
-            manifest = self.downloadIntoFile('',man_url)#.read()
+            manifest = self.getUrl(man_url)#.read()
             print manifest
             self.status='manifest done'
             #self.report_destination(filename)
@@ -512,7 +489,7 @@ class F4MDownloader():
                 success=False
                 urlTry=0
                 while not success and urlTry<5:
-                    success = self.downloadIntoFile('', url,True)
+                    success = self.getUrl(url,True)
                     if not success: xbmc.sleep(300)
                     urlTry+=1
                 print 'downloaded',url
@@ -591,7 +568,7 @@ class F4MDownloader():
             while retries<=30:
 
                 if not bootStrapData:
-                    bootStrapData =self.downloadIntoFile('',bootstrapUrl)
+                    bootStrapData =self.getUrl(bootstrapUrl)
                 if bootStrapData==None:
                     retries+=1
                     continue
