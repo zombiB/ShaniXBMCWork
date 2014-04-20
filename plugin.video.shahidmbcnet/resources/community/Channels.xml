@@ -1,5 +1,14 @@
 <channels>
 <channel>
+<cname>Palestine</cname>
+<imageurl>http://www.lyngsat-logo.com/hires/pp/palestine_satellite_channel.png</imageurl>
+<enabled>True</enabled>
+<assignedcategory>
+<category>AlSham</category>
+</assignedcategory>
+</channel>
+
+<channel>
 <cname>El Djazairia</cname>
 <imageurl>http://www.lyngsat-logo.com/hires/ee/el_djazairia_tv_dz.png</imageurl>
 <enabled>True</enabled>
@@ -22,7 +31,7 @@
 <imageurl>http://www.lyngsat-logo.com/logo/tv/aa/alhayat_2.jpg</imageurl>
 <enabled>True</enabled>
 <assignedcategory>
-<category>magreb</category>
+<category>egypt</category>
 </assignedcategory>
 </channel>
 <channel>
@@ -30,7 +39,7 @@
 <imageurl>http://www.lyngsat-logo.com/logo/tv/aa/al_ikhbaria_sy.png</imageurl>
 <enabled>True</enabled>
 <assignedcategory>
-<category>magreb</category>
+<category>AlSham</category>
 </assignedcategory>
 </channel>
 
