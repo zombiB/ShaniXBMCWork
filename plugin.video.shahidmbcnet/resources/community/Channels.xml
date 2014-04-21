@@ -267,14 +267,7 @@
 			<category>islam</category>
                 </assignedcategory>
 	</channel>
-	<channel>
-		<cname>Al Karama</cname>
-		<imageurl>http://www.teledunet.com/player/icones/al_karama.jpg</imageurl>
-		<enabled>True</enabled>
-		<assignedcategory>
-			<category>oth</category>
-		</assignedcategory>
-	</channel>
+
 	<channel>
 		<cname>Al Maghribia</cname>
 		<imageurl>http://www.teledunet.com/player/icones/al_maghribia.jpg</imageurl>
