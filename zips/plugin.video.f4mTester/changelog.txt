@@ -10,3 +10,5 @@
 - now its working with querystring
 [B]Version 1.0.8[/B]
 - proxysetup
+[B]Version 1.0.9[/B]
+- added more links
