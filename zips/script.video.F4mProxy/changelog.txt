@@ -10,3 +10,5 @@
 - headbug
 [B]Version 1.0.8[/B]
 - proxysetup
+[B]Version 1.0.10[/B]
+- bitrate support

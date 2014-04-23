@@ -43,6 +43,8 @@ import base64
 import threading 
 import xbmcgui
 import xbmc 
+
+g_stopEvent=None
 class MyHandler(BaseHTTPRequestHandler):
     """
    Serves a HEAD request
@@ -61,6 +63,7 @@ class MyHandler(BaseHTTPRequestHandler):
         s.answer_request(True)
  
     def answer_request(self, sendData):
+        global g_stopEvent
         try:
 
             #Pull apart request path
@@ -77,8 +80,8 @@ class MyHandler(BaseHTTPRequestHandler):
                 return
 
 
-            (url,proxy,use_proxy_for_chunks)=self.decode_url(request_path)
-            print 'Url received at proxy',url,proxy,use_proxy_for_chunks
+            (url,proxy,use_proxy_for_chunks,maxbitrate)=self.decode_url(request_path)
+            print 'Url received at proxy',url,proxy,use_proxy_for_chunks,maxbitrate
 
 
             #Send file request
@@ -97,7 +100,7 @@ class MyHandler(BaseHTTPRequestHandler):
             self.end_headers()
             if sendData:
                 downloader=F4MDownloader()
-                downloader.download(self.wfile,url,proxy,use_proxy_for_chunks)
+                downloader.download(self.wfile,url,proxy,use_proxy_for_chunks,g_stopEvent,maxbitrate)
                 #runningthread=thread.start_new_thread(downloader.download,(self.wfile,url,proxy,use_proxy_for_chunks,))
                 #xbmc.sleep(500)
                 #while not downloader.status=="finished":
@@ -128,11 +131,17 @@ class MyHandler(BaseHTTPRequestHandler):
             proxy = params['proxy'][0]#
             use_proxy_for_chunks =  params['use_proxy_for_chunks'][0]#
         except: pass
+        
+        maxbitrate=0
+        try:
+            maxbitrate = int(params['maxbitrate'][0])
+        except: pass
+        
         if proxy=='None' or proxy=='':
             proxy=None
         if use_proxy_for_chunks=='False':
             use_proxy_for_chunks=False
-        return (received_url,proxy,use_proxy_for_chunks)   
+        return (received_url,proxy,use_proxy_for_chunks,maxbitrate)   
     """
    Sends the requested file and add additional headers.
    """
@@ -164,7 +173,9 @@ class f4mProxy():
     def start(self,stopEvent,port=PORT_NUMBER):
         global PORT_NUMBER
         global HOST_NAME
+        global g_stopEvent
         print 'port',port,'HOST_NAME',HOST_NAME
+        g_stopEvent = stopEvent
         socket.setdefaulttimeout(30)
         server_class = ThreadedHTTPServer
         MyHandler.protocol_version = "HTTP/1.0"
@@ -175,16 +186,16 @@ class f4mProxy():
             httpd.handle_request()
         httpd.server_close()
         print "XBMCLocalProxy Stops %s:%s" % (HOST_NAME, port)
-    def prepare_url(self,url,proxy=None, use_proxy_for_chunks=True,port=PORT_NUMBER):
+    def prepare_url(self,url,proxy=None, use_proxy_for_chunks=True,port=PORT_NUMBER, maxbitrate=0):
         global PORT_NUMBER
         global PORT_NUMBER
-        newurl=urllib.urlencode({'url': url,'proxy':proxy,'use_proxy_for_chunks':use_proxy_for_chunks})
+        newurl=urllib.urlencode({'url': url,'proxy':proxy,'use_proxy_for_chunks':use_proxy_for_chunks,'maxbitrate':maxbitrate})
         link = 'http://'+HOST_NAME+(':%s/'%str(port)) + newurl
         return (link) #make a url that caller then call load into player
 
 class f4mProxyHelper():
 
-    def playF4mLink(self,url,name,proxy=None,use_proxy_for_chunks=False):
+    def playF4mLink(self,url,name,proxy=None,use_proxy_for_chunks=False, maxbitrate=0):
         print "URL: " + url
         stopPlaying=threading.Event()
         progress = xbmcgui.DialogProgress()
@@ -199,7 +210,7 @@ class f4mProxyHelper():
         progress.update( 20, "", 'Loading local proxy', "" )
         xbmc.sleep(stream_delay*1000)
         progress.update( 100, "", 'Loading local proxy', "" )
-        url_to_play=f4m_proxy.prepare_url(url,proxy,use_proxy_for_chunks)
+        url_to_play=f4m_proxy.prepare_url(url,proxy,use_proxy_for_chunks,maxbitrate=maxbitrate)
         mplayer = MyPlayer()    
         mplayer.stopPlaying = stopPlaying
         progress.close() 
@@ -222,7 +233,7 @@ class f4mProxyHelper():
         print 'Job done'
         return
         
-    def start_proxy(self,url,name,proxy=None,use_proxy_for_chunks=False):
+    def start_proxy(self,url,name,proxy=None,use_proxy_for_chunks=False, maxbitrate=0):
         print "URL: " + url
         stopPlaying=threading.Event()
         f4m_proxy=f4mProxy()
@@ -230,7 +241,7 @@ class f4mProxyHelper():
         runningthread=thread.start_new_thread(f4m_proxy.start,(stopPlaying,))
         stream_delay = 1
         xbmc.sleep(stream_delay*1000)
-        url_to_play=f4m_proxy.prepare_url(url,proxy,use_proxy_for_chunks)
+        url_to_play=f4m_proxy.prepare_url(url,proxy,use_proxy_for_chunks,maxbitrate=maxbitrate)
         return url_to_play, stopPlaying
 
 
@@ -242,7 +253,7 @@ class MyPlayer (xbmc.Player):
     def play(self, url, listitem):
         print 'Now im playing... %s' % url
         self.stopPlaying.clear()
-        xbmc.Player(xbmc.PLAYER_CORE_DVDPLAYER).play(url, listitem)
+        xbmc.Player(xbmc.PLAYER_CORE_DVDPLAYER ).play(url, listitem)
         
     def onPlayBackEnded( self ):
         # Will be called when xbmc stops playing a file
@@ -254,3 +265,6 @@ class MyPlayer (xbmc.Player):
         print "seting event in onPlayBackStopped " 
         self.stopPlaying.set();
         print "stop Event is SET" 
+
+
+            

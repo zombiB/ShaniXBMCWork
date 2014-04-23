@@ -103,7 +103,7 @@ class FlvReader(io.BytesIO):
                               'duration': duration,
                               'discontinuity_indicator': discontinuity_indicator,
                               })
-
+        print 'fragments',fragments
         return {'version': version,
                 'time_scale': time_scale,
                 'fragments': fragments,
@@ -318,13 +318,15 @@ class F4MDownloader():
         # produced by AdobeHDS.php (https://github.com/K-S-V/Scripts)
         stream.write(b'\x00\x00\x01\x73')
 
-    def download(self, out_stream, url, proxy=None,use_proxy_for_chunks=True):
+    def download(self, out_stream, url, proxy=None,use_proxy_for_chunks=True,g_stopEvent=None, maxbitrate=0):
         try:
             self.clientHeader=None
             self.status='init'
             self.proxy = proxy
             self.use_proxy_for_chunks=use_proxy_for_chunks
             self.out_stream=out_stream
+            self.g_stopEvent=g_stopEvent
+            self.maxbitrate=maxbitrate
             if '|' in url:
                 sp = url.split('|')
                 url = sp[0]
@@ -364,8 +366,26 @@ class F4MDownloader():
             print doc
             formats = [(int(f.attrib.get('bitrate', -1)),f) for f in doc.findall(_add_ns('media'))]
             #print 'formats',formats
-            formats = sorted(formats, key=lambda f: f[0],reverse=True)
-            rate, media = formats[0]
+            formats = sorted(formats, key=lambda f: f[0])
+            if self.maxbitrate==0:
+                rate, media = formats[-1]
+            elif self.maxbitrate==-1:
+                rate, media = formats[0]
+            else: #find bitrate
+                brselected=None
+                rate, media=None,None
+                for r, m in formats:
+                    if r<=self.maxbitrate:
+                        rate, media=r,m
+                    else:
+                        break
+                
+                if media==None:
+                    rate, media = formats[-1]
+                
+            
+
+            print 'rate selected',rate
             metadata = base64.b64decode(media.find(_add_ns('metadata')).text)
             print 'metadata stream read done'#,media.find(_add_ns('metadata')).text
             dest_stream =  self.out_stream
@@ -417,10 +437,10 @@ class F4MDownloader():
             #print 'fragments_list',fragments_list
             bootstrapURL=''
             bootstrapData=None
+            queryString=None
             if bootstrapURL1=='':
                 bootstrapData=base64.b64decode(doc.findall(_add_ns('bootstrapInfo'))[0].text)
             else:
-                queryString=None
                 from urlparse import urlparse
                 queryString = urlparse(url).query
                 print 'queryString',queryString
@@ -473,7 +493,8 @@ class F4MDownloader():
             #for seqNumber in range(0,len(fragments_list)):
             self.segmentAvailable=0
             while True:
-
+                if self.g_stopEvent and self.g_stopEvent.isSet():
+                        return
                 seg_i, frag_i=fragments_list[self.seqNumber]
                 self.seqNumber+=1
 
@@ -565,8 +586,10 @@ class F4MDownloader():
 
         try:
             retries=0
-            while retries<=30:
+            while retries<=10:
 
+                if self.g_stopEvent and self.g_stopEvent.isSet():
+                        return
                 if not bootStrapData:
                     bootStrapData =self.getUrl(bootstrapUrl)
                 if bootStrapData==None:
@@ -584,12 +607,12 @@ class F4MDownloader():
                 total_frags = len(fragments_list)
                 #print 'fragments_list',fragments_list, newFragement
                 #print lastSegment
-                if len(fragments_list)==0 or (  newFragement and newFragement>fragments_list[0][1]):
+                if updateMode and (len(fragments_list)==0 or (  newFragement and newFragement>fragments_list[0][1])):
                     #todo check lastFragement to see if we got valid data
                     print 'retrying......'
                     bootStrapData=None
                     retries+=1
-                    xbmc.sleep(4000)
+                    xbmc.sleep(2000)
                     continue
                 return bootstrap, boot_info, fragments_list,total_frags
         except:
