@@ -12,3 +12,5 @@
 - proxysetup
 [B]Version 1.0.10[/B]
 - bitrate support
+[B]Version 1.0.12[/B]
+- added support recorded streams

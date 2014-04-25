@@ -88,7 +88,7 @@ class FlvReader(io.BytesIO):
             mod = self.read_string()
             quality_entries.append(mod)
         fragments_count = self.read_unsigned_int()
-        print 'fragments_count',fragments_count
+        #print 'fragments_count',fragments_count
         fragments = []
         for i in range(fragments_count):
             first = self.read_unsigned_int()
@@ -103,7 +103,7 @@ class FlvReader(io.BytesIO):
                               'duration': duration,
                               'discontinuity_indicator': discontinuity_indicator,
                               })
-        print 'fragments',fragments
+        #print 'fragments',fragments
         return {'version': version,
                 'time_scale': time_scale,
                 'fragments': fragments,
@@ -114,7 +114,11 @@ class FlvReader(io.BytesIO):
         version = self.read_unsigned_char()
         self.read(3) # flags
         bootstrap_info_version = self.read_unsigned_int()
-        self.read(1) # Profile,Live,Update,Reserved
+        streamType=self.read_unsigned_char()#self.read(1) # Profile,Live,Update,Reserved
+        islive=False
+        if (streamType & 0x20) >> 5:
+            islive=True
+        print 'LIVE',streamType,islive
         time_scale = self.read_unsigned_int()
         current_media_time = self.read_unsigned_long_long()
         smpteTimeCodeOffset = self.read_unsigned_long_long()
@@ -153,7 +157,7 @@ class FlvReader(io.BytesIO):
                 'movie_identifier': movie_identifier,
                 'drm_data': drm_data,
                 'fragments': fragments,
-                }
+                },islive
 
     def read_bootstrap_info(self):
         """
@@ -169,34 +173,58 @@ class FlvReader(io.BytesIO):
 def read_bootstrap_info(bootstrap_bytes):
     return FlvReader(bootstrap_bytes).read_bootstrap_info()
 
-def build_fragments_list(boot_info, startFromFregment=None):
+def build_fragments_list(boot_info, startFromFregment=None, live=True):
     """ Return a list of (segment, fragment) for each fragment in the video """
     res = []
     segment_run_table = boot_info['segments'][0]
-    print 'segment_run_table',segment_run_table
+    #print 'segment_run_table',segment_run_table
     # I've only found videos with one segment
     #if len(segment_run_table['segment_run'])>1:
     #    segment_run_table['segment_run']=segment_run_table['segment_run'][-2:] #pick latest
-    #totalFrags=sum(segment_run_table['segment_run'][1])
+
     
     frag_start = boot_info['fragments'][0]['fragments']
+    #print boot_info['fragments']
+ 
+ 
+    
+#    sum(j for i, j in segment_run_table['segment_run'])
+    
     first_frag_number=frag_start[0]['first']
+    last_frag_number=frag_start[-1]['first']
+    if last_frag_number==0:
+        last_frag_number=frag_start[-2]['first']
     endfragment=0
     segment_to_start=None
     for current in range (len(segment_run_table['segment_run'])):
         seg,fregCount=segment_run_table['segment_run'][current]
-        frag_end=first_frag_number+fregCount-1
+        #print 'segmcount',seg,fregCount
+        if (not live):
+            frag_end=last_frag_number
+        else:
+            frag_end=first_frag_number+fregCount-1
+            if fregCount>10000:
+                frag_end=last_frag_number
+        #if frag_end
+
+            
+        
         segment_run_table['segment_run'][current]=(seg,fregCount,first_frag_number,frag_end)
         if (not startFromFregment==None) and startFromFregment>=first_frag_number and startFromFregment<=frag_end:
             segment_to_start=current
         first_frag_number+=fregCount
+    print 'current status',segment_run_table['segment_run']
     #if we have no index then take the last segment
     if segment_to_start==None:
         segment_to_start=len(segment_run_table['segment_run'])-1
         #if len(segment_run_table['segment_run'])>2:
         #    segment_to_start=len(segment_run_table['segment_run'])-2;
-        if len(boot_info['fragments'][0]['fragments'])>1: #go bit back
-            startFromFregment= boot_info['fragments'][0]['fragments'][-1]['first']
+        if live:
+            if len(boot_info['fragments'][0]['fragments'])>1: #go bit back
+                startFromFregment= boot_info['fragments'][0]['fragments'][-1]['first']
+        else:
+            startFromFregment= boot_info['fragments'][0]['fragments'][0]['first'] #start from begining
+            
         #if len(boot_info['fragments'][0]['fragments'])>2: #go little bit back
         #    startFromFregment= boot_info['fragments'][0]['fragments'][-2]['first']
         
@@ -208,8 +236,10 @@ def build_fragments_list(boot_info, startFromFregment=None):
         #print 'startFromFregment',startFromFregment, 
         if (not startFromFregment==None) and startFromFregment>=frag_start and startFromFregment<=frag_end:
             frag_start=startFromFregment
+        #print 'frag_start',frag_start,frag_end
         for currentFreg in range(frag_start,frag_end+1):
              res.append((seg,currentFreg ))
+    print 'fragmentlist',res,boot_info
     return res
 
     
@@ -347,6 +377,7 @@ class F4MDownloader():
         global F4Mversion
         try:
             self.seqNumber=0
+            self.live=False #todo find if its Live or not
             
             #print 'download_info_dict started'
             #if not os.path.exists(downloadPath):
@@ -364,8 +395,13 @@ class F4MDownloader():
             #print F4Mversion,_add_ns('media')
             doc = etree.fromstring(manifest)
             print doc
-            formats = [(int(f.attrib.get('bitrate', -1)),f) for f in doc.findall(_add_ns('media'))]
+            try:
+                formats = [(int(f.attrib.get('bitrate', -1)),f) for f in doc.findall(_add_ns('media'))]
+            except:
+                formats=[(int(0),f) for f in doc.findall(_add_ns('media'))]
             #print 'formats',formats
+            
+            
             formats = sorted(formats, key=lambda f: f[0])
             if self.maxbitrate==0:
                 rate, media = formats[-1]
@@ -384,14 +420,15 @@ class F4MDownloader():
                     rate, media = formats[-1]
                 
             
-
-            print 'rate selected',rate
-            metadata = base64.b64decode(media.find(_add_ns('metadata')).text)
-            print 'metadata stream read done'#,media.find(_add_ns('metadata')).text
             dest_stream =  self.out_stream
-            self._write_flv_header(dest_stream, metadata)
-            dest_stream.flush()
-            
+            print 'rate selected',rate
+            try:
+                metadata = base64.b64decode(media.find(_add_ns('metadata')).text)
+                print 'metadata stream read done'#,media.find(_add_ns('metadata')).text
+
+                self._write_flv_header(dest_stream, metadata)
+                dest_stream.flush()
+            except: pass
             mediaUrl=media.attrib['url']
             try:
                 bootStrapID = media.attrib['bootstrapInfoId']
@@ -488,7 +525,6 @@ class F4MDownloader():
 
             frags_filenames = []
             self.seqNumber=0
-            live=True #todo find if its Live or not
             #for (seg_i, frag_i) in fragments_list:
             #for seqNumber in range(0,len(fragments_list)):
             self.segmentAvailable=0
@@ -513,7 +549,7 @@ class F4MDownloader():
                     success = self.getUrl(url,True)
                     if not success: xbmc.sleep(300)
                     urlTry+=1
-                print 'downloaded',url
+                print 'downloaded',not success==None,url
                 if not success:
                     return False
                 #with open(frag_filename, 'rb') as down:
@@ -540,7 +576,9 @@ class F4MDownloader():
                             # dest_stream.write(mdat_reader.read())
                             # break
                 self.status='play'
-                if live and self.seqNumber==len(fragments_list):
+                if self.seqNumber==len(fragments_list):
+                    if not self.live:
+                        break
                     self.seqNumber=0
                     #todo if the url not available then get manifest and get the data again
                     total_frags=None
@@ -598,12 +636,12 @@ class F4MDownloader():
                 #print 'bootstrapData',len(bootStrapData)
                 bootstrap = bootStrapData#base64.b64decode(bootStrapData)#doc.findall(_add_ns('bootstrapInfo'))[0].text)
                 #print 'boot stream read done'
-                boot_info = read_bootstrap_info(bootstrap)
+                boot_info,self.live = read_bootstrap_info(bootstrap)
                 #print 'boot_info  read done',boot_info
                 newFragement=None
                 if not lastFragement==None:
                     newFragement=lastFragement+1
-                fragments_list = build_fragments_list(boot_info,newFragement)
+                fragments_list = build_fragments_list(boot_info,newFragement,self.live)
                 total_frags = len(fragments_list)
                 #print 'fragments_list',fragments_list, newFragement
                 #print lastSegment

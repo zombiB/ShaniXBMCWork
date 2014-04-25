@@ -25,6 +25,10 @@ if paramstring:
     url = params['url'][0]#
     name = params['name'][0]
     mode =  params['mode'][0]
+    maxbitrate=0
+    try:
+        maxbitrate =  int(params['maxbitrate'][0])
+    except: pass
     play=True
 
 def playF4mLink(url,name,proxy=None,use_proxy_for_chunks=False):
@@ -33,8 +37,8 @@ def playF4mLink(url,name,proxy=None,use_proxy_for_chunks=False):
     #progress = xbmcgui.DialogProgress()
     #progress.create('Starting local proxy')
     xbmcplugin.endOfDirectory(int(sys.argv[1]), cacheToDisc=False)
+    player.playF4mLink(url, name, proxy, use_proxy_for_chunks,maxbitrate)
     
-    player.playF4mLink(url, name, proxy, use_proxy_for_chunks)
     return   
     
 def GUIEditExportName(name):
@@ -61,49 +65,57 @@ def GUIEditExportName(name):
     
 if mode ==None:
     
-    videos=[['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/bbc1/bbc1_1500.f4m','bbc1 (uk) 1500kbps','http://www.parker1.co.uk/myth/icons/tv/bbc1.png'],
-    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/bbc2/bbc2_1500.f4m','bbc2 (uk) 1500kbps','http://www.parker1.co.uk/myth/icons/tv/bbc2.png'],
-    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/bbc3/bbc3_1500.f4m','bbc3 (uk) 1500kbps',''],
-    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/bbc4/bbc4_1500.f4m','bbc4 (uk) 1500kbps',''],
-    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/cbbc/cbbc_1500.f4m','cbbc (uk) 1500kbps',''],
-    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/cbeebies/cbeebies_1500.f4m','cbeebeies (uk) 1500kbps',''],
-    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/parl/parl_1500.f4m','bbc parliment (uk) 1500kbps',''],
-    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/newsch/newsch_1500.f4m','bbc news (uk) 1500kbps',''],
-    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/bbc1/bbc1_1500.f4m|X-Forwarded-For=212.58.241.131','bbc1 (outside uk) 1500kbps','http://www.parker1.co.uk/myth/icons/tv/bbc1.png'],
-    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/bbc2/bbc2_1500.f4m|X-Forwarded-For=212.58.241.131','bbc2 (outside uk) 1500kbps','http://www.parker1.co.uk/myth/icons/tv/bbc2.png'],
-    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/bbc3/bbc3_1500.f4m|X-Forwarded-For=212.58.241.131','bbc3 (outside uk) 1500kbps',''],
-    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/bbc4/bbc4_1500.f4m|X-Forwarded-For=212.58.241.131','bbc4 (outside uk) 1500kbps',''],
-    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/cbbc/cbbc_1500.f4m|X-Forwarded-For=212.58.241.131','cbbc (outside uk) 1500kbps',''],
-    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/cbeebies/cbeebies_1500.f4m|X-Forwarded-For=212.58.241.131','cbeebeies (outside uk) 1500kbps',''],
-    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/parl/parl_1500.f4m|X-Forwarded-For=212.58.241.131','bbc parliment (outside uk) 1500kbps',''],
-    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/newsch/newsch_1500.f4m|X-Forwarded-For=212.58.241.131','bbc news (outside uk) 1500kbps',''],
-    ['http://nhkworld-hds-live1.hds1.fmslive.stream.ne.jp/hds-live/nhkworld-hds-live1/_definst_/livestream/nhkworld-live-128.f4m','nhk 128',''],
-    ['http://nhkworld-hds-live1.hds1.fmslive.stream.ne.jp/hds-live/nhkworld-hds-live1/_definst_/livestream/nhkworld-live-256.f4m','nhk 256',''],
-    ['http://nhkworld-hds-live1.hds1.fmslive.stream.ne.jp/hds-live/nhkworld-hds-live1/_definst_/livestream/nhkworld-live-512.f4m','nhk 512',''],
-    ['http://77.245.150.95/hds-live/livepkgr/_definst_/liveevent/livestream.f4m','Turkish',''],
-    ['http://88.157.194.246/live/ramdisk/zrtp1/HDS/zrtp1.f4m','j0anita',''],
-    ['http://ak.live.cntv.cn/z/cctv9_1@139238/manifest.f4m?hdcore=2.11.3&g=OUVOVEOVETYH','cntv.cn',''],
-    ['http://mlghds-lh.akamaihd.net/z/mlg17_1@167001/manifest.f4m?hdcore=2.11.3&g=TOFRPVFGXLFS','alibaba',''],
-    ['http://peer-stream.com/api/get_manifest.f4m?groupspec=G:0101010c050e6f72663200','streamtivi.com',''],
-    ['http://164.100.31.234/hds-live/livepkgr/_definst_/rstvlive.f4m','Rajya Sabha TV',''],
-    ['http://fmssv1.merep.com/hds-live/livepkgr/_definst_/liveevent/livestream.f4m?blnpc20130909042035_1061880273','media center',''],
-    ['http://fms01.stream.internetone.it/hds-live/livepkgr/_definst_/8fm/8fm1.f4m','Italy otto 8 FMTV',''],
-    ['http://88.150.239.241/hds-live/livepkgr/_definst_/liveevent/livestream.f4m','Son Araba',''],
-    ['http://202.162.123.172/hds-live/livepkgr/_definst_/liveevent/livestream4.f4m','Chine Live event 4',''],
-    ['http://zb.wyol.com.cn/hds-live/livepkgr/_definst_/wslhevent/hls_pindao_1_350.f4m','CCTV 1 China',''],
-    ['http://zb.zghhzx.net/hds-live/livepkgr/_definst_/wslhevent/hls_pindao_1_350.f4m','CCTV13 China',''],
-    ['http://zb.sygd.tv/hds-live/livepkgr/_definst_/wslhevent/hls_pindao_1_350.f4m','SYGD TV china',''],
-    ['http://zb.pudongtv.cn/hds-live/livepkgr/_definst_/wslhevent/hls_pindao_1_500.f4m','Pudong TV China',''],
-    ['http://88.150.239.241/hds-live/livepkgr/_definst_/liveevent/livestream.f4m','AKS TV Turkey',''],
-    ['http://fms.quadrant.uk.com/hds-live/livepkgr/_definst_/liveevent/livestream.f4m','Quadrant live streams UK',''],
-    ['http://cdn3.1internet.tv/hds-live11/livepkgr/_definst_/1tv-hd.f4m','1 HD cdn1 Russia',''],
-    ['http://cdn2.1internet.tv/hds-live/livepkgr/_definst_/1tv.f4m','1 HD cdn2 Russia',''],
-    ['http://193.232.151.135/hds-live-not-protected/livepkgr/_1099_/1099/1099-70.f4m','ndtv plus - proxy needed',''],
-     ['http://bbcwshdlive01-lh.akamaihd.net/z/atv_1@61433/manifest.f4m?hdcore=2.11.3','BBC Arabic',''],
-    ['http://skaihd-f.akamaihd.net/z/advert/ORAL_B_SHAKIRA_20-SKAI.mp4/manifest.f4m?hdcore=2.6.8&g=OGEJOEGNJICP','Greek Oral B advert',''],
-    ['http://srgssr_uni_11_ww-lh.akamaihd.net/z/enc11uni_ww@112996/100_644f96dfa358b184-p.bootstrap?g=XTJVOORDBMQF&hdcore=2.11.3','RTS Swiss a proxy needed',''],
-    ['http://77.245.150.95/hds-live/livepkgr/_definst_/liveevent/livestream.f4m','something else','']]
-    
+    videos=[['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/bbc1/bbc1_1500.f4m','bbc1 (uk) 1500kbps','http://www.parker1.co.uk/myth/icons/tv/bbc1.png',0],
+    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/bbc2/bbc2_1500.f4m','bbc2 (uk) 1500kbps','http://www.parker1.co.uk/myth/icons/tv/bbc2.png',0],
+    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/bbc3/bbc3_1500.f4m','bbc3 (uk) 1500kbps','',0],
+    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/bbc4/bbc4_1500.f4m','bbc4 (uk) 1500kbps','',0],
+    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/cbbc/cbbc_1500.f4m','cbbc (uk) 1500kbps','',0],
+    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/cbeebies/cbeebies_1500.f4m','cbeebeies (uk) 1500kbps','',0],
+    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/parl/parl_1500.f4m','bbc parliment (uk) 1500kbps','',0],
+    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/newsch/newsch_1500.f4m','bbc news (uk) 1500kbps','',0],
+    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/bbc1/bbc1_1500.f4m|X-Forwarded-For=212.58.241.131','bbc1 (outside uk) 1500kbps','http://www.parker1.co.uk/myth/icons/tv/bbc1.png',0],
+    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/bbc2/bbc2_1500.f4m|X-Forwarded-For=212.58.241.131','bbc2 (outside uk) 1500kbps','http://www.parker1.co.uk/myth/icons/tv/bbc2.png',0],
+    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/bbc3/bbc3_1500.f4m|X-Forwarded-For=212.58.241.131','bbc3 (outside uk) 1500kbps','',0],
+    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/bbc4/bbc4_1500.f4m|X-Forwarded-For=212.58.241.131','bbc4 (outside uk) 1500kbps','',0],
+    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/cbbc/cbbc_1500.f4m|X-Forwarded-For=212.58.241.131','cbbc (outside uk) 1500kbps','',0],
+    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/cbeebies/cbeebies_1500.f4m|X-Forwarded-For=212.58.241.131','cbeebeies (outside uk) 1500kbps','',0],
+    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/parl/parl_1500.f4m|X-Forwarded-For=212.58.241.131','bbc parliment (outside uk) 1500kbps','',0],
+    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/newsch/newsch_1500.f4m|X-Forwarded-For=212.58.241.131','bbc news (outside uk) 1500kbps','',0],
+    ['http://nhkworld-hds-live1.hds1.fmslive.stream.ne.jp/hds-live/nhkworld-hds-live1/_definst_/livestream/nhkworld-live-128.f4m','nhk 128','',0],
+    ['http://nhkworld-hds-live1.hds1.fmslive.stream.ne.jp/hds-live/nhkworld-hds-live1/_definst_/livestream/nhkworld-live-256.f4m','nhk 256','',0],
+    ['http://nhkworld-hds-live1.hds1.fmslive.stream.ne.jp/hds-live/nhkworld-hds-live1/_definst_/livestream/nhkworld-live-512.f4m','nhk 512','',0],
+    ['http://77.245.150.95/hds-live/livepkgr/_definst_/liveevent/livestream.f4m','Turkish','',0],
+    ['http://88.157.194.246/live/ramdisk/zrtp1/HDS/zrtp1.f4m','j0anita','',0],
+    ['http://ak.live.cntv.cn/z/cctv9_1@139238/manifest.f4m?hdcore=2.11.3&g=OUVOVEOVETYH','cntv.cn','',0],
+    ['http://mlghds-lh.akamaihd.net/z/mlg17_1@167001/manifest.f4m?hdcore=2.11.3&g=TOFRPVFGXLFS','alibaba','',0],
+    ['http://peer-stream.com/api/get_manifest.f4m?groupspec=G:0101010c050e6f72663200','streamtivi.com','',0],
+    ['http://164.100.31.234/hds-live/livepkgr/_definst_/rstvlive.f4m','Rajya Sabha TV','',0],
+    ['http://fmssv1.merep.com/hds-live/livepkgr/_definst_/liveevent/livestream.f4m?blnpc20130909042035_1061880273','media center','',0],
+    ['http://fms01.stream.internetone.it/hds-live/livepkgr/_definst_/8fm/8fm1.f4m','Italy otto 8 FMTV','',0],
+    ['http://88.150.239.241/hds-live/livepkgr/_definst_/liveevent/livestream.f4m','Son Araba','',0],
+    ['http://202.162.123.172/hds-live/livepkgr/_definst_/liveevent/livestream4.f4m','Chine Live event 4','',0],
+    ['http://zb.wyol.com.cn/hds-live/livepkgr/_definst_/wslhevent/hls_pindao_1_350.f4m','CCTV 1 China','',0],
+    ['http://zb.zghhzx.net/hds-live/livepkgr/_definst_/wslhevent/hls_pindao_1_350.f4m','CCTV13 China','',0],
+    ['http://zb.sygd.tv/hds-live/livepkgr/_definst_/wslhevent/hls_pindao_1_350.f4m','SYGD TV china','',0],
+    ['http://zb.pudongtv.cn/hds-live/livepkgr/_definst_/wslhevent/hls_pindao_1_500.f4m','Pudong TV China','',0],
+    ['http://88.150.239.241/hds-live/livepkgr/_definst_/liveevent/livestream.f4m','AKS TV Turkey','',0],
+    ['http://fms.quadrant.uk.com/hds-live/livepkgr/_definst_/liveevent/livestream.f4m','Quadrant live streams UK','',0],
+    ['http://cdn3.1internet.tv/hds-live11/livepkgr/_definst_/1tv-hd.f4m','1 HD cdn1 Russia','',0],
+    ['http://cdn2.1internet.tv/hds-live/livepkgr/_definst_/1tv.f4m','1 HD cdn2 Russia','',0],
+    ['http://193.232.151.135/hds-live-not-protected/livepkgr/_1099_/1099/1099-70.f4m','ndtv plus - proxy needed','',0],
+    ['http://bbcwshdlive01-lh.akamaihd.net/z/atv_1@61433/manifest.f4m?hdcore=2.11.3','BBC Arabic','',0],
+    ['http://skaihd-f.akamaihd.net/z/advert/ORAL_B_SHAKIRA_20-SKAI.mp4/manifest.f4m?hdcore=2.6.8&g=OGEJOEGNJICP','Greek Oral B advert','',0],
+    ['http://srgssr_uni_11_ww-lh.akamaihd.net/z/enc11uni_ww@112996/100_644f96dfa358b184-p.bootstrap?g=XTJVOORDBMQF&hdcore=2.11.3','RTS Swiss a proxy needed','',0],
+    ['http://ccr.cim-jitp.top.comcast.net/cimomg04/OPUS/83/162/119271491507/1389989008837/119271491507_1389986611184_1850000_4.f4m','aliakrep DRM not working','',0],
+    ['http://stream1-prod.spectar.tv:1935/mrt-edge/_definst_/mrt3/smil:all-streams.isml/manifest.f4m','mrt3/all-streams.isml','',0],        
+    ['http://hdv.gamespotcdn.net/z/d5/2013/10/16/Gameplay_GettingRevengeinGTAOnline_101613_,600,1000,1800,3200,4000,.mp4.csmil/manifest.f4m?hdcore=2.10.3&g=JNMDDRCQSDCH','Recorded..Getting Revenge in GTA maxbitrate 2000','',2006],        
+    ['http://hdv.gamespotcdn.net/z/d5/2013/10/16/Gameplay_GettingRevengeinGTAOnline_101613_,600,1000,1800,3200,4000,.mp4.csmil/manifest.f4m?hdcore=2.10.3&g=JNMDDRCQSDCH','Recorded..Getting Revenge in GTA maxbitrate Highest','',0],        
+    ['http://hdv.gamespotcdn.net/z/d5/2014/04/24/GSNews_Apr24_20140424a_,600,1000,1800,3200,4000,.mp4.csmil/manifest.f4m?hdcore=2.10.3&g=KUVLMGTKPJFF','Recorded..Gamespot news highest bitrate','',0],        
+    ['http://hdv.gamespotcdn.net/z/d5/2014/04/24/GSNews_Apr24_20140424a_,600,.mp4.csmil/manifest.f4m?hdcore=2.10.3&g=KUVLMGTKPJFF','Recorded..Gamespot news 600 bitrate','',0],        
+
+    ['http://77.245.150.95/hds-live/livepkgr/_definst_/liveevent/livestream.f4m','something else','',0]]
+     
+
     #['http://dummy','Custom']]
     #print videos
 
@@ -125,11 +137,11 @@ if mode ==None:
 
         videos+=match #disabled for time being as these are not working
     #print videos
-    for (file_link,name,imgurl) in videos:
+    for (file_link,name,imgurl,maxbitrate) in videos:
         liz=xbmcgui.ListItem(name,iconImage=imgurl, thumbnailImage=imgurl)
         liz.setInfo( type="Video", infoLabels={ "Title": name} )
         #liz.setProperty("IsPlayable","true")
-        u = sys.argv[0] + "?" + urllib.urlencode({'url': file_link,'mode':'play','name':name}) 
+        u = sys.argv[0] + "?" + urllib.urlencode({'url': file_link,'mode':'play','name':name,'maxbitrate':maxbitrate}) 
         print u
         
         ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=False, )
