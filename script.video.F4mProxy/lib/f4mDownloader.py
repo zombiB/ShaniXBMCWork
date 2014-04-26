@@ -14,6 +14,7 @@ import urlparse
 import posixpath
 import re
 
+
 #import youtube_dl
 #from youtube_dl.utils import *
 addon_id = 'script.video.F4mProxy'
@@ -22,7 +23,6 @@ __addonname__   = selfAddon.getAddonInfo('name')
 __icon__        = selfAddon.getAddonInfo('icon')
 downloadPath   = xbmc.translatePath(selfAddon.getAddonInfo('profile'))#selfAddon["profile"])
 F4Mversion=''
-
 class FlvReader(io.BytesIO):
     """
     Reader for Flv files
@@ -293,12 +293,10 @@ class F4MDownloader():
     """
     outputfile =''
     clientHeader=None
-    #stopDownloading=None
-    def to_screen(self, msg, prefix=False, *args, **kargs):
-        if prefix:
-            msg = u'[download] %s' % msg
-        super(F4MDownloader, self).to_screen(msg, *args, **kargs)
-    
+
+    def __init__(self):
+        self.init_done=False
+        
     def getUrl(self,url, ischunkDownloading=False):
         try:
             post=None
@@ -348,8 +346,10 @@ class F4MDownloader():
         # produced by AdobeHDS.php (https://github.com/K-S-V/Scripts)
         stream.write(b'\x00\x00\x01\x73')
 
-    def download(self, out_stream, url, proxy=None,use_proxy_for_chunks=True,g_stopEvent=None, maxbitrate=0):
+    def init(self, out_stream, url, proxy=None,use_proxy_for_chunks=True,g_stopEvent=None, maxbitrate=0):
         try:
+            self.init_done=False
+            self.init_url=url
             self.clientHeader=None
             self.status='init'
             self.proxy = proxy
@@ -364,29 +364,31 @@ class F4MDownloader():
                 self.clientHeader= urlparse.parse_qsl(self.clientHeader)
                 
                 print 'header recieved now url and headers are',url, self.clientHeader 
-            self.status='finished'
-            self.downloadInternal(  url)
-
+            self.status='init done'
+            self.url=url
+            #self.downloadInternal(  url)
+            self.preDownoload()
+            self.init_done=True
+            return True
             #os.remove(self.outputfile)
         except: 
             traceback.print_exc()
             self.status='finished'
-        return
-        
-    def downloadInternal(self,url):
+        return False
+     
+    def preDownoload(self):
         global F4Mversion
         try:
             self.seqNumber=0
             self.live=False #todo find if its Live or not
-            
-            #print 'download_info_dict started'
-            #if not os.path.exists(downloadPath):
-            #    os.makedirs(downloadPath)
-            #self.outputfile = os.path.join(downloadPath, filename)
-            man_url = url
+            man_url = self.url
+            url=self.url
             print 'Downloading f4m manifest'
             manifest = self.getUrl(man_url)#.read()
-            print manifest
+            print len(manifest)
+            try:
+                print manifest
+            except: pass
             self.status='manifest done'
             #self.report_destination(filename)
             #dl = ReallyQuietDownloader(self.ydl, {'continuedl': True, 'quiet': True, 'noprogress':True})
@@ -396,7 +398,13 @@ class F4MDownloader():
             doc = etree.fromstring(manifest)
             print doc
             try:
-                formats = [(int(f.attrib.get('bitrate', -1)),f) for f in doc.findall(_add_ns('media'))]
+                #formats = [(int(f.attrib.get('bitrate', -1)),f) for f in doc.findall(_add_ns('media'))]
+                formats=[]
+                for f in doc.findall(_add_ns('media')):
+                    vtype=f.attrib.get('type', '')
+                    if f.attrib.get('type', '')=='video' or vtype=='' :
+                        formats.append([int(f.attrib.get('bitrate', -1)),f])
+                print 'format works',formats
             except:
                 formats=[(int(0),f) for f in doc.findall(_add_ns('media'))]
             #print 'formats',formats
@@ -422,12 +430,13 @@ class F4MDownloader():
             
             dest_stream =  self.out_stream
             print 'rate selected',rate
+            self.metadata=None
             try:
-                metadata = base64.b64decode(media.find(_add_ns('metadata')).text)
+                self.metadata = base64.b64decode(media.find(_add_ns('metadata')).text)
                 print 'metadata stream read done'#,media.find(_add_ns('metadata')).text
 
-                self._write_flv_header(dest_stream, metadata)
-                dest_stream.flush()
+                #self._write_flv_header(dest_stream, metadata)
+                #dest_stream.flush()
             except: pass
             mediaUrl=media.attrib['url']
             try:
@@ -437,8 +446,8 @@ class F4MDownloader():
             base_url = join(man_url,mediaUrl)#compat_urlparse.urljoin(man_url,media.attrib['url'])
             if mediaUrl.endswith('/') and not base_url.endswith('/'):
                     base_url += '/'
-            #print 'base_url',base_url,  doc.findall(_add_ns('bootstrapInfo'))[0]
-            #findall(".//year/..[@name='Singapore']")
+
+            self.base_url=base_url
             bsArray=doc.findall(_add_ns('bootstrapInfo'))
             print 'bootStrapID',bootStrapID
             #bootStrapID='bootstrap_450'
@@ -455,23 +464,7 @@ class F4MDownloader():
             try:
                 bootstrapURL1=bootstrap.attrib['url']
             except: pass
-            
-            #bootstrapURL=''
-            #if bootstrapURL1=='':
-            #    bootstrap=base64.b64decode(doc.findall(_add_ns('bootstrapInfo'))[0].text)
-            #else:
-            #    bootstrapURL = join(man_url,bootstrap.attrib['url'])#+'?'+queryString
-            #    print 'bootstrapData',bootstrapURL
-            #    bootStrapData =self.downloadIntoFile('',bootstrapURL)
-            #    print 'bootstrapData',len(bootStrapData)
-            #    bootstrap = bootStrapData#base64.b64decode(bootStrapData)#doc.findall(_add_ns('bootstrapInfo'))[0].text)
-            #    print 'boot stream read done'
-            
-            #boot_info = read_bootstrap_info(bootstrap)
-            #print 'boot_info  read done',boot_info
-            #fragments_list = build_fragments_list(boot_info)
-            #total_frags = len(fragments_list)
-            #print 'fragments_list',fragments_list
+
             bootstrapURL=''
             bootstrapData=None
             queryString=None
@@ -492,51 +485,65 @@ class F4MDownloader():
                 else:
                     bootstrapURL = join(man_url,bootstrap.attrib['url'])+'?'+queryString
                 print 'bootstrapURL',bootstrapURL
+            self.bootstrapURL=bootstrapURL
+            self.queryString = queryString
+            self.bootstrap, self.boot_info, self.fragments_list,self.total_frags=self.readBootStrapInfo(bootstrapURL,bootstrapData)
+        except:
+            traceback.print_exc()
+        return
+
+        
+    def keep_sending_video(self,dest_stream, segmentToStart=None, totalSegmentToSend=0):
+        try:
+            self.status='download Starting'
+            self.downloadInternal(self.url,dest_stream,segmentToStart,totalSegmentToSend)
+        except: 
+            traceback.print_exc()
+        self.status='finished'
             
-            bootstrap, boot_info, fragments_list,total_frags=self.readBootStrapInfo(bootstrapURL,bootstrapData)
+    def downloadInternal(self,url,dest_stream ,segmentToStart=None,totalSegmentToSend=0):
+        global F4Mversion
+        try:
+            #dest_stream =  self.out_stream
+            queryString=self.queryString
+            print 'segmentToStart',segmentToStart
+            if self.live or segmentToStart==0 or segmentToStart==None:
+                print 'writing metadata',len(self.metadata)
+                self._write_flv_header(dest_stream, self.metadata)
+                dest_stream.flush()
+            url=self.url
+  
+            bootstrap, boot_info, fragments_list,total_frags=(self.bootstrap, self.boot_info, self.fragments_list,self.total_frags)
             print  boot_info, fragments_list,total_frags
             self.status='bootstrap done'
 
-
-            #tmpfilename = filename#self.temp_name(filename)
-            #(dest_stream, tmpfilename) = sanitize_open(tmpfilename, 'wb')
 
             self.status='file created'
             self.downloaded_bytes = 0
             self.bytes_in_disk = 0
             self.frag_counter = 0
             start = time.time()
-            #def frag_progress_hook(status):
-            #    frag_bytes = status.get('total_bytes',0)
-            #    estimated_size = frag_bytes * total_frags
-            #    data_len_str = self.format_bytes(estimated_size)
-            #    if status['status'] == u'finished':
-            #        self.downloaded_bytes += frag_bytes
-            #        byte_counter = self.downloaded_bytes
-            #        self.frag_counter += 1
-            #        percent_str = self.calc_percent(self.frag_counter, total_frags)
-            #    else:
-            #        byte_counter = self.downloaded_bytes + status.get('downloaded_bytes', 0)
-            #        percent_str = self.calc_percent(byte_counter, estimated_size)
-            #    speed_str = self.calc_speed(start, time.time(), byte_counter)
-            #    eta_str = self.calc_eta(start, time.time(), estimated_size, byte_counter)
-            #    self.report_progress(percent_str, data_len_str, speed_str, eta_str)
-            #dl.add_progress_hook(frag_progress_hook)
+
 
             frags_filenames = []
             self.seqNumber=0
+            if segmentToStart and  not self.live :
+                self.seqNumber=segmentToStart
+                if   self.seqNumber>=total_frags:
+                    self.seqNumber=total_frags-1
             #for (seg_i, frag_i) in fragments_list:
             #for seqNumber in range(0,len(fragments_list)):
             self.segmentAvailable=0
+            frameSent=0
             while True:
                 if self.g_stopEvent and self.g_stopEvent.isSet():
                         return
                 seg_i, frag_i=fragments_list[self.seqNumber]
                 self.seqNumber+=1
-
+                frameSent+=1
                 name = u'Seg%d-Frag%d' % (seg_i, frag_i)
                 #print 'base_url',base_url,name
-                url = base_url + name
+                url = self.base_url + name
                 if queryString and '?' not in url:
                     url+='?'+queryString
                 #print(url),base_url,name
@@ -559,6 +566,12 @@ class F4MDownloader():
                     reader = FlvReader(down_data)
                     while True:
                         _, box_type, box_data = reader.read_box_info()
+                        #print  'box_type',box_type
+                        #if box_type == b'afra':
+                        #    dest_stream.write(box_data)
+                        #    dest_stream.flush()
+                        #    break
+                            
                         if box_type == b'mdat':
                             dest_stream.write(box_data)
                             dest_stream.flush()
@@ -576,35 +589,20 @@ class F4MDownloader():
                             # dest_stream.write(mdat_reader.read())
                             # break
                 self.status='play'
-                if self.seqNumber==len(fragments_list):
+                if self.seqNumber==len(fragments_list) or (totalSegmentToSend>0 and frameSent==totalSegmentToSend):
                     if not self.live:
                         break
                     self.seqNumber=0
                     #todo if the url not available then get manifest and get the data again
                     total_frags=None
                     try:
-                        bootstrap, boot_info, fragments_list,total_frags=self.readBootStrapInfo(bootstrapURL,None,updateMode=True,lastSegment=seg_i, lastFragement=frag_i)
-                    except: pass
+                        bootstrap, boot_info, fragments_list,total_frags=self.readBootStrapInfo(self.bootstrapURL,None,updateMode=True,lastSegment=seg_i, lastFragement=frag_i)
+                    except: 
+                        traceback.print_exc()
+                        pass
                     if total_frags==None:
                         break
-                    #read teh data again and let the loop continue
-                    
-                #frags_filenames.append(frag_filename)
-            #dest_stream.close()
 
-            #self.report_finish(self.downloaded_bytes, time.time() - start)
-
-            #self.try_rename(tmpfilename, filename)
-            #for frag_file in frags_filenames:
-            #    os.remove(frag_file)
-            #os.remove(self.outputfile)
-            #fsize = os.path.getsize(encodeFilename(filename))
-            #self._hook_progress({
-            #        'downloaded_bytes': fsize,
-            #        'total_bytes': fsize,
-            #        'filename': filename,
-            #        'status': 'finished',
-            #    })
             del self.downloaded_bytes
             del self.frag_counter
         except:

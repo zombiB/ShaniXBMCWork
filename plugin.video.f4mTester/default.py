@@ -105,7 +105,7 @@ if mode ==None:
     ['http://193.232.151.135/hds-live-not-protected/livepkgr/_1099_/1099/1099-70.f4m','ndtv plus - proxy needed','',0],
     ['http://bbcwshdlive01-lh.akamaihd.net/z/atv_1@61433/manifest.f4m?hdcore=2.11.3','BBC Arabic','',0],
     ['http://skaihd-f.akamaihd.net/z/advert/ORAL_B_SHAKIRA_20-SKAI.mp4/manifest.f4m?hdcore=2.6.8&g=OGEJOEGNJICP','Greek Oral B advert','',0],
-    ['http://srgssr_uni_11_ww-lh.akamaihd.net/z/enc11uni_ww@112996/100_644f96dfa358b184-p.bootstrap?g=XTJVOORDBMQF&hdcore=2.11.3','RTS Swiss a proxy needed','',0],
+    ['http://srgssr_uni_11_ww-lh.akamaihd.net/z/enc11uni_ww@112996/manifest.f4m?g=XTJVOORDBMQF&hdcore=2.11.3','RTS Swiss a proxy needed?','',0],
     ['http://ccr.cim-jitp.top.comcast.net/cimomg04/OPUS/83/162/119271491507/1389989008837/119271491507_1389986611184_1850000_4.f4m','aliakrep DRM not working','',0],
     ['http://stream1-prod.spectar.tv:1935/mrt-edge/_definst_/mrt3/smil:all-streams.isml/manifest.f4m','mrt3/all-streams.isml','',0],        
     ['http://hdv.gamespotcdn.net/z/d5/2013/10/16/Gameplay_GettingRevengeinGTAOnline_101613_,600,1000,1800,3200,4000,.mp4.csmil/manifest.f4m?hdcore=2.10.3&g=JNMDDRCQSDCH','Recorded..Getting Revenge in GTA maxbitrate 2000','',2006],        

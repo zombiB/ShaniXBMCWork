@@ -43,8 +43,10 @@ import base64
 import threading 
 import xbmcgui
 import xbmc 
-
+import hashlib
 g_stopEvent=None
+g_downloader=None
+
 class MyHandler(BaseHTTPRequestHandler):
     """
    Serves a HEAD request
@@ -52,9 +54,10 @@ class MyHandler(BaseHTTPRequestHandler):
     def do_HEAD(self):
         print "XBMCLocalProxy: Serving HEAD request..."
         self.send_response(200)
-        rtype=" flv-application/octet-stream"  #default type could have gone to the server to get it.
-        self.send_header("Content-Type", rtype)
+        rtype="flv-application/octet-stream"  #default type could have gone to the server to get it.
+        self.send_header("Accept-Ranges","bytes")
         self.end_headers() 
+        #s.answer_request(False)
     """
    Serves a GET request.
    """
@@ -64,6 +67,7 @@ class MyHandler(BaseHTTPRequestHandler):
  
     def answer_request(self, sendData):
         global g_stopEvent
+        global g_downloader
         try:
 
             #Pull apart request path
@@ -86,25 +90,80 @@ class MyHandler(BaseHTTPRequestHandler):
 
             #Send file request
             #self.handle_send_request(download_id,file_url, file_name, requested_range,download_mode ,keep_file,connections)
-            self.send_response(200)
-            rtype="flv-application/octet-stream"  #default type could have gone to the server to get it.
-            self.send_header("Content-Type", rtype)
-
-            #self.send_header("Last-Modified","Wed, 21 Feb 2000 08:43:39 GMT")
-            #self.send_header("Cache-Control","public, must-revalidate")
-            #self.send_header("Cache-Control","no-cache")
-            #self.send_header("Pragma","no-cache")
             
-            #self.send_header("features","seekable,stridable")
-            #self.send_header("client-id","12345")
-            self.end_headers()
-            if sendData:
+            downloader=None
+            #downloader=g_downloader
+            
+            if not downloader or downloader.live==True or  not (downloader.init_done and downloader.init_url ==url):
                 downloader=F4MDownloader()
-                downloader.download(self.wfile,url,proxy,use_proxy_for_chunks,g_stopEvent,maxbitrate)
+                downloader.init(self.wfile,url,proxy,use_proxy_for_chunks,g_stopEvent,maxbitrate)
+                g_downloader=downloader
+                print 'init...' 
+            
+            #enableSeek=False
+            requested_range=self.headers.getheader("Range")
+            if requested_range==None: requested_range=""
+            srange, erange=(None,None)
+            
+            if downloader.live==False and len(requested_range)>0 and not requested_range=="bytes=0-0": #we have to stream?
+                enableSeek=True
+                (srange, erange) = self.get_range_request(requested_range, downloader.total_frags)
+            
+            enableSeek=False ##disabled for time being, couldn't find better way to handle
+            print 'PROXY DATA',downloader.live,enableSeek,requested_range,downloader.total_frags,srange, erange
+            #enableSeek=False
+            framgementToSend=0
+            if enableSeek:
+                rtype="video/x-flv" #just as default
+                self.send_response(206)
+                #rtype="flv-application/octet-stream"  #default type could have gone to the server to get it.
+                self.send_header("Content-Type", rtype)
+                self.send_header("Accept-Ranges","bytes")
+                print 'not LIVE,enable seek',downloader.total_frags
+                totalsize=downloader.total_frags*1024*1024
+                
+                framgementToSend=downloader.total_frags
+                erange=srange+framgementToSend*1024*1024
+                if erange>=totalsize:
+                    erange=totalsize-1
+                
+#                crange="bytes "+str(srange)+"-" +str(int(downloader.total_frags-1))+"/"+str(downloader.total_frags)#recalculate crange based on srange, portionLen and content_size 
+#                crange="bytes "+str(srange)+"-" +str(int(totalsize-1))+"/"+str(totalsize)#recalculate crange based on srange, portionLen and content_size 
+                crange="bytes "+str(srange)+"-" +str(int(erange))+"/"+str(totalsize)#recalculate crange based on srange, portionLen and content_size 
+                print srange/1024/1024,erange/1024/1024,totalsize/1024/1024
+                self.send_header("Content-Length", str(totalsize))
+                self.send_header("Content-Range",crange)
+                etag=self.generate_ETag(url)
+                self.send_header("ETag",etag)
+                print crange
+                self.send_header("Last-Modified","Wed, 21 Feb 2000 08:43:39 GMT")
+                self.send_header("Cache-Control","public, must-revalidate")
+                self.send_header("Cache-Control","no-cache")
+                self.send_header("Pragma","no-cache")
+                self.send_header("features","seekable,stridable")
+                self.send_header("client-id","12345")
+                self.send_header("Connection", 'close')
+            else:
+                self.send_response(200)
+                rtype="flv-application/octet-stream"  #default type could have gone to the server to get it.
+                self.send_header("Content-Type", rtype)
+                srange=None
+
+            #rtype="flv-application/octet-stream"  #default type could have gone to the server to get it. 
+            #self.send_header("Content-Type", rtype)    
+               
+            self.end_headers()
+            if not srange==None:
+                srange=srange/1024/1024
+            if sendData:
+                #downloader.keep_sending_video(srange)
                 #runningthread=thread.start_new_thread(downloader.download,(self.wfile,url,proxy,use_proxy_for_chunks,))
-                #xbmc.sleep(500)
-                #while not downloader.status=="finished":
-                #    xbmc.sleep(200);
+                print 'srange,framgementToSend',srange,framgementToSend
+                runningthread=thread.start_new_thread(downloader.keep_sending_video,(self.wfile,srange,framgementToSend,))
+                
+                xbmc.sleep(500)
+                while not downloader.status=="finished":
+                    xbmc.sleep(200);
 
 
         except:
@@ -119,6 +178,32 @@ class MyHandler(BaseHTTPRequestHandler):
         self.wfile.close()
         return 
    
+    def generate_ETag(self, url):
+        md=hashlib.md5()
+        md.update(url)
+        return md.hexdigest()
+        
+    def get_range_request(self, hrange, file_size):
+        if hrange==None:
+            srange=0
+            erange=None
+        else:
+            try:
+                #Get the byte value from the request string.
+                hrange=str(hrange)
+                splitRange=hrange.split("=")[1].split("-")
+                srange=int(splitRange[0])
+                erange = splitRange[1]
+                if erange=="":
+                    erange=int(file_size)-1
+                #Build range string
+                
+            except:
+                # Failure to build range string? Create a 0- range.
+                srange=0
+                erange=int(file_size-1);
+        return (srange, erange)
+        
     def decode_url(self, url):
         print 'in params'
         params=urlparse.parse_qs(url)
@@ -176,7 +261,7 @@ class f4mProxy():
         global g_stopEvent
         print 'port',port,'HOST_NAME',HOST_NAME
         g_stopEvent = stopEvent
-        socket.setdefaulttimeout(30)
+        socket.setdefaulttimeout(10)
         server_class = ThreadedHTTPServer
         MyHandler.protocol_version = "HTTP/1.0"
         httpd = server_class((HOST_NAME, port), MyHandler)

@@ -12,3 +12,5 @@
 - more links and some images
 [B]Version 1.0.12[/B]
 - added recorded streams
+[B]Version 1.0.13[/B]
+- couple of links fixed
