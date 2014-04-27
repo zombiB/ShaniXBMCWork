@@ -9,6 +9,8 @@ import os
 import cookielib
 from BeautifulSoup import BeautifulStoneSoup, BeautifulSoup, BeautifulSOAP
 import datetime
+import sys
+import time
 __addon__       = xbmcaddon.Addon()
 __addonname__   = __addon__.getAddonInfo('name')
 __icon__        = __addon__.getAddonInfo('icon')
@@ -95,11 +97,17 @@ def shoudforceLogin():
             do_login=True
         else:
             print 'lastlogin',lastUpdate
-            lastUpdate=datetime.datetime.strptime(lastUpdate)
-            t=(now_datetime-lastUpdate).seconds#/60
+            try:
+                lastUpdate=datetime.datetime.strptime(lastUpdate,"%Y-%m-%d %H:%M:%S")
+            except TypeError:
+                lastUpdate = datetime.datetime.fromtimestamp(time.mktime(time.strptime(lastUpdate, "%Y-%m-%d %H:%M:%S")))
+        
+            t=(now_datetime-lastUpdate).seconds/60
             print 't',t
             if t>60:
                 do_login=True
         print 'do_login',do_login
         return do_login
-    except: return True
+    except:
+        traceback.print_exc(file=sys.stdout)
+    return True
