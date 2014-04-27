@@ -162,7 +162,7 @@ def AddYoutubeLanding(url):
 			filename=url
 		print 'filename',filename
 		if len(filename)>0:
-			data = open(filename, "r").read()
+			data = open(filename.decode('utf-8'), "r").read()
 			print data
 			directories=getETreeFromString(data)
 		else:
@@ -404,7 +404,8 @@ def AddEnteries(Fromurl,pageNumber=0):
 		#print 'a3'
 		#finalName+=cname[3]
 		#print 'a4'
-		
+        
+		print cname[2]
 		addDir(finalName ,getMainUrl()+cname[0] ,5,cname[2],showContext=True,isItFolder=False)
 		
 		
@@ -746,7 +747,7 @@ def getSourceAndStreamInfo(channelId, returnOnFirst):
 					#
 					isAbSolutePath=True
 					isEnabled="false"
-					filename=selfAddon.getSetting( "localstreampath" )
+					filename=selfAddon.getSetting( "localstreampath" ).decode('utf-8')
 					if filename and len(filename)>0:
 						isEnabled="true"
 						xmlfile=filename
