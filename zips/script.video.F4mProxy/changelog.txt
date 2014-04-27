@@ -16,3 +16,5 @@
 - added support recorded streams
 [B]Version 1.0.13[/B]
 - code reformating and failed attempt for seek
+[B]Version 1.0.14[/B]
+- disable seek

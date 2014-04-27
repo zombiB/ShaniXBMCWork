@@ -328,7 +328,17 @@ class F4MDownloader():
             print 'Error in getUrl'
             traceback.print_exc()
             return None
+            
+    def _write_flv_header2(self, stream):
+        """Writes the FLV header and the metadata to stream"""
+        # FLV header
+        stream.write(b'FLV\x01')
+        stream.write(b'\x01')
+        stream.write(b'\x00\x00\x00\x09')
+        # FLV File body
+        stream.write(b'\x00\x00\x00\x09')
 
+        
     def _write_flv_header(self, stream, metadata):
         """Writes the FLV header and the metadata to stream"""
         # FLV header
@@ -349,6 +359,7 @@ class F4MDownloader():
     def init(self, out_stream, url, proxy=None,use_proxy_for_chunks=True,g_stopEvent=None, maxbitrate=0):
         try:
             self.init_done=False
+            self.total_frags=0
             self.init_url=url
             self.clientHeader=None
             self.status='init'
@@ -367,9 +378,8 @@ class F4MDownloader():
             self.status='init done'
             self.url=url
             #self.downloadInternal(  url)
-            self.preDownoload()
-            self.init_done=True
-            return True
+            return self.preDownoload()
+            
             #os.remove(self.outputfile)
         except: 
             traceback.print_exc()
@@ -385,6 +395,8 @@ class F4MDownloader():
             url=self.url
             print 'Downloading f4m manifest'
             manifest = self.getUrl(man_url)#.read()
+            if not manifest:
+                return False
             print len(manifest)
             try:
                 print manifest
@@ -488,9 +500,11 @@ class F4MDownloader():
             self.bootstrapURL=bootstrapURL
             self.queryString = queryString
             self.bootstrap, self.boot_info, self.fragments_list,self.total_frags=self.readBootStrapInfo(bootstrapURL,bootstrapData)
+            self.init_done=True
+            return True
         except:
             traceback.print_exc()
-        return
+        return False
 
         
     def keep_sending_video(self,dest_stream, segmentToStart=None, totalSegmentToSend=0):
@@ -511,6 +525,10 @@ class F4MDownloader():
                 print 'writing metadata',len(self.metadata)
                 self._write_flv_header(dest_stream, self.metadata)
                 dest_stream.flush()
+            #elif segmentToStart>0 and not self.live:
+            #    self._write_flv_header2(dest_stream)
+            #    dest_stream.flush()
+            
             url=self.url
   
             bootstrap, boot_info, fragments_list,total_frags=(self.bootstrap, self.boot_info, self.fragments_list,self.total_frags)
@@ -536,6 +554,10 @@ class F4MDownloader():
             self.segmentAvailable=0
             frameSent=0
             while True:
+            
+                #if not self.live:
+                #    _write_flv_header2
+                    
                 if self.g_stopEvent and self.g_stopEvent.isSet():
                         return
                 seg_i, frag_i=fragments_list[self.seqNumber]
