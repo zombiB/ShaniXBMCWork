@@ -113,6 +113,9 @@ if mode ==None:
     ['http://hdv.gamespotcdn.net/z/d5/2014/04/24/GSNews_Apr24_20140424a_,600,1000,1800,3200,4000,.mp4.csmil/manifest.f4m?hdcore=2.10.3&g=KUVLMGTKPJFF','Recorded..Gamespot news highest bitrate','',0],        
     ['http://hdv.gamespotcdn.net/z/d5/2014/04/24/GSNews_Apr24_20140424a_,600,.mp4.csmil/manifest.f4m?hdcore=2.10.3&g=KUVLMGTKPJFF','Recorded..Gamespot news 600 bitrate','',0],        
     ['http://202.125.131.170:1935/pitelevision/smil:geokahani.smil/manifest.f4m','Pitelevision geo kahani','',0], 
+    ['http://stream.flowplayer.org/flowplayer-700.flv','TESTING not F4M','',0], 
+    ['http://hlscache.fptplay.net.vn/live/htvcmovieHD_2500.stream/manifest.f4m|Referer=http://play.fpt.vn/static/mediaplayer/FPlayer.swf','Viet 2500bitrate','',0],
+    ['http://hlscache.fptplay.net.vn/live/onetv_1000.stream/manifest.f4m|Referer=http://play.fpt.vn/static/mediaplayer/FPlayer.swf','Viet 1000bitrate','',0], 
     ['http://77.245.150.95/hds-live/livepkgr/_definst_/liveevent/livestream.f4m','something else','',0]]
      
 
@@ -151,12 +154,15 @@ if mode ==None:
     
 elif mode == "play":
     print 'PLAying ',mode,url
-    if not name=='Custom':
+    if not name in ['Custom','TESTING not F4M'] :
         playF4mLink(url,name)
     else:
-        newUrl=GUIEditExportName('')
-        if not newUrl=='':
-            playF4mLink(newUrl,name)
+        listitem = xbmcgui.ListItem( label = str(name), iconImage = "DefaultVideo.png", thumbnailImage = xbmc.getInfoImage( "ListItem.Thumb" ), path=url )
+        xbmc.Player().play( url,listitem)
+    
+        #newUrl=GUIEditExportName('')
+        #if not newUrl=='':
+        #    playF4mLink(newUrl,name)
 
 
 
