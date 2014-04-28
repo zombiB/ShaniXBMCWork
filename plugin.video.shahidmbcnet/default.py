@@ -786,7 +786,7 @@ def getSourceAndStreamInfo(channelId, returnOnFirst):
 	return sorted(ret,key=lambda x:x[2])
 
 def selectSource(sources):
-    if len(sources) > 1:
+    if 1==1 or len(sources) > 1:
         print 'total sources',len(sources)
         dialog = xbmcgui.Dialog()
         titles = []
@@ -807,56 +807,78 @@ def selectSource(sources):
             return False
 
 def PlayCommunityStream(channelId, name, mode):
-	print 'PlayCommunityStream'
-	pDialog = xbmcgui.DialogProgress()
-	ret = pDialog.create('XBMC', 'Finding available resources...')
-	print 'channelId',channelId
-	playFirst=selfAddon.getSetting( "playFirstChannel" )
-	if playFirst==None or playFirst=="" or playFirst=="false":
-		playFirst=False
-	else:
-		playFirst=True
-	playFirst=bool(playFirst)
-	providers=getSourceAndStreamInfo(channelId,playFirst)
-	if len(providers)==0:
-		pDialog.close()
-		time = 2000  #in miliseconds
-		line1="No sources found"
-		xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(__addonname__,line1, time, __icon__))
-		return
-	pDialog.update(30, 'Found resources..')
-	#source=providers[""]
-
-	print 'playFirst',playFirst
-	if len (providers)>1 and not playFirst:
-		provider=selectSource(providers)
-		if not provider:
+	try:
+		print 'PlayCommunityStream'
+		pDialog = xbmcgui.DialogProgress()
+		ret = pDialog.create('XBMC', 'Finding available resources...')
+		print 'channelId',channelId
+		playFirst=selfAddon.getSetting( "playFirstChannel" )
+		if playFirst==None or playFirst=="" or playFirst=="false":
+			playFirst=False
+		else:
+			playFirst=True
+		playFirst=bool(playFirst)
+		pDialog.update(60, 'Found sources..')
+		providers=getSourceAndStreamInfo(channelId,playFirst)
+		if len(providers)==0:
+			pDialog.close()
+			time = 2000  #in miliseconds
+			line1="No sources found"
+			xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(__addonname__,line1, time, __icon__))
 			return
-	else:
-		provider=providers[0]
-	(source,sInfo,order)=provider #pick first one
-	#print source
-	xmlfile = source.urlfile.text
-	processor = source.processor.text
-	print xmlfile
+		pDialog.update(80, 'Processing sources..')
+		pDialog.close()
+		#source=providers[""]
 
-	print 'streaminginfo',sInfo
-	#processor=os.path.join(communityStreamPath, processor)
-	if communityStreamPath not in sys.path:
-		sys.path.append(communityStreamPath)
-	print processor
-	
-	
-	#from importlib import import_module
-	processorObject=import_module(processor.replace('.py',''))
-	
-	
-	pDialog.update(60, 'Trying to play..')
-	processorObject.PlayStream(source,sInfo,name,channelId)
-	print 'donexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-	pDialog.close()
-	return 
-	
+		
+		enforceSourceSelection=False
+		print 'playFirst',playFirst
+		done_playing=False
+		while not done_playing:
+			print 'trying again',enforceSourceSelection
+			ret = pDialog.create('XBMC', 'Trying to play the source')
+			print 'dialogue creation'
+			done_playing=True
+			if enforceSourceSelection or (len (providers)>1 and not playFirst):
+				print 'select sources'
+				selectedprovider=selectSource(providers)
+				if not selectedprovider:
+					return
+			else:
+				selectedprovider=providers[0]
+				enforceSourceSelection=True
+			print 'picking source'
+			(source,sInfo,order)=selectedprovider #pick first one
+			#print source
+			xmlfile = source.urlfile.text
+			processor = source.processor.text
+			sourcename = source.sname.text
+			print xmlfile
+
+			print 'streaminginfo',sInfo
+			#processor=os.path.join(communityStreamPath, processor)
+			if communityStreamPath not in sys.path:
+				sys.path.append(communityStreamPath)
+			print processor
+		
+		
+			#from importlib import import_module
+			processorObject=import_module(processor.replace('.py',''))
+		
+		
+			pDialog.update(60, 'Trying to play..')
+			pDialog.close()
+			done_playing=processorObject.PlayStream(source,sInfo,name,channelId)
+			print 'done_playing',done_playing
+			if not done_playing:
+				time = 2000  #in miliseconds
+				line1="Failed playing from "+sourcename
+				xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(__addonname__,line1, time, __icon__))
+			print 'donexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+		return 
+	except:
+		traceback.print_exc(file=sys.stdout)
+
 def import_module(name, package=None):
     """Import a module.
 
