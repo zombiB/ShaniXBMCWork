@@ -1,3 +1,6 @@
+[B]Version 2.6.7[/B]
+- Texting formatting.
+
 [B]Version 2.6.6[/B]
 - Settings to disable the sources. This way you can manage a downtime of certain resources without any issue.
 
