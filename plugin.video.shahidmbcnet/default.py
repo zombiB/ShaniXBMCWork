@@ -235,19 +235,21 @@ def AddYoutubeLanding(url):
 	
 	
 def checkAndRefresh():
-	import time
-	lastUpdate=selfAddon.getSetting( "lastupdate" )
-	do_update=False
-	now_date=time.strftime("%d/%m/%Y")
-	if lastUpdate==None or lastUpdate=="":
-		do_update=True
-	else:
-		print 'lastUpdate',lastUpdate
-		if not now_date==lastUpdate:
+	try:
+		import time
+		lastUpdate=selfAddon.getSetting( "lastupdate" )
+		do_update=False
+		now_date=time.strftime("%d/%m/%Y")
+		if lastUpdate==None or lastUpdate=="":
 			do_update=True
-	selfAddon.setSetting( id="lastupdate" ,value=now_date)
-	if do_update:
-		RefreshResources(True)
+		else:
+			print 'lastUpdate',lastUpdate,now_date
+			if not now_date==lastUpdate:
+				do_update=True
+		selfAddon.setSetting( id="lastupdate" ,value=now_date)
+		if do_update:
+			RefreshResources(True)
+	except: pass
 
 def RefreshResources(auto=False):
 #	print Fromurl
@@ -751,7 +753,10 @@ def getSourceAndStreamInfo(channelId, returnOnFirst):
 					if filename and len(filename)>0:
 						isEnabled="true"
 						xmlfile=filename
-				if isEnabled=="true":
+				settingname="is"+sname.replace('.','')+"SourceDisabled"
+				settingDisabled=selfAddon.getSetting(settingname)  
+				print 'settingDisabled',settingDisabled
+				if isEnabled=="true" and not settingDisabled=="true":
 					#print 'source is enabled',sid
 					csoup=getSoup(xmlfile,isAbSolutePath);
 					#ccsoup = csoup("streaminginfo")
