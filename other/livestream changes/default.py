@@ -608,6 +608,9 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
                         req.add_header('Referer', m['refer'])
                     if 'agent' in m:
                         req.add_header('User-agent', m['agent'])
+                    if 'setcookie' in m:
+                        print 'adding cookie',m['setcookie']
+                        req.add_header('Cookie', m['setcookie'])
 
                     if not cookieJar==None:
                         #print 'cookieJarVal',cookieJar
@@ -1035,6 +1038,9 @@ elif mode==12:
     if not url.startswith("plugin://plugin.video.f4mTester") :
         item = xbmcgui.ListItem(path=url)
         xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, item)
+        #xbmc.playlist(xbmc.playlist_video).clear()
+        #xbmc.playlist(xbmc.playlist_video).add(url)
+        #xbmc.Player(xbmc.PLAYER_CORE_MPLAYER).play(item=url)
     else:
         xbmc.executebuiltin('XBMC.RunPlugin('+url+')')
 
