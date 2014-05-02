@@ -18,13 +18,20 @@ play=False
 paramstring=sys.argv[2]
 #url = addon.queries.get('playurl', None)
 print paramstring
+name=''
+
 if paramstring:
     paramstring="".join(paramstring[1:])
     params=urlparse.parse_qs(paramstring)
-    print params
-    url = params['url'][0]#
-    name = params['name'][0]
-    mode =  params['mode'][0]
+    url = params['url'][0]
+    try:
+        name = params['name'][0]
+    except:pass
+
+    mode='play'
+    try:    
+        mode =  params['mode'][0]
+    except: pass
     maxbitrate=0
     try:
         maxbitrate =  int(params['maxbitrate'][0])

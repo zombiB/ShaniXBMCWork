@@ -16,3 +16,5 @@
 - couple of links fixed
 [B]Version 1.0.14[/B]
 - couple of links fixed
+[B]Version 1.0.15[/B]
+- making easier for livestream call
