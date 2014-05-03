@@ -299,9 +299,15 @@ def RefreshResources(auto=False):
 	dialog = xbmcgui.Dialog()
 	ok = dialog.ok('XBMC', 'Download finished. Close close Addon and come back')
 
+def removeLoginFile():
+	try:
+		COOKIEFILE = communityStreamPath+'/livePlayerLoginCookie.lwp'
+		os.remove(COOKIEFILE)
+	except: pass
 
 def ShowSettings(Fromurl):
 	selfAddon.openSettings()
+	removeLoginFile()
 	return
 	ret=[]
 	Ssoup=getSoup('livetvUrls.xml');
