@@ -15,6 +15,8 @@ try:
 except:
     import simplejson as json
 import SimpleDownloader as downloader
+g_ignoreSetResolved=['plugin.video.f4mTester','plugin.video.shahidmbcnet']
+
 REMOTE_DBG=False;
 if REMOTE_DBG:
     # Make pydev debugger works for auto reload.
@@ -830,7 +832,7 @@ def addLink(url,name,iconimage,fanart,description,genre,date,showcontext,playlis
         liz=xbmcgui.ListItem(name, iconImage="DefaultVideo.png", thumbnailImage=iconimage)
         liz.setInfo(type="Video", infoLabels={ "Title": name, "Plot": description, "Genre": genre, "dateadded": date })
         liz.setProperty("Fanart_Image", fanart)
-        if (not play_list) and (not url.startswith('plugin://plugin.video.f4mTester')):
+        if (not play_list) and not any(x in url for x in g_ignoreSetResolved):#  (not url.startswith('plugin://plugin.video.f4mTester')):
             print 'setting isplayable',url
             liz.setProperty('IsPlayable', 'true')
         else:
@@ -1035,13 +1037,14 @@ elif mode==11:
 elif mode==12:
     addon_log("setResolvedUrl")
 
-    if not url.startswith("plugin://plugin.video.f4mTester") :
+    if not any(x in url for x in g_ignoreSetResolved):#not url.startswith("plugin://plugin.video.f4mTester") :
         item = xbmcgui.ListItem(path=url)
         xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, item)
         #xbmc.playlist(xbmc.playlist_video).clear()
         #xbmc.playlist(xbmc.playlist_video).add(url)
         #xbmc.Player(xbmc.PLAYER_CORE_MPLAYER).play(item=url)
     else:
+        print 'Not setting setResolvedUrl'
         xbmc.executebuiltin('XBMC.RunPlugin('+url+')')
 
 

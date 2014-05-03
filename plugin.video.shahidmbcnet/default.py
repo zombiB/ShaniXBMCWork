@@ -809,6 +809,7 @@ def selectSource(sources):
 def PlayCommunityStream(channelId, name, mode):
 	try:
 		print 'PlayCommunityStream'
+		xbmcplugin.endOfDirectory(int(sys.argv[1]))
 		pDialog = xbmcgui.DialogProgress()
 		ret = pDialog.create('XBMC', 'Finding available resources...')
 		print 'channelId',channelId
