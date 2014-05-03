@@ -106,6 +106,7 @@ def performLogin():
 
 
 def shoudforceLogin():
+    return True
     try:
 #        import dateime
         lastUpdate=selfAddon.getSetting( "lastLivetvLogin" )
