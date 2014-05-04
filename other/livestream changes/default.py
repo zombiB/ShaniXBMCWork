@@ -512,6 +512,11 @@ def getItems(items,fanart):
                         except:
                             addon_log("Regex: -- Not a post")
                         try:
+                            regexs[i('name')[0].string]['rawpost'] = i('rawpost')[0].string
+                        except:
+                            addon_log("Regex: -- Not a rawpost")
+
+                        try:
                             regexs[i('name')[0].string]['readcookieonly'] = i('readcookieonly')[0].string
                         except:
                             addon_log("Regex: -- Not a readCookieOnly")
@@ -560,7 +565,7 @@ def getItems(items,fanart):
                 addon_log('There was a problem adding item - '+name.encode('utf-8', 'ignore'))
 
 
-def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCall=False,cachedPages={}):#0,1,2 = URL, regexOnly, CookieJarOnly
+def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCall=False,cachedPages={}, rawPost=False):#0,1,2 = URL, regexOnly, CookieJarOnly
         if not recursiveCall:
             regexs = eval(urllib.unquote(regexs))
         #cachedPages = {}
@@ -596,6 +601,10 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
                 if  'post' in m and '$doregex' in m['post']:
                     m['post']=getRegexParsed(regexs, m['post'],cookieJar,recursiveCall=True,cachedPages=cachedPages)
                     print 'post is now',m['post']
+
+                if  'rawpost' in m and '$doregex' in m['rawpost']:
+                    m['rawpost']=getRegexParsed(regexs, m['rawpost'],cookieJar,recursiveCall=True,cachedPages=cachedPages,rawPost=True)
+                    print 'rawpost is now',m['rawpost']
                 
 
 
@@ -632,6 +641,10 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
                             post[n]=v
                         post = urllib.urlencode(post)
 
+                    if 'rawpost' in m:
+                        post=m['rawpost']
+
+
                     if post:
                         response = urllib2.urlopen(req,post)
                     else:
@@ -652,7 +665,11 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
                 if not m['expre']=='':
                     print 'doing it ',m['expre']
                     reg = re.compile(m['expre']).search(link)
-                    url = url.replace("$doregex[" + k + "]", reg.group(1).strip())
+                    val=reg.group(1).strip()
+                    if rawPost:
+                        print 'rawpost'
+                        val=urllib.quote_plus(val)
+                    url = url.replace("$doregex[" + k + "]", val)
                 else:
                     url = url.replace("$doregex[" + k + "]",'')
         if '$epoctime$' in url:
